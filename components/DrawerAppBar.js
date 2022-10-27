@@ -11,48 +11,47 @@ import {
   Toolbar,
   Button,
 } from "@mui/material";
-import { MenuIcon } from "@mui/icons-material";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const drawerWidth = 240;
-const navItems = ["Test 1", "Test 2", "Test 3"];
-// const navItems = [
-//   {
-//     title: "Home",
-//     href: "/",
-//   },
-//   {
-//     title: "What is Scotch Whisky?",
-//     href: "/what-is-scotch-whisky",
-//   },
-//   {
-//     title: "History of Scotch Whisky",
-//     href: "/history-of-scotch-whisky",
-//   },
-//   {
-//     title: "How Scotch is Made",
-//     href: "/how-scotch-is-made",
-//   },
-//   {
-//     title: "Regions of Origin",
-//     href: "/regions",
-//   },
-//   {
-//     title: "Famous Scotch Whisky Brands",
-//     href: "/famous-scotch-brands",
-//   },
-//   {
-//     title: "Scotch Database",
-//     href: "/scotch-whisky-search",
-//   },
-//   {
-//     title: "Visitor Survey",
-//     href: "/visitor-survey",
-//   },
-//   {
-//     title: "About Me",
-//     href: "/about-me",
-//   },
-// ];
+const navItems = [
+  {
+    title: "Home",
+    href: "/",
+  },
+  {
+    title: "What is Scotch Whisky?",
+    href: "/what-is-scotch-whisky",
+  },
+  {
+    title: "History of Scotch Whisky",
+    href: "/history-of-scotch-whisky",
+  },
+  {
+    title: "How Scotch is Made",
+    href: "/how-scotch-is-made",
+  },
+  {
+    title: "Regions of Origin",
+    href: "/regions",
+  },
+  {
+    title: "Famous Scotch Whisky Brands",
+    href: "/famous-scotch-brands",
+  },
+  {
+    title: "Scotch Database",
+    href: "/scotch-whisky-search",
+  },
+  {
+    title: "Visitor Survey",
+    href: "/visitor-survey",
+  },
+  {
+    title: "About Me",
+    href: "/about-me",
+  },
+];
 
 function DrawerAppBar(props) {
   const { window } = props;
@@ -66,9 +65,9 @@ function DrawerAppBar(props) {
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+          <ListItem key={item.title} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
+              <ListItemText primary={item.title} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -94,8 +93,8 @@ function DrawerAppBar(props) {
           </IconButton>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff" }}>
-                {item}
+              <Button key={item.title} sx={{ color: "#fff" }}>
+                {item.title}
               </Button>
             ))}
           </Box>
