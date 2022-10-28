@@ -2,11 +2,12 @@ import React from "react";
 import { Typography } from "@mui/material";
 import ContainerBlock from "../components/ContainerBlock";
 
-export default function Home(pageProps) {
+export default function WhatIs(pageProps) {
+  const title = "What is Scotch Whisky?";
   return (
     <>
-      <ContainerBlock>
-        <Typography>Home</Typography>
+      <ContainerBlock title={title}>
+        <Typography>{title}</Typography>
       </ContainerBlock>
     </>
   );
