@@ -8,53 +8,15 @@ import {
   ListItem,
   ListItemButton,
   Toolbar,
-  Button,
   Typography,
 } from "@mui/material";
+import Head from "next/head";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
-
-const drawerWidth = 240;
-const navItems = [
-  {
-    title: "Home",
-    href: "/",
-  },
-  {
-    title: "What is Scotch Whisky?",
-    href: "/what-is-scotch-whisky",
-  },
-  {
-    title: "History of Scotch Whisky",
-    href: "/history-of-scotch-whisky",
-  },
-  {
-    title: "How Scotch is Made",
-    href: "/how-scotch-is-made",
-  },
-  {
-    title: "Regions of Origin",
-    href: "/regions",
-  },
-  {
-    title: "Famous Scotch Whisky Brands",
-    href: "/famous-scotch-brands",
-  },
-  {
-    title: "Scotch Database",
-    href: "/scotch-whisky-search",
-  },
-  {
-    title: "Visitor Survey",
-    href: "/visitor-survey",
-  },
-  {
-    title: "About Me",
-    href: "/about-me",
-  },
-];
+import navItems from "../constants/navitems";
 
 function DrawerAppBar(props) {
+  const icon = "/whisky-still.png";
   const { window } = props;
   const [open, setOpen] = React.useState(false);
 
@@ -67,8 +29,10 @@ function DrawerAppBar(props) {
       <List>
         {navItems.map((item) => (
           <ListItem key={item.title} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <Link href={item.href}>{item.title}</Link>
+            <ListItemButton>
+              <Link href={item.href}>
+                <Typography>{item.title}</Typography>
+              </Link>
             </ListItemButton>
           </ListItem>
         ))}
@@ -81,6 +45,10 @@ function DrawerAppBar(props) {
 
   return (
     <>
+      <Head>
+        <title>{props.title}</title>
+        <link rel="icon" href={icon} />
+      </Head>
       <Box sx={{ display: "flex" }}>
         <AppBar component="nav">
           <Toolbar>
@@ -98,6 +66,7 @@ function DrawerAppBar(props) {
             >
               <MenuIcon />
             </IconButton>
+            <Typography>{props.title}</Typography>
             {/* <Box sx={{ display: { xs: "none", sm: "block" } }}>
                 {navItems.map((item) => (
                 <Link href={item.href}>
@@ -122,7 +91,7 @@ function DrawerAppBar(props) {
               // display: { xs: "block", sm: "none" },
               "& .MuiDrawer-paper": {
                 boxSizing: "border-box",
-                width: drawerWidth,
+                width: { xs: "45%", sm: "30%", lg: "15%" },
               },
             }}
           >
@@ -130,6 +99,7 @@ function DrawerAppBar(props) {
           </Drawer>
         </Box>
       </Box>
+      <Toolbar />
     </>
   );
 }
