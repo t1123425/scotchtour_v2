@@ -11,6 +11,7 @@ export default function ContainerBlock({ children }, props) {
         alignItems={"center"}
         rowSpacing={4}
         justifyContent="center"
+        textAlign={"center"}
         sx={{ minHeight: { xs: "100vh", md: "" } }}
       >
         {children}
