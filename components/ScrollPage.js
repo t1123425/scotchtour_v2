@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
-import { useAnimation, motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { Typography, Grid } from "@mui/material";
-import styles from "./ScrollBox.module.css";
+import React from "react";
+import { motion } from "framer-motion";
+import { Typography, Grid, Box } from "@mui/material";
 import defaultdata from "../constants/defaultdata";
 import Image from "next/image";
 
-// Scroll animations using basic scale up
+// Refactored initial Scroll animation using native whileInView prop and updated layout
 
 const scrollboxVar = {
   visible: {
@@ -28,38 +26,51 @@ const scrollboxVar = {
 };
 
 function ScrollBox(props) {
-  const controls = useAnimation();
-  const [ref, inView] = useInView();
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
   return (
-    <motion.div
-      ref={ref}
-      animate={controls}
-      initial="hidden"
-      variants={scrollboxVar}
-      className={styles.scrollbox}
+    <Grid
+      container
+      item
+      textAlign={"center"}
+      justifyContent="center"
+      height="100vh"
+      alignContent="center"
     >
-      <Typography variant="h2" className={styles.scrollboxitem}>
-        {props.defaultdata.header}
-      </Typography>
-      <Image
-        className={styles.scrollboxitem}
-        src={props.defaultdata.imageUrl}
-        width={600}
-        height={400}
-      />
-      <Typography className={styles.scrollboxitem}>
-        {props.defaultdata.text}
-      </Typography>
-    </motion.div>
+      <Grid item xs={12} sm={5} overflow="visible">
+        <Typography variant="h2" position={"sticky"} top="10%">
+          {props.defaultdata.header}
+        </Typography>
+      </Grid>
+      <Grid item xs={12} sm={5}>
+        <motion.div
+          initial={scrollboxVar.hidden}
+          whileInView={scrollboxVar.visible}
+        >
+          <Box
+            position="relative"
+            width="100%"
+            height={{
+              xs: "60vw",
+              sm: "30vw",
+            }}
+            textAlign="center"
+            // overflow="hidden"
+          >
+            <Image
+              src={props.defaultdata.imageUrl}
+              // width={600}
+              // height={400}
+              fill
+              objectFit="contain"
+            />
+          </Box>
+          <Typography mt={4}>{props.defaultdata.text}</Typography>
+        </motion.div>
+      </Grid>
+    </Grid>
   );
 }
 
-export default function ScrollPage(props) {
+export default function ScrollPage3(props) {
   return (
     <>
       <Grid
