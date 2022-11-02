@@ -6,6 +6,8 @@ import styles from "./ScrollBox.module.css";
 import defaultdata from "../constants/defaultdata";
 import Image from "next/image";
 
+// Scroll animations using basic scale up
+
 const scrollboxVar = {
   visible: {
     opacity: 1,

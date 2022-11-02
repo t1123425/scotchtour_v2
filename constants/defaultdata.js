@@ -7,5 +7,6 @@ const defaultdata = {
     consequat tellus eget purus pharetra tempor. Cras eget varius est.`,
   caption: `An example caption to describe an image`,
   imageUrl: "/random600x400.jpeg",
+  bullets: ["Bullet 1", "Bullet 2", "Bullet 3"],
 };
 export default defaultdata;

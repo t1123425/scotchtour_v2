@@ -1,7 +1,13 @@
 import React from "react";
+import { CssBaseline } from "@mui/material";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <CssBaseline />
+      <Component {...pageProps} />
+    </>
+  );
 }
 
 export default MyApp;
