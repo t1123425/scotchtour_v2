@@ -1,8 +1,16 @@
 import React from "react";
-import { Box, Rating, Button, Grid, Typography } from "@mui/material";
+import {
+  Slider,
+  Rating,
+  Button,
+  Grid,
+  Typography,
+  Autocomplete,
+  TextField,
+} from "@mui/material";
 import { LocalDrink } from "@mui/icons-material";
 
-const labels = {
+const ratingLabels = {
   0.5: `My father was murdered by a glass of Scotch! How dare you!!`,
   1: `I'd rather drink sewer runoff rung from a used diaper.`,
   1.5: `I'd rather drink a bottle of hot sauce.`,
@@ -15,13 +23,52 @@ const labels = {
   5: `A CANNY BELIEVE MA MAW DREESED ME UP AS A BOX A GRAVY FUR MA HALLOWEEN DISCO WHEN I WAS BUT A WEE LADDAE!!`,
 };
 
+const interestLabels = {
+  1: `Rarely`,
+  2: `Sometimes`,
+  3: `About half the time`,
+  4: `Often`,
+  5: `Almost always`,
+};
+
+const initialFormValues = {
+  "hover-feedback": "",
+  "interest-slider": 3,
+};
+
+const exampleBrands = [
+  "Cardhu",
+  "Dalwhinnie",
+  "Erdradour",
+  "Glenfarclas",
+  "Glenmorangie",
+];
+
+const exampleScotch = [
+  "Macallan 10yo Full Proof 57% 1980",
+  "Ledaig 42yo Dusgadh",
+  "Laphroaig 27yo 57.4% 1980-2007",
+  "Glenfarclas 40yo",
+];
+
 function getLabelText(value) {
-  return `${value} Star${value !== 1 ? "s" : ""}, ${labels[value]}`;
+  return `${value} Star${value !== 1 ? "s" : ""}, ${ratingLabels[value]}`;
+}
+
+function getSliderLabel(interest) {
+  return interest;
 }
 
 export default function Survey() {
-  const [value, setValue] = React.useState(0);
+  const [values, setValues] = React.useState(initialFormValues);
   const [hover, setHover] = React.useState(-1);
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
 
   return (
     <>
@@ -49,14 +96,13 @@ export default function Survey() {
           </Grid>
           <Grid item>
             <Rating
+              key="hover-feedback"
               icon={<LocalDrink fontSize="inherit" />}
               name="hover-feedback"
-              value={value}
+              value={values["hover-feedback"]}
               precision={0.5}
               getLabelText={getLabelText}
-              onChange={(event, newValue) => {
-                setValue(newValue);
-              }}
+              onChange={handleInputChange}
               onChangeActive={(event, newHover) => {
                 setHover(newHover);
               }}
@@ -65,10 +111,86 @@ export default function Survey() {
               }
             />
           </Grid>
-
-          {value !== null && (
-            <Grid item>{labels[hover !== -1 ? hover : value]}</Grid>
-          )}
+          <Grid item height={40}>
+            {ratingLabels[hover !== -1 ? hover : values["hover-feedback"]]}
+          </Grid>
+        </Grid>
+        <Grid
+          item
+          container
+          direction={"column"}
+          alignItems={"center"}
+          justifyContent={"center"}
+          spacing={2}
+        >
+          <Grid item>
+            <Typography>
+              Question 2: How often do you choose Scotch whisky over other types
+              of whiskey?
+            </Typography>
+          </Grid>
+          <Grid item width={300}>
+            <Slider
+              key="interest-slider"
+              aria-label="Interest in Scotch over other types of whiskey"
+              name="interest-slider"
+              value={values["interest-slider"]}
+              onChange={handleInputChange}
+              getAriaValueText={getSliderLabel}
+              valueLabelDisplay="auto"
+              valueLabelFormat={(value) => {
+                return interestLabels[value];
+              }}
+              step={1}
+              marks
+              min={1}
+              max={5}
+            />
+          </Grid>
+        </Grid>
+        <Grid
+          item
+          container
+          direction={"column"}
+          alignItems={"center"}
+          justifyContent={"center"}
+          spacing={2}
+        >
+          <Grid item>
+            <Typography>
+              Question 3: Which of these Scotch brands have you heard of before?
+              (you may choose more than one)
+            </Typography>
+          </Grid>
+          <Grid item width={300}>
+            <Autocomplete
+              multiple
+              autoComplete
+              options={exampleBrands}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </Grid>
+        </Grid>
+        <Grid
+          item
+          container
+          direction={"column"}
+          alignItems={"center"}
+          justifyContent={"center"}
+          spacing={2}
+        >
+          <Grid item>
+            <Typography>
+              Question 4: What is your favorite Scotch whisky?
+            </Typography>
+          </Grid>
+          <Grid item width={500}>
+            <Autocomplete
+              autoComplete
+              options={exampleScotch}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </Grid>
         </Grid>
         <Grid item>
           <Button variant="contained">Submit Survey</Button>
