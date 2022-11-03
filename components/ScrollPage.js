@@ -34,6 +34,9 @@ function ScrollBox(props) {
       justifyContent="center"
       height="100vh"
       alignContent="center"
+      sx={{
+        scrollSnapAlign: "center",
+      }}
     >
       <Grid item xs={12} sm={5} overflow="visible">
         <Typography variant="h2" position={"sticky"} top="10%">
@@ -44,6 +47,7 @@ function ScrollBox(props) {
         <motion.div
           initial={scrollboxVar.hidden}
           whileInView={scrollboxVar.visible}
+          viewport={{ once: true }}
         >
           <Box
             position="relative"
@@ -70,7 +74,7 @@ function ScrollBox(props) {
   );
 }
 
-export default function ScrollPage3(props) {
+export default function ScrollPage(props) {
   return (
     <>
       <Grid
@@ -81,6 +85,7 @@ export default function ScrollPage3(props) {
         rowSpacing={4}
         justifyContent="center"
         textAlign={"center"}
+        sx={{ scrollSnapType: "y mandatory" }}
       >
         <Grid item>
           <ScrollBox defaultdata={defaultdata} />
