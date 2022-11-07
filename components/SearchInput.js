@@ -6,6 +6,7 @@ import {
   TextField,
   Typography,
   Slider,
+  Autocomplete,
 } from "@mui/material";
 
 const initialFormValues = {
@@ -24,6 +25,28 @@ const rangeValues = {
   5: "$$$$$",
   6: "$$$$$+",
 };
+
+const searchTags = [
+  "full-body",
+  "medium-body",
+  "light-body",
+  "sweet",
+  "semi-sweet",
+  "heavy smoke",
+  "pronounced sherry",
+  "fruity",
+  "malty",
+  "apertif-style",
+  "medium smoke",
+  "pungent",
+  "honey",
+  "medicinal",
+  "floral",
+  "spicy",
+  "nutty",
+  "notes of wine",
+  "no smoke",
+];
 
 const check = (arr, target) => target.every((value) => arr.includes(value));
 
@@ -45,13 +68,13 @@ export default function SearchInput() {
   return (
     <>
       <form>
-        <Grid container justifyContent={"center"} xs={12}>
+        <Grid container justifyContent={"center"} spacing={6}>
           <Grid item xs={9}>
-            <Typography align="center" variant="h3">
+            <Typography align="center" variant="h3" mt={2}>
               Whisky Search
             </Typography>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={9}>
             <TextField
               variant="outlined"
               label="Whisky"
@@ -61,7 +84,7 @@ export default function SearchInput() {
               fullWidth
             ></TextField>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={9} md={4}>
             <Slider
               key="cost-range"
               aria-label="Range slider for cost represented in dollar signs"
@@ -80,6 +103,15 @@ export default function SearchInput() {
             <Typography align="center" variant="subtitle1" fontStyle={"italic"}>
               Cost Range
             </Typography>
+          </Grid>
+          <Grid item xs={9}>
+            <Autocomplete
+              multiple
+              autoComplete
+              options={searchTags}
+              renderInput={(params) => <TextField label="Tags" {...params} />}
+              width="100%"
+            />
           </Grid>
         </Grid>
       </form>
