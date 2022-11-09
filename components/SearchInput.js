@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 
 const initialFormValues = {
-  name: "",
+  whisky: "",
   min: "",
   max: "",
   range: [],
@@ -50,7 +50,7 @@ const searchTags = [
 
 const check = (arr, target) => target.every((value) => arr.includes(value));
 
-export default function SearchInput() {
+export default function SearchInput(props) {
   const [values, setValues] = useState(initialFormValues);
   const [min, setMin] = useState(1);
   const [max, setMax] = useState(6);
@@ -79,8 +79,9 @@ export default function SearchInput() {
               variant="outlined"
               label="Whisky"
               name="whisky"
-              value={values.name}
+              value={values.whisky}
               onChange={handleInputChange}
+              // onChange={props.handleSearch}
               fullWidth
             ></TextField>
           </Grid>

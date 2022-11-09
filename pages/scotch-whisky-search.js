@@ -16,14 +16,32 @@ const headers = [
 export default function ScotchDb(pageProps) {
   const title = "Scotch Whisky Search";
   const [records, setRecords] = useState(getWhiskyDb());
+  const [filterFn, setFilterFn] = useState({
+    fn: (items) => {
+      return items;
+    },
+  });
 
   const { TableContainer, TableHeader, TablePages, recordsAfterPagingSorting } =
-    ResultsTable(records, headers);
+    ResultsTable(records, headers, filterFn);
+
+  const handleSearch = (event) => {
+    let target = event.target;
+    setFilterFn({
+      fn: (items) => {
+        if (target.value == "") return items;
+        else
+          return items.filter((x) =>
+            x.whisky.toLowerCase().includes(target.value)
+          );
+      },
+    });
+  };
 
   return (
     <>
       <DrawerAppBar title={navItems[6].title} />
-      <SearchInput />
+      <SearchInput onChange={handleSearch} />
       <TableContainer>
         <TableHeader />
         <TableBody>

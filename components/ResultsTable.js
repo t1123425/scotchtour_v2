@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 
-export default function ResultsTable(records, headers) {
+export default function ResultsTable(records, headers, filterFn) {
   const pages = [5, 10, 25];
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(pages[page]);
@@ -99,10 +99,10 @@ export default function ResultsTable(records, headers) {
   }
 
   const recordsAfterPagingSorting = () => {
-    return objectSort(records, getComparisonType(order, orderBy)).slice(
-      page * rowsPerPage,
-      (page + 1) * rowsPerPage
-    );
+    return objectSort(
+      filterFn.fn(records),
+      getComparisonType(order, orderBy)
+    ).slice(page * rowsPerPage, (page + 1) * rowsPerPage);
   };
 
   return {
