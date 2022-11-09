@@ -2,7 +2,7 @@ const KEYS = {
   whiskies: "example",
 };
 
-const whiskyDb = [
+export const whiskyDb = [
   {
     id: 1,
     whisky: `Aberfeldy 12yo`,
@@ -494,6 +494,7 @@ const whiskyDb = [
   },
 ];
 
-export const getWhiskyDb = () => {
-  return JSON.parse(localStorage.getItem(whiskyDb));
-};
+export function getWhiskyDb() {
+  //   return JSON.parse(localStorage.getItem(whiskyDb));
+  return whiskyDb;
+}
