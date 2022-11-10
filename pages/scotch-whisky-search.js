@@ -32,7 +32,7 @@ export default function ScotchDb(pageProps) {
         if (target.value == "") return items;
         else
           return items.filter((x) =>
-            x.whisky.toLowerCase().includes(target.value)
+            x.whisky.toLowerCase().includes(target.value.toLowerCase())
           );
       },
     });
@@ -41,7 +41,7 @@ export default function ScotchDb(pageProps) {
   return (
     <>
       <DrawerAppBar title={navItems[6].title} />
-      <SearchInput onChange={handleSearch} />
+      <SearchInput handleSearch={handleSearch} />
       <TableContainer>
         <TableHeader />
         <TableBody>

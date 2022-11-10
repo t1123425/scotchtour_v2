@@ -79,9 +79,8 @@ export default function SearchInput(props) {
               variant="outlined"
               label="Whisky"
               name="whisky"
-              value={values.whisky}
-              onChange={handleInputChange}
-              // onChange={props.handleSearch}
+              //   onChange={handleInputChange}
+              onChange={props.handleSearch}
               fullWidth
             ></TextField>
           </Grid>
@@ -112,6 +111,7 @@ export default function SearchInput(props) {
               options={searchTags}
               renderInput={(params) => <TextField label="Tags" {...params} />}
               width="100%"
+              onChange={props.handleSearch}
             />
           </Grid>
         </Grid>
