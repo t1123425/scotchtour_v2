@@ -15,6 +15,15 @@ export default function ResultsTable(records, headers, filterFn) {
   const [order, setOrder] = useState();
   const [orderBy, setOrderBy] = useState();
 
+  //   //   Attempt at decoupling search filter
+  //   const searchFilterResults = (items) => {
+  //     return items.filter((item) => {
+  //       return item.whisky
+  //         .toLowerCase()
+  //         .includes(filterInput.whisky.toLowerCase());
+  //     });
+  //   };
+
   const TableContainer = (props) => <Table>{props.children}</Table>;
   const TableHeader = (props) => {
     const handleSortRequest = (cellId) => {
@@ -101,6 +110,7 @@ export default function ResultsTable(records, headers, filterFn) {
   const recordsAfterPagingSorting = () => {
     return objectSort(
       filterFn.fn(records),
+      //   searchFilterResults(records),
       getComparisonType(order, orderBy)
     ).slice(page * rowsPerPage, (page + 1) * rowsPerPage);
   };

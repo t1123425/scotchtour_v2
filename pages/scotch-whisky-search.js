@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import navItems from "../constants/navitems";
 import DrawerAppBar from "../components/DrawerAppBar";
 import SearchInput from "../components/SearchInput";
@@ -22,29 +22,94 @@ export default function ScotchDb(pageProps) {
     },
   });
 
+  // NEW useReducer method instead of useState
+  const [filterInput, setFilterInput] = useReducer(
+    (state, newState) => ({ ...state, ...newState }),
+    {
+      whisky: "",
+      min: "",
+      max: "",
+      range: [],
+      tags: [],
+    }
+  );
+
   const { TableContainer, TableHeader, TablePages, recordsAfterPagingSorting } =
     ResultsTable(records, headers, filterFn);
 
-  const handleSearch = (event) => {
-    let target = event.target;
+  // V2 Search function w/ useReducer method
+  const handleSearchV2 = (event) => {
+    console.log(typeof event.value);
+    const { name, value, textContent } = event.target;
+    console.log(records[0].tags.includes(textContent));
+    console.log(textContent ? true : false);
+    name === "range"
+      ? setFilterInput({ range: value, min: value[0], max: value[1] })
+      : name
+      ? setFilterInput({ [name]: value })
+      : textContent == ""
+      ? setFilterInput({ tags: [] })
+      : setFilterInput({ tags: [...filterInput.tags, textContent] });
+    console.log(filterInput);
+
+    // Not getting updated filterInput until after block runs
     setFilterFn({
       fn: (items) => {
-        if (target.value == "") return items;
-        else
-          return items.filter((x) =>
-            x.whisky.toLowerCase().includes(target.value.toLowerCase())
-          );
+        return items.filter((item) => {
+          return item.whisky
+            .toLowerCase()
+            .includes(
+              name === "whisky" ? value.toLowerCase() : filterInput.whisky
+            );
+          //   && item.tags.includes(
+          //   textContent
+          //     ? [...filterInput.tags, textContent]
+          //     : filterInput.tags
+          // )
+          // && record.cost <= filterInput.max
+          // && record.cost >= filterInput.min
+        });
       },
     });
   };
+  // Separate handler for setFunction
+  // const handleSearchFn = (event) => {
+  //   const target= event.target;
+  //   setFilterFn({
+  //     fn: (items) => {
+  //       return items.filter((item) => {
+  //         return item.whisky
+  //           .toLowerCase()
+  //           .includes(ta.whisky.toLowerCase());
+  //         // && record.tags.includes(filterInput.tags) &&
+  //         // record.cost <= filterInput.max &&
+  //         // record.cost >= filterInput.min
+  //       });
+  //     },
+  //   });
+  // }
 
+  console.log(
+    records.filter((item) =>
+      item.whisky.toLowerCase().includes(filterInput.whisky.toLowerCase())
+    )
+  );
+  console.log(filterFn.fn(records));
+  console.log(recordsAfterPagingSorting());
+  console.log(filterInput);
   return (
     <>
       <DrawerAppBar title={navItems[6].title} />
-      <SearchInput handleSearch={handleSearch} />
+      <SearchInput
+        handleChangeValue={handleSearchV2}
+        searchValue={filterInput}
+        // handleSearch={handleSearch}
+      />
       <TableContainer>
         <TableHeader />
         <TableBody>
+          {console.log(filterInput)}
+          {console.log(filterFn.fn(records))}
           {recordsAfterPagingSorting().map((item) => (
             <TableRow key={item.id}>
               <TableCell>{item.whisky}</TableCell>
