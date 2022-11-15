@@ -57,9 +57,9 @@ export default function SearchInput({
   handleChangeValue,
   handleClose,
 }) {
-  const [values, setValues] = useState(initialFormValues);
-  const [min, setMin] = useState(1);
-  const [max, setMax] = useState(6);
+  //   const [values, setValues] = useState(initialFormValues);
+  //   const [min, setMin] = useState(1);
+  //   const [max, setMax] = useState(6);
   //   const handleInputChange = (event) => {
   //     const { name, value } = event.target;
   //     setValues({
@@ -96,7 +96,7 @@ export default function SearchInput({
               key="range"
               aria-label="Range slider for cost represented in dollar signs"
               name="range"
-              value={[min, max]}
+              value={[searchValue.min, searchValue.max]}
               //   onChange={handleDualChange}
               onChange={(event) => handleChangeValue(event)}
               valueLabelDisplay="auto"

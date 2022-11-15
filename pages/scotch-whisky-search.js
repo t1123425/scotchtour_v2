@@ -27,9 +27,9 @@ export default function ScotchDb(pageProps) {
     (state, newState) => ({ ...state, ...newState }),
     {
       whisky: "",
-      min: "",
-      max: "",
-      range: [],
+      min: 1,
+      max: 6,
+      range: [1, 6],
       tags: [],
     }
   );
@@ -37,15 +37,10 @@ export default function ScotchDb(pageProps) {
   const { TableContainer, TableHeader, TablePages, recordsAfterPagingSorting } =
     ResultsTable(records, headers, filterFn);
 
-  // Test on Close trigger
-  const bigClose = () => {
-    console.log("Everything closed!");
-  };
-
   // V2 Search function w/ useReducer method
   const handleSearchV2 = (event, newValue) => {
     console.log(event);
-    console.log(newValue);
+    console.log(newValue !== undefined);
     const { name, value, textContent } = event.target;
     name === "range"
       ? setFilterInput({ range: value, min: value[0], max: value[1] })
@@ -54,47 +49,37 @@ export default function ScotchDb(pageProps) {
       : setFilterInput({ tags: newValue });
     const inputType = name ? name : "tags";
     console.log(newValue ? true : false);
+    console.log(filterInput.tags);
     // Not getting updated filterInput until after block runs
     setFilterFn({
       fn: (items) => {
-        return items.filter((item) => {
-          return (
-            item.whisky
+        return items
+          .filter((item) => {
+            return item.whisky
               .toLowerCase()
               .includes(
                 name === "whisky" ? value.toLowerCase() : filterInput.whisky
-              ) &&
-            // && newValue
-            // ? newValue.every((v) => {
-            //     return item.tags.includes(v);
-            //   })
-            // :
-            item
-          );
-          // &&
-          // (event.type == "click" || event.type == "keydown")
-          // ? textContent
-          //   ? [...filterInput.tags, textContent].every((value) => {
-          //       return item.tags.includes(value);
-          //     })
-          //   : // textContent is blank
-          //     false
-          // : // event type isn't click
-          //   false;
-          //  [...filterInput.tags, textContent].every((value) => {
-          //     return item.tags.includes(value);
-          //   })
-          // : textContent == "" && name === "whisky" && filterInput.tags !== []
-          // ? [...filterInput.tags].every((value) => {
-          //     return item.tags.includes(value);
-          //   })
-          // : false;
-        });
-
-        //     //   textContent
-        //     //     ? [...filterInput.tags, textContent]
-        //     //     : filterInput.tags
-        //     // )
+              );
+          })
+          .filter((item) => {
+            return newValue !== undefined
+              ? newValue.length > 0
+                ? newValue.every((v) => {
+                    return item.tags.includes(v);
+                  })
+                : item
+              : item;
+          })
+          .filter((item) => {
+            let tempMin, tempMax;
+            name === "range"
+              ? (tempMin = value[0])
+              : (tempMin = filterInput.min);
+            name === "range"
+              ? (tempMax = value[1])
+              : (tempMax = filterInput.max);
+            return item.cost.length <= tempMax && item.cost.length >= tempMin;
+          });
         //     // && record.cost <= filterInput.max
         //     // && record.cost >= filterInput.min
         //   },
@@ -102,21 +87,14 @@ export default function ScotchDb(pageProps) {
       },
     });
   };
-  console.log(
-    records.filter((item) =>
-      item.whisky.toLowerCase().includes(filterInput.whisky.toLowerCase())
-    )
-  );
-  console.log(filterFn.fn(records));
-  console.log(recordsAfterPagingSorting());
-  console.log(filterInput);
+  console.log(records[0].cost <= "$$$$$+");
+  console.log(records[0].cost >= "$");
   return (
     <>
       <DrawerAppBar title={navItems[6].title} />
       <SearchInput
         handleChangeValue={handleSearchV2}
         searchValue={filterInput}
-        handleClose={bigClose}
         // handleSearch={handleSearch}
       />
       <TableContainer>
