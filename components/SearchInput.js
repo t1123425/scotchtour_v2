@@ -7,6 +7,7 @@ import {
   Typography,
   Slider,
   Autocomplete,
+  Chip,
 } from "@mui/material";
 
 const initialFormValues = {
@@ -46,11 +47,16 @@ const searchTags = [
   "nutty",
   "notes of wine",
   "no smoke",
+  "light smoke",
 ];
 
 const check = (arr, target) => target.every((value) => arr.includes(value));
 
-export default function SearchInput({ searchValue, handleChangeValue }) {
+export default function SearchInput({
+  searchValue,
+  handleChangeValue,
+  handleClose,
+}) {
   const [values, setValues] = useState(initialFormValues);
   const [min, setMin] = useState(1);
   const [max, setMax] = useState(6);
@@ -80,7 +86,7 @@ export default function SearchInput({ searchValue, handleChangeValue }) {
               label="Whisky"
               name="whisky"
               value={searchValue.whisky}
-              onChange={(event) => handleChangeValue(event)}
+              onChange={(event, newValue) => handleChangeValue(event, newValue)}
               //   onChange={props.handleSearch}
               fullWidth
             ></TextField>
@@ -109,12 +115,14 @@ export default function SearchInput({ searchValue, handleChangeValue }) {
           <Grid item xs={9}>
             <Autocomplete
               multiple
-              autoComplete
               options={searchTags}
               //   value={searchValue.tags}
-              onChange={(event) => handleChangeValue(event)}
+              onChange={(event, newValue) => handleChangeValue(event, newValue)}
               renderInput={(params) => <TextField label="Tags" {...params} />}
               width="100%"
+
+              //   onClose={handleClose}
+              //   ChipProps
               //   onChange={props.handleSearch}
             />
           </Grid>
