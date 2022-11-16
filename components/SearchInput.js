@@ -1,22 +1,11 @@
 import React, { useState } from "react";
 import {
-  Box,
-  FormControl,
   Grid,
   TextField,
   Typography,
   Slider,
   Autocomplete,
-  Chip,
 } from "@mui/material";
-
-const initialFormValues = {
-  whisky: "",
-  min: 1,
-  max: 6,
-  range: [1, 6],
-  tags: [],
-};
 
 const rangeValues = {
   1: "$",
@@ -50,27 +39,7 @@ const searchTags = [
   "light smoke",
 ];
 
-const check = (arr, target) => target.every((value) => arr.includes(value));
-
-export default function SearchInput({
-  searchValue,
-  handleChangeValue,
-  handleClose,
-}) {
-  //   const [values, setValues] = useState(initialFormValues);
-  //   const [min, setMin] = useState(1);
-  //   const [max, setMax] = useState(6);
-  //   const handleInputChange = (event) => {
-  //     const { name, value } = event.target;
-  //     setValues({
-  //       ...values,
-  //       [name]: value,
-  //     });
-  //   };
-  const handleDualChange = (event, newValue) => {
-    setMin(newValue[0]);
-    setMax(newValue[1]);
-  };
+export default function SearchInput({ searchValue, handleChangeValue }) {
   return (
     <>
       <form>
@@ -87,7 +56,6 @@ export default function SearchInput({
               name="whisky"
               value={searchValue.whisky}
               onChange={(event, newValue) => handleChangeValue(event, newValue)}
-              //   onChange={props.handleSearch}
               fullWidth
             ></TextField>
           </Grid>
@@ -97,7 +65,6 @@ export default function SearchInput({
               aria-label="Range slider for cost represented in dollar signs"
               name="range"
               value={[searchValue.min, searchValue.max]}
-              //   onChange={handleDualChange}
               onChange={(event) => handleChangeValue(event)}
               valueLabelDisplay="auto"
               valueLabelFormat={(value) => {
@@ -116,14 +83,9 @@ export default function SearchInput({
             <Autocomplete
               multiple
               options={searchTags}
-              //   value={searchValue.tags}
               onChange={(event, newValue) => handleChangeValue(event, newValue)}
               renderInput={(params) => <TextField label="Tags" {...params} />}
               width="100%"
-
-              //   onClose={handleClose}
-              //   ChipProps
-              //   onChange={props.handleSearch}
             />
           </Grid>
         </Grid>

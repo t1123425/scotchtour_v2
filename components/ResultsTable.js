@@ -8,21 +8,12 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 
-export default function ResultsTable(records, headers, filterFn) {
+export default function ResultsTable(records, headers, filterFn, filterInput) {
   const pages = [5, 10, 25];
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(pages[page]);
   const [order, setOrder] = useState();
   const [orderBy, setOrderBy] = useState();
-
-  //   //   Attempt at decoupling search filter
-  //   const searchFilterResults = (items) => {
-  //     return items.filter((item) => {
-  //       return item.whisky
-  //         .toLowerCase()
-  //         .includes(filterInput.whisky.toLowerCase());
-  //     });
-  //   };
 
   const TableContainer = (props) => <Table>{props.children}</Table>;
   const TableHeader = (props) => {
@@ -110,7 +101,6 @@ export default function ResultsTable(records, headers, filterFn) {
   const recordsAfterPagingSorting = () => {
     return objectSort(
       filterFn.fn(records),
-      //   searchFilterResults(records),
       getComparisonType(order, orderBy)
     ).slice(page * rowsPerPage, (page + 1) * rowsPerPage);
   };

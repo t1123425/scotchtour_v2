@@ -40,15 +40,14 @@ export default function ScotchDb(pageProps) {
   // V2 Search function w/ useReducer method
   const handleSearchV2 = (event, newValue) => {
     console.log(event);
-    console.log(newValue !== undefined);
+    console.log(newValue);
     const { name, value, textContent } = event.target;
     name === "range"
       ? setFilterInput({ range: value, min: value[0], max: value[1] })
       : name
       ? setFilterInput({ [name]: value })
       : setFilterInput({ tags: newValue });
-    const inputType = name ? name : "tags";
-    console.log(newValue ? true : false);
+    console.log(name);
     console.log(filterInput.tags);
     // Not getting updated filterInput until after block runs
     setFilterFn({
@@ -62,9 +61,17 @@ export default function ScotchDb(pageProps) {
               );
           })
           .filter((item) => {
-            return newValue !== undefined
+            let tempTags;
+            name == "range"
+              ? (tempTags = filterInput.tags)
+              : (tempTags = newValue);
+            return name == "range"
+              ? tempTags.every((v) => {
+                  return item.tags.includes(v);
+                })
+              : newValue !== undefined
               ? newValue.length > 0
-                ? newValue.every((v) => {
+                ? tempTags.every((v) => {
                     return item.tags.includes(v);
                   })
                 : item
@@ -80,14 +87,10 @@ export default function ScotchDb(pageProps) {
               : (tempMax = filterInput.max);
             return item.cost.length <= tempMax && item.cost.length >= tempMin;
           });
-        //     // && record.cost <= filterInput.max
-        //     // && record.cost >= filterInput.min
-        //   },
-        // });
       },
     });
   };
-  console.log(records[0].cost <= "$$$$$+");
+  console.log(filterInput.range);
   console.log(records[0].cost >= "$");
   return (
     <>
@@ -95,7 +98,6 @@ export default function ScotchDb(pageProps) {
       <SearchInput
         handleChangeValue={handleSearchV2}
         searchValue={filterInput}
-        // handleSearch={handleSearch}
       />
       <TableContainer>
         <TableHeader />
