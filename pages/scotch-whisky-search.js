@@ -3,7 +3,15 @@ import navItems from "../constants/navitems";
 import DrawerAppBar from "../components/DrawerAppBar";
 import SearchInput from "../components/SearchInput";
 import ResultsTable from "../components/ResultsTable";
-import { Chip, TableBody, TableCell, TableRow } from "@mui/material";
+import {
+  Chip,
+  TableBody,
+  TableCell,
+  TableRow,
+  useScrollTrigger,
+  Slide,
+  Toolbar,
+} from "@mui/material";
 import { getWhiskyDb, whiskyDb } from "../constants/sampleWhiskyService";
 
 const headers = [
@@ -13,7 +21,7 @@ const headers = [
   { id: "tags", label: "Tags", disableSorting: true },
 ];
 
-export default function ScotchDb(pageProps) {
+export default function ScotchDb() {
   const title = "Scotch Whisky Search";
   const [records, setRecords] = useState(getWhiskyDb());
   const [filterFn, setFilterFn] = useState({
@@ -39,17 +47,12 @@ export default function ScotchDb(pageProps) {
 
   // V2 Search function w/ useReducer method
   const handleSearchV2 = (event, newValue) => {
-    console.log(event);
-    console.log(newValue);
     const { name, value, textContent } = event.target;
     name === "range"
       ? setFilterInput({ range: value, min: value[0], max: value[1] })
       : name
       ? setFilterInput({ [name]: value })
       : setFilterInput({ tags: newValue });
-    console.log(name);
-    console.log(filterInput.tags);
-    // Not getting updated filterInput until after block runs
     setFilterFn({
       fn: (items) => {
         return items
@@ -90,8 +93,7 @@ export default function ScotchDb(pageProps) {
       },
     });
   };
-  console.log(filterInput.range);
-  console.log(records[0].cost >= "$");
+
   return (
     <>
       <DrawerAppBar title={navItems[6].title} />
@@ -99,6 +101,7 @@ export default function ScotchDb(pageProps) {
         handleChangeValue={handleSearchV2}
         searchValue={filterInput}
       />
+      <TablePages />
       <TableContainer>
         <TableHeader />
         <TableBody>
@@ -123,7 +126,6 @@ export default function ScotchDb(pageProps) {
           ))}
         </TableBody>
       </TableContainer>
-      <TablePages />
     </>
   );
 }

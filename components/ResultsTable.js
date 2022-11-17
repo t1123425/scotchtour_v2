@@ -7,6 +7,7 @@ import {
   TableSortLabel,
 } from "@mui/material";
 import React, { useState } from "react";
+import styles from "./ResultsTable.module.css";
 
 export default function ResultsTable(records, headers, filterFn, filterInput) {
   const pages = [5, 10, 25];
@@ -15,7 +16,9 @@ export default function ResultsTable(records, headers, filterFn, filterInput) {
   const [order, setOrder] = useState();
   const [orderBy, setOrderBy] = useState();
 
-  const TableContainer = (props) => <Table>{props.children}</Table>;
+  const TableContainer = (props) => (
+    <Table className={styles.tableContainer}>{props.children}</Table>
+  );
   const TableHeader = (props) => {
     const handleSortRequest = (cellId) => {
       const isAsc = orderBy === cellId && order === "asc";
@@ -66,7 +69,7 @@ export default function ResultsTable(records, headers, filterFn, filterInput) {
       page={page}
       rowsPerPageOptions={pages}
       rowsPerPage={rowsPerPage}
-      count={records.length}
+      count={filterFn.fn(records).length}
       onPageChange={handleChangePage}
       onRowsPerPageChange={handleChangeRowsPerPage}
     />
