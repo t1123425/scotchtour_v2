@@ -85,7 +85,7 @@ export default function ScrollPage(props) {
         rowSpacing={4}
         justifyContent="center"
         textAlign={"center"}
-        sx={{ scrollSnapType: "y mandatory" }}
+        // sx={{ scrollSnapType: "y mandatory" }}
       >
         <Grid item>
           <ScrollBox defaultdata={defaultdata} />
