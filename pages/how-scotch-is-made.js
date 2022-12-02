@@ -10,7 +10,11 @@ export default function Process(pageProps) {
   return (
     <>
       <DrawerAppBar title={navItems[3].title} />
-      <FullPage defaultdata={defaultdata} />
+      <FullPage
+        title={defaultdata.header}
+        hero={defaultdata.imageUrl}
+        mainText={defaultdata.text}
+      />
     </>
   );
 }

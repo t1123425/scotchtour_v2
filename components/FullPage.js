@@ -14,15 +14,17 @@ export default function FullPage(props) {
     >
       <Grid item xs={12}>
         <Typography color="black" variant="h2">
-          {props.defaultdata.header}
+          {props.title}
         </Typography>
       </Grid>
       <Grid item>
-        <Image src={props.defaultdata.imageUrl} width={600} height={400} />
+        <img src={props.hero} height="25%" width="25%" />
       </Grid>
-      <Grid item>
-        <Typography color="black">{props.defaultdata.text}</Typography>
-      </Grid>
+      {props.mainText.map((p) => (
+        <Grid item xs={12}>
+          <Typography color="black">{p}</Typography>
+        </Grid>
+      ))}
     </Grid>
   );
 }
