@@ -7,57 +7,20 @@ import {
   makeStyles,
   Button,
 } from "@mui/material";
-import Image from "next/image";
 
-const regionButtons = [
-  {
-    name: "Islands",
-    top: "30%",
-    left: "12%",
-    height: "3.59%",
-    width: "10.35%",
-  },
-  {
-    name: "Speyside",
-    top: "40%",
-    left: "66%",
-    height: "3.59%",
-    width: "11.43%",
-  },
-  {
-    name: "Highlands",
-    top: "53%",
-    left: "58%",
-    height: "3.59%",
-    width: "13.77%",
-  },
-  {
-    name: "Lowlands",
-    top: "78%",
-    left: "63%",
-    height: "3.59%",
-    width: "12.70%",
-  },
-  {
-    name: "Islay",
-    top: "62%",
-    left: "43%",
-    height: "3.59%",
-    width: "7.03%",
-  },
-  {
-    name: "Campbeltown",
-    top: "85%",
-    left: "52%",
-    height: "3.59%",
-    width: "17.58%",
-  },
-];
-
-export default function MapPage() {
+export default function MapPage(props) {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [activeBtn, setActiveBtn] = useState(null);
+  const popName = activeBtn ? props.regionContent[activeBtn].name : "sample";
+  const popDesc = activeBtn
+    ? props.regionContent[activeBtn].description
+    : "sample";
+  const popBrands = activeBtn
+    ? props.regionContent[activeBtn].distilleries
+    : "sample";
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+    setActiveBtn(event.currentTarget.id);
   };
   const handleClose = () => {
     setAnchorEl(null);
@@ -80,7 +43,7 @@ export default function MapPage() {
           //   width="100%"
           style={{ maxWidth: "60vh" }}
         />
-        {regionButtons.map((region) => (
+        {props.regionButtons.map((region) => (
           <Button
             variant="contained"
             id={region.name.toLowerCase()}
@@ -109,7 +72,13 @@ export default function MapPage() {
           }}
         >
           <Box height={200} width={400}>
-            <Typography align="center">Test Popover</Typography>
+            <Typography align="center" variant="h5">
+              {popName}
+            </Typography>
+            <Typography align="center">{popDesc}</Typography>
+            <Typography align="center">
+              {`Notable Brands: ${popBrands}`}
+            </Typography>
           </Box>
         </Popover>
       </Box>

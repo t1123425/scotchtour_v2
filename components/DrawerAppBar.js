@@ -13,7 +13,7 @@ import {
 import Head from "next/head";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
-import navItems from "../constants/navitems";
+import { navItems } from "../constants/siteContent";
 
 function DrawerAppBar(props) {
   const icon = "/whisky-still.png";

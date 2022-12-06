@@ -26,6 +26,7 @@ const scrollboxVar = {
 };
 
 function ScrollBox(props) {
+  console.log(props);
   return (
     <Grid
       container
@@ -40,10 +41,10 @@ function ScrollBox(props) {
     >
       <Grid item xs={12} sm={5} overflow="visible">
         <Typography variant="h2" position={"sticky"} top="10%">
-          {props.defaultdata.header}
+          {props.content.title}
         </Typography>
       </Grid>
-      <Grid item xs={12} sm={5}>
+      <Grid item xs={12} sm={7}>
         <motion.div
           initial={scrollboxVar.hidden}
           whileInView={scrollboxVar.visible}
@@ -52,22 +53,15 @@ function ScrollBox(props) {
           <Box
             position="relative"
             width="100%"
-            height={{
-              xs: "60vw",
-              sm: "30vw",
-            }}
             textAlign="center"
-            // overflow="hidden"
+            display={props.content.imageUrl ? "block" : "none"}
           >
-            <Image
-              src={props.defaultdata.imageUrl}
-              // width={600}
-              // height={400}
-              fill
-              objectFit="contain"
-            />
+            <img src={props.content.imageUrl} objectFit="contain" />
           </Box>
-          <Typography mt={4}>{props.defaultdata.text}</Typography>
+          <Typography mt={4} display={props.content.caption ? "block" : "none"}>
+            {props.content.caption}
+          </Typography>
+          <Box mt={4}>{props.content.description.map((bit) => bit)}</Box>
         </motion.div>
       </Grid>
     </Grid>
@@ -75,6 +69,7 @@ function ScrollBox(props) {
 }
 
 export default function ScrollPage(props) {
+  console.log(props.content);
   return (
     <>
       <Grid
@@ -87,18 +82,20 @@ export default function ScrollPage(props) {
         textAlign={"center"}
         // sx={{ scrollSnapType: "y mandatory" }}
       >
-        <Grid item>
-          <ScrollBox defaultdata={defaultdata} />
+        {props.content.map((group) => (
+          <Grid item>
+            <ScrollBox content={group} />
+          </Grid>
+        ))}
+        {/* <Grid item>
+          <ScrollBox content={props.content.overview} />
         </Grid>
         <Grid item>
-          <ScrollBox defaultdata={defaultdata} />
+          <ScrollBox content={props.content.comparison} />
         </Grid>
         <Grid item>
-          <ScrollBox defaultdata={defaultdata} />
-        </Grid>
-        <Grid item>
-          <ScrollBox defaultdata={defaultdata} />
-        </Grid>
+          <ScrollBox content={props.content.legal} />
+        </Grid> */}
       </Grid>
     </>
   );

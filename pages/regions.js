@@ -3,13 +3,14 @@ import MapPage from "../components/MapPage";
 import defaultdata from "../constants/defaultdata";
 import navItems from "../constants/navitems";
 import DrawerAppBar from "../components/DrawerAppBar";
+import { regionButtons, regionContent } from "../constants/siteContent";
 
 export default function Regions(pageProps) {
   const title = "Regions of Origin";
   return (
     <>
       <DrawerAppBar title={navItems[4].title} />
-      <MapPage defaultdata={defaultdata} />
+      <MapPage regionButtons={regionButtons} regionContent={regionContent} />
     </>
   );
 }
