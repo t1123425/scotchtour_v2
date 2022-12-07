@@ -33,7 +33,6 @@ function ScrollBox(props) {
       item
       textAlign={"center"}
       justifyContent="center"
-      height="100vh"
       alignContent="center"
       sx={{
         scrollSnapAlign: "center",
@@ -52,16 +51,15 @@ function ScrollBox(props) {
         >
           <Box
             position="relative"
-            width="100%"
             textAlign="center"
             display={props.content.imageUrl ? "block" : "none"}
           >
             <img src={props.content.imageUrl} objectFit="contain" />
           </Box>
-          <Typography mt={4} display={props.content.caption ? "block" : "none"}>
+          <Typography display={props.content.caption ? "block" : "none"}>
             {props.content.caption}
           </Typography>
-          <Box mt={4}>{props.content.description.map((bit) => bit)}</Box>
+          <Box p={4}>{props.content.description.map((bit) => bit)}</Box>
         </motion.div>
       </Grid>
     </Grid>
@@ -83,7 +81,7 @@ export default function ScrollPage(props) {
         // sx={{ scrollSnapType: "y mandatory" }}
       >
         {props.content.map((group) => (
-          <Grid item>
+          <Grid item height="100vh">
             <ScrollBox content={group} />
           </Grid>
         ))}

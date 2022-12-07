@@ -20,11 +20,9 @@ export default function FullPage(props) {
       <Grid item>
         <img src={props.hero} height="25%" width="25%" />
       </Grid>
-      {props.mainText.map((p) => (
-        <Grid item xs={12}>
-          <Typography color="black">{p}</Typography>
-        </Grid>
-      ))}
+      <Grid item xs={12}>
+        {props.mainText.map((p) => p)}
+      </Grid>
     </Grid>
   );
 }

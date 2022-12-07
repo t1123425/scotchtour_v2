@@ -2,7 +2,6 @@ import React from "react";
 import FullPage from "../components/FullPage";
 import navItems from "../constants/navitems";
 import DrawerAppBar from "../components/DrawerAppBar";
-import defaultdata from "../constants/defaultdata";
 import { homeContent } from "../constants/siteContent";
 
 export default function Home(props) {
@@ -13,7 +12,6 @@ export default function Home(props) {
         title={homeContent.mainTitle}
         hero={homeContent.hero}
         mainText={homeContent.mainText}
-        italics={homeContent.italics}
       />
     </>
   );
