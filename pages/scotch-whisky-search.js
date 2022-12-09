@@ -13,6 +13,7 @@ import {
   Toolbar,
 } from "@mui/material";
 import { getWhiskyDb, whiskyDb } from "../constants/sampleWhiskyService";
+import whiskyDbService from "../services/whiskyDbService";
 
 const headers = [
   { id: "whisky", label: "Whisky" },
@@ -23,7 +24,10 @@ const headers = [
 
 export default function ScotchDb() {
   const title = "Scotch Whisky Search";
+  // const [records, setRecords] = useState(whiskyDbService.getWhisky_db());
   const [records, setRecords] = useState(getWhiskyDb());
+  console.log(records);
+  console.log(whiskyDbService.getWhisky_db());
   const [filterFn, setFilterFn] = useState({
     fn: (items) => {
       return items;

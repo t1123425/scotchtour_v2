@@ -8,6 +8,9 @@ connectDb();
 
 const app = express();
 
+const cors = require("cors");
+
+app.use(cors());
 app.use("/api/whisky_db", require("./routes/whiskyRoutes"));
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
