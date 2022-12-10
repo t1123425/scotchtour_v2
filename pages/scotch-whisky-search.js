@@ -22,12 +22,17 @@ const headers = [
   { id: "tags", label: "Tags", disableSorting: true },
 ];
 
-export default function ScotchDb() {
+export async function getStaticProps() {
+  const whiskies = await whiskyDbService.getWhisky_db();
+
+  return { props: { whiskies } };
+}
+
+export default function ScotchDb({ whiskies }) {
   const title = "Scotch Whisky Search";
-  // const [records, setRecords] = useState(whiskyDbService.getWhisky_db());
-  const [records, setRecords] = useState(getWhiskyDb());
+  const [records, setRecords] = useState(whiskies);
+  // const [records, setRecords] = useState(getWhiskyDb());
   console.log(records);
-  console.log(whiskyDbService.getWhisky_db());
   const [filterFn, setFilterFn] = useState({
     fn: (items) => {
       return items;
