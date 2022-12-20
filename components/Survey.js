@@ -10,65 +10,15 @@ import {
 } from "@mui/material";
 import { LocalDrink } from "@mui/icons-material";
 
-const ratingLabels = {
-  0.5: `My father was murdered by a glass of Scotch! How dare you!!`,
-  1: `I'd rather drink sewer runoff rung from a used diaper.`,
-  1.5: `I'd rather drink a bottle of hot sauce.`,
-  2: `It's not my bag and I give anyone who likes it a weird look.`,
-  2.5: `I don't hate it.`,
-  3: `I tried some once and it was good.`,
-  3.5: `I tried some once and all of a sudden I'm a "Scotch enthusiast."`,
-  4: `Call me 'T9F293048 GLOBAL INDUSTRIAL 96" 6 SPEED 17018 CFM' because I'm a big fan!`,
-  4.5: `Scotch whisky is the earth's milk and only the strong willed can receive her bounty!!`,
-  5: `A CANNY BELIEVE MA MAW DREESED ME UP AS A BOX A GRAVY FUR MA HALLOWEEN DISCO WHEN I WAS BUT A WEE LADDAE!!`,
-};
+export default function Survey(props) {
+  function getLabelText(value) {
+    return `${value} Star${value !== 1 ? "s" : ""}`;
+  }
 
-const interestLabels = {
-  1: `Rarely`,
-  2: `Sometimes`,
-  3: `About half the time`,
-  4: `Often`,
-  5: `Almost always`,
-};
-
-const initialFormValues = {
-  "hover-feedback": "",
-  "interest-slider": 3,
-};
-
-const exampleBrands = [
-  "Cardhu",
-  "Dalwhinnie",
-  "Erdradour",
-  "Glenfarclas",
-  "Glenmorangie",
-];
-
-const exampleScotch = [
-  "Macallan 10yo Full Proof 57% 1980",
-  "Ledaig 42yo Dusgadh",
-  "Laphroaig 27yo 57.4% 1980-2007",
-  "Glenfarclas 40yo",
-];
-
-function getLabelText(value) {
-  return `${value} Star${value !== 1 ? "s" : ""}, ${ratingLabels[value]}`;
-}
-
-function getSliderLabel(interest) {
-  return interest;
-}
-
-export default function Survey() {
-  const [values, setValues] = React.useState(initialFormValues);
+  function getSliderLabel(interest) {
+    return interest;
+  }
   const [hover, setHover] = React.useState(-1);
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
 
   return (
     <>
@@ -99,10 +49,10 @@ export default function Survey() {
               key="hover-feedback"
               icon={<LocalDrink fontSize="inherit" />}
               name="hover-feedback"
-              value={values["hover-feedback"]}
+              value={props.surveyValues["hover-feedback"]}
               precision={0.5}
               getLabelText={getLabelText}
-              onChange={handleInputChange}
+              onChange={props.handleChangeValue}
               onChangeActive={(event, newHover) => {
                 setHover(newHover);
               }}
@@ -112,7 +62,11 @@ export default function Survey() {
             />
           </Grid>
           <Grid item height={40}>
-            {ratingLabels[hover !== -1 ? hover : values["hover-feedback"]]}
+            {
+              props.ratingLabels[
+                hover !== -1 ? hover : props.surveyValues["hover-feedback"]
+              ]
+            }
           </Grid>
         </Grid>
         <Grid
@@ -134,12 +88,12 @@ export default function Survey() {
               key="interest-slider"
               aria-label="Interest in Scotch over other types of whiskey"
               name="interest-slider"
-              value={values["interest-slider"]}
-              onChange={handleInputChange}
+              value={props.surveyValues["interest-slider"]}
+              onChange={props.handleChangeValue}
               getAriaValueText={getSliderLabel}
               valueLabelDisplay="auto"
               valueLabelFormat={(value) => {
-                return interestLabels[value];
+                return props.interestLabels[value];
               }}
               step={1}
               marks
@@ -166,7 +120,8 @@ export default function Survey() {
             <Autocomplete
               multiple
               autoComplete
-              options={exampleBrands}
+              options={props.exampleBrands}
+              onChange={props.handleChangeScotchBrands}
               renderInput={(params) => <TextField {...params} />}
             />
           </Grid>
@@ -186,14 +141,17 @@ export default function Survey() {
           </Grid>
           <Grid item width={500}>
             <Autocomplete
+              onChange={props.handleChangeFavoriteWhisky}
               autoComplete
-              options={exampleScotch}
+              options={props.exampleScotch}
               renderInput={(params) => <TextField {...params} />}
             />
           </Grid>
         </Grid>
         <Grid item>
-          <Button variant="contained">Submit Survey</Button>
+          <Button variant="contained" onClick={props.handleSurveySubmit}>
+            Submit Survey
+          </Button>
         </Grid>
       </Grid>
     </>

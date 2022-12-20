@@ -119,6 +119,7 @@ export default function SearchInput({ searchValue, handleChangeValue }) {
                 onChange={(event, newValue) =>
                   handleChangeValue(event, newValue)
                 }
+                id="tags"
                 renderInput={(params) => <TextField label="Tags" {...params} />}
                 width="100%"
               />
