@@ -29,6 +29,7 @@ export default function Survey(props) {
         alignItems="center"
         direction={"column"}
         spacing={4}
+        display={props.showSurvey}
       >
         <Grid item>
           <Typography variant="h2">Visitor Survey</Typography>
@@ -149,7 +150,12 @@ export default function Survey(props) {
           </Grid>
         </Grid>
         <Grid item>
-          <Button variant="contained" onClick={props.handleSurveySubmit}>
+          <Button
+            variant="contained"
+            type="submit"
+            onClick={props.handleSurveySubmit}
+            disabled={props.disableSubmit}
+          >
             Submit Survey
           </Button>
         </Grid>

@@ -8,16 +8,40 @@ import {
   initialFormValues,
   exampleBrands,
   exampleScotch,
+  whiskyBrands,
 } from "../constants/siteContent";
+import SubmittedSurvey from "../components/SubmittedSurvey";
+import whiskyDbService from "../services/whiskyDbService";
 
-export default function VisitorSurvey(pageProps) {
-  const title = "Visitor Survey";
+export async function getStaticProps() {
+  const whiskies = await whiskyDbService.getWhisky_db();
+
+  return { props: { whiskies } };
+}
+
+export default function VisitorSurvey(pageProps, { whiskies }) {
+  // state
   const [surveyInput, setSurveyInput] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
     initialFormValues
   );
+  const [submitted, setSubmitted] = useState(null);
   const [testArr, setTestArr] = useState([]);
-  console.log(testArr);
+
+  // helpers
+  const showSurvey = submitted ? "none" : "flex";
+  const showSubmitted = !submitted ? "none" : "flex";
+  const disableSubmit = Object.values(surveyInput)
+    .map((v) => v)
+    .every((v) => (v ? true : false))
+    ? false
+    : true;
+  // const isUnique = (value, index, self) => {
+  //   return self.indexOf(value) = index
+  // }
+  // const brandList = Object.keys(whiskies).filter((key) => key === "whisky");
+
+  // handlers
   const handleChangeValue = (event) => {
     const { name, value } = event.target;
     setSurveyInput({ [name]: value });
@@ -31,6 +55,7 @@ export default function VisitorSurvey(pageProps) {
 
   const handleSurveySubmit = () => {
     setTestArr([...testArr, surveyInput]);
+    setSubmitted(true);
   };
 
   return (
@@ -46,7 +71,10 @@ export default function VisitorSurvey(pageProps) {
         handleChangeScotchBrands={handleChangeScotchBrands}
         handleChangeFavoriteWhisky={handleChangeFavoriteWhisky}
         handleSurveySubmit={handleSurveySubmit}
+        showSurvey={showSurvey}
+        disableSubmit={disableSubmit}
       />
+      <SubmittedSurvey showSubmitted={showSubmitted} />
     </>
   );
 }
