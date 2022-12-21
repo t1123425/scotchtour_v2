@@ -7,8 +7,13 @@ import {
   Typography,
   Autocomplete,
   TextField,
+  Checkbox,
 } from "@mui/material";
-import { LocalDrink } from "@mui/icons-material";
+import {
+  LocalDrink,
+  CheckBox,
+  CheckBoxOutlineBlank,
+} from "@mui/icons-material";
 
 export default function Survey(props) {
   function getLabelText(value) {
@@ -121,7 +126,20 @@ export default function Survey(props) {
             <Autocomplete
               multiple
               autoComplete
-              options={props.exampleBrands}
+              disableCloseOnSelect
+              options={props.whiskyBrands}
+              getOptionLabel={(option) => option}
+              renderOption={(props, option, { selected }) => (
+                <li {...props}>
+                  <Checkbox
+                    icon={<CheckBoxOutlineBlank fontSize="small" />}
+                    checkedIcon={<CheckBox fontSize="small" />}
+                    style={{ marginRight: 8 }}
+                    checked={selected}
+                  />
+                  {option}
+                </li>
+              )}
               onChange={props.handleChangeScotchBrands}
               renderInput={(params) => <TextField {...params} />}
             />
@@ -144,7 +162,7 @@ export default function Survey(props) {
             <Autocomplete
               onChange={props.handleChangeFavoriteWhisky}
               autoComplete
-              options={props.exampleScotch}
+              options={props.whiskyList}
               renderInput={(params) => <TextField {...params} />}
             />
           </Grid>

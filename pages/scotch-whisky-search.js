@@ -12,8 +12,9 @@ import {
   Slide,
   Toolbar,
 } from "@mui/material";
-import { getWhiskyDb, whiskyDb } from "../constants/sampleWhiskyService";
 import whiskyDbService from "../services/whiskyDbService";
+
+// Remove pagination; use inifinite scroll
 
 const headers = [
   { id: "whisky", label: "Whisky" },

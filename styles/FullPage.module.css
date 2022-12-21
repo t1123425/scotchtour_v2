@@ -1,0 +1,22 @@
+.header {
+    color: black;
+    padding: 15px 0px 15px;
+    font-size: 3rem;
+    margin: 0 auto;
+    max-width: 680px;
+    width: calc(100% - 30px);
+    text-align: center;
+}
+
+.image {
+    max-width: 680px;
+    width: calc(100% - 30px);
+    margin: 0 15px; 
+}
+
+.paragraphBlock p {
+    padding: 15px 15px 0;
+    max-width: 680px;
+    text-align: left;
+    margin: 0 auto;
+}

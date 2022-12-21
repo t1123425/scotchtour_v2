@@ -1,10 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Typography, Grid, Box } from "@mui/material";
-import defaultdata from "../constants/defaultdata";
-import Image from "next/image";
-
-// Refactored initial Scroll animation using native whileInView prop and updated layout
 
 const scrollboxVar = {
   visible: {
@@ -26,7 +22,6 @@ const scrollboxVar = {
 };
 
 function ScrollBox(props) {
-  console.log(props);
   return (
     <Grid
       container
@@ -49,13 +44,7 @@ function ScrollBox(props) {
           whileInView={scrollboxVar.visible}
           viewport={{ once: true }}
         >
-          <Box
-            position="relative"
-            textAlign="center"
-            display={props.content.imageUrl ? "block" : "none"}
-          >
-            <img src={props.content.imageUrl} objectFit="contain" />
-          </Box>
+          <img src={props.content.imageUrl} />
           <Typography display={props.content.caption ? "block" : "none"}>
             {props.content.caption}
           </Typography>
@@ -85,15 +74,6 @@ export default function ScrollPage(props) {
             <ScrollBox content={group} />
           </Grid>
         ))}
-        {/* <Grid item>
-          <ScrollBox content={props.content.overview} />
-        </Grid>
-        <Grid item>
-          <ScrollBox content={props.content.comparison} />
-        </Grid>
-        <Grid item>
-          <ScrollBox content={props.content.legal} />
-        </Grid> */}
       </Grid>
     </>
   );

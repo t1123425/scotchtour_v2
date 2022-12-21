@@ -7,7 +7,7 @@ import {
   TableSortLabel,
 } from "@mui/material";
 import React, { useState } from "react";
-import styles from "./ResultsTable.module.css";
+import styles from "../styles/ResultsTable.module.css";
 
 export default function ResultsTable(records, headers, filterFn, filterInput) {
   const pages = [5, 10, 25];

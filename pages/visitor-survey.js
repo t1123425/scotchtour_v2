@@ -19,7 +19,7 @@ export async function getStaticProps() {
   return { props: { whiskies } };
 }
 
-export default function VisitorSurvey(pageProps, { whiskies }) {
+export default function VisitorSurvey({ whiskies }) {
   // state
   const [surveyInput, setSurveyInput] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
@@ -36,10 +36,6 @@ export default function VisitorSurvey(pageProps, { whiskies }) {
     .every((v) => (v ? true : false))
     ? false
     : true;
-  // const isUnique = (value, index, self) => {
-  //   return self.indexOf(value) = index
-  // }
-  // const brandList = Object.keys(whiskies).filter((key) => key === "whisky");
 
   // handlers
   const handleChangeValue = (event) => {
@@ -73,6 +69,8 @@ export default function VisitorSurvey(pageProps, { whiskies }) {
         handleSurveySubmit={handleSurveySubmit}
         showSurvey={showSurvey}
         disableSubmit={disableSubmit}
+        whiskyBrands={whiskyBrands}
+        whiskyList={whiskies.map((obj) => obj.whisky)}
       />
       <SubmittedSurvey showSubmitted={showSubmitted} />
     </>

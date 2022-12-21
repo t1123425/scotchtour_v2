@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
-import styles from "./TimelineBar.module.css";
+import styles from "../styles/TimelineBar.module.css";
 
 export default function TimelineBar() {
   const { scrollYProgress } = useScroll();
