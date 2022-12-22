@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Typography, Grid, Box } from "@mui/material";
-import { whatIsContent } from "../constants/siteContent";
 import styles from "../styles/ScrollBox.module.css";
 
 const scrollboxVar = {
@@ -31,11 +30,11 @@ export default function ScrollBox(props) {
       sx={{
         scrollSnapAlign: "center",
       }}
+      className={styles.blockWrapper}
     >
       <Grid item xs={12} sm={5} className={styles.titleBlock}>
         <Typography variant="h1" className={styles.title}>
-          {/* What is Content replace with props.content */}
-          {whatIsContent[1].title}
+          {props.content.title}
         </Typography>
       </Grid>
       <Grid item xs={12} sm={7} className={styles.scrollWrapper}>
@@ -44,20 +43,22 @@ export default function ScrollBox(props) {
           whileInView={scrollboxVar.visible}
           viewport={{ once: true }}
         >
-          {/* What is Content replace with props.content */}
-          <img src={whatIsContent[1].imageUrl} className={styles.image} />
+          <img
+            src={props.content.imageUrl}
+            className={
+              props.content.imageUrl ? styles.imageShow : styles.imageHide
+            }
+          />
           <Typography
             className={
-              whatIsContent[1].caption ? styles.captionShow : styles.captionHide
+              props.content.caption ? styles.captionShow : styles.captionHide
             }
           >
-            {/* What is Content replace with props.content */}
-            {whatIsContent[1].caption}
+            {props.content.caption}
           </Typography>
           <Box className={styles.paragraphBlock}>
-            {/* What is Content replace with props.content */}
-            {whatIsContent[1].description.map((bit) => (
-              <p>{bit}</p>
+            {props.content.description.map((bit) => (
+              <div>{bit}</div>
             ))}
           </Box>
         </motion.div>

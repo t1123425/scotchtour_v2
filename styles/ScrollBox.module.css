@@ -1,3 +1,7 @@
+.blockWrapper {
+    width: 100vw;
+}
+
 .titleBlock {
     overflow: visible;
 }
@@ -18,10 +22,15 @@
     padding: 20px 0px;
 }
 
- .image {
+ .imageShow {
     max-width: 680px;
     width: calc(100% - 30px);
     margin: 0 15px; 
+ }
+
+ .imageHide {
+    display: none;
+    width: calc(100% - 30px);
  }
 
  .captionShow {

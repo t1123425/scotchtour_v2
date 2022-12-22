@@ -1,0 +1,33 @@
+.wrapper {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.image {
+    max-height: 90vh;
+    max-width: 100vw;
+}
+
+.button {
+    position: absolute
+}
+
+.popoverBox {
+    max-width: 350px;
+}
+
+.title {
+    text-align: center;
+    margin: 20px;
+    font-weight: bold;
+}
+
+.descBlock {
+    margin: 0 15px
+}
+
+.brandBlock {
+    margin: 0 15px 20px;
+}
+
