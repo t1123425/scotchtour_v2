@@ -8,7 +8,7 @@ import {
   Container,
   Popover,
 } from "@mui/material";
-import Image from "next/image";
+import styles from "../styles/CardPage.module.css";
 
 function Card(props) {
   // state
@@ -20,7 +20,7 @@ function Card(props) {
   };
 
   return (
-    <Grid item xs={12} sm={6} md={3} lg={2} align={"center"}>
+    <Grid item align={"center"} xs={12} sm={6} md={4} lg={3}>
       <motion.div
         onHoverStart={handleHover}
         onHoverEnd={handleHover}
@@ -31,15 +31,9 @@ function Card(props) {
           elevation={elevation}
           id={props.id}
           onClick={() => props.setActiveCard(props.id)}
+          className={styles.wrapper}
         >
-          <Box
-            position={"relative"}
-            height="300px"
-            width="100%"
-            maxWidth="300px"
-          >
-            <img src={props.imageUrl} width={200} />
-          </Box>
+          <img src={props.imageUrl} className={styles.image} />
         </Paper>
       </motion.div>
     </Grid>
@@ -76,13 +70,7 @@ export default function CardPage(props) {
   return (
     <>
       <Container maxWidth={false} ref={ref}>
-        <Grid container spacing={2} mt={1}>
-          {/* <Card
-            id={1}
-            setActiveCard={setActiveCard}
-            handleClick={handleClick}
-            handleClose={handleClose}
-          /> */}
+        <Grid container>
           {props.content.map((card) => (
             <Card
               id={card.id}
@@ -100,20 +88,22 @@ export default function CardPage(props) {
           transformOrigin={{ vertical: "center", horizontal: "center" }}
           onClose={handleClose}
         >
-          <Box>
-            <Typography variant="h5">
+          <Box className={styles.popWrapper}>
+            <Typography variant="h5" className={styles.popTitle}>
               {activeData[0] ? activeData[0].name : "sample"}
             </Typography>
-            <Typography>
+            <Typography className={styles.popSpan}>
               <strong>Region: </strong>
               {activeData[0] ? activeData[0].region : "sample"}
             </Typography>
-            <Typography>
+            <Typography className={styles.popSpan}>
               <strong>Founded: </strong>
               {activeData[0] ? activeData[0].founded : "sample"}
             </Typography>
-            {activeData[0] ? activeData[0].desc.map((p) => p) : ""}
-            <Typography>
+            <Box className={styles.popBlock}>
+              {activeData[0] ? activeData[0].desc.map((p) => p) : ""}
+            </Box>
+            <Typography className={styles.popFact}>
               <strong>Interesting Fact: </strong>
               {activeData[0] ? activeData[0].interestingFact : "sample"}
             </Typography>

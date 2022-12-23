@@ -1,0 +1,33 @@
+.image {
+    max-width: 300px;
+    min-width: 200px;
+    padding: 25px;
+}
+
+.wrapper {
+    margin: 15px 10px;
+}
+
+.popWrapper {
+    max-height: 650px;
+    max-width: 900px;
+}
+
+.popTitle {
+    text-align: center;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.popSpan {
+    margin: 0 15px;
+}
+
+.popBlock {
+    margin: 0 15px;
+}
+
+.popFact {
+    margin: 0 15px;
+    padding: 0 0 15px;
+}
