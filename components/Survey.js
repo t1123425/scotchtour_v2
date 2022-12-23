@@ -127,7 +127,7 @@ export default function Survey(props) {
               multiple
               autoComplete
               disableCloseOnSelect
-              options={props.whiskyBrands}
+              options={props.brandList}
               getOptionLabel={(option) => option}
               renderOption={(props, option, { selected }) => (
                 <li {...props}>

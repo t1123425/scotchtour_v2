@@ -8,7 +8,7 @@ import {
   initialFormValues,
   exampleBrands,
   exampleScotch,
-  whiskyBrands,
+  brandList,
 } from "../constants/siteContent";
 import SubmittedSurvey from "../components/SubmittedSurvey";
 import whiskyDbService from "../services/whiskyDbService";
@@ -69,7 +69,7 @@ export default function VisitorSurvey({ whiskies }) {
         handleSurveySubmit={handleSurveySubmit}
         showSurvey={showSurvey}
         disableSubmit={disableSubmit}
-        whiskyBrands={whiskyBrands}
+        brandList={brandList}
         whiskyList={whiskies.map((obj) => obj.whisky)}
       />
       <SubmittedSurvey showSubmitted={showSubmitted} />
