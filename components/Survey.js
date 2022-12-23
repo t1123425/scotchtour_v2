@@ -8,49 +8,40 @@ import {
   Autocomplete,
   TextField,
   Checkbox,
+  Box,
 } from "@mui/material";
 import {
   LocalDrink,
   CheckBox,
   CheckBoxOutlineBlank,
 } from "@mui/icons-material";
+import styles from "../styles/Survey.module.css";
 
 export default function Survey(props) {
+  // state
+  const [hover, setHover] = React.useState(-1);
+
+  // helpers
   function getLabelText(value) {
     return `${value} Star${value !== 1 ? "s" : ""}`;
   }
-
   function getSliderLabel(interest) {
     return interest;
   }
-  const [hover, setHover] = React.useState(-1);
 
   return (
     <>
-      <Grid
-        container
-        height="100vh"
-        justifyContent="center"
-        alignItems="center"
-        direction={"column"}
-        spacing={4}
-        display={props.showSurvey}
-      >
-        <Grid item>
-          <Typography variant="h2">Visitor Survey</Typography>
+      <Grid container display={props.showSurvey} className={styles.wrapper}>
+        <Grid item xs={12}>
+          <Typography variant="h2" className={styles.title}>
+            Visitor Survey
+          </Typography>
         </Grid>
-        <Grid
-          item
-          container
-          direction={"column"}
-          alignItems={"center"}
-          justifyContent={"center"}
-          spacing={2}
-        >
-          <Grid item>
-            <Typography>Question 1: How much do you like Scotch?</Typography>
-          </Grid>
-          <Grid item>
+        <Grid item xs={12}>
+          <Typography className={styles.question}>
+            Question 1: How much do you like Scotch?
+          </Typography>
+          <Box align="center" className={styles.content}>
             <Rating
               key="hover-feedback"
               icon={<LocalDrink fontSize="inherit" />}
@@ -66,30 +57,21 @@ export default function Survey(props) {
                 <LocalDrink style={{ opacity: 0.55 }} fontSize="inherit" />
               }
             />
-          </Grid>
-          <Grid item height={40}>
+          </Box>
+          <Box className={styles.label}>
             {
               props.ratingLabels[
                 hover !== -1 ? hover : props.surveyValues["hover-feedback"]
               ]
             }
-          </Grid>
+          </Box>
         </Grid>
-        <Grid
-          item
-          container
-          direction={"column"}
-          alignItems={"center"}
-          justifyContent={"center"}
-          spacing={2}
-        >
-          <Grid item>
-            <Typography>
-              Question 2: How often do you choose Scotch whisky over other types
-              of whiskey?
-            </Typography>
-          </Grid>
-          <Grid item width={300}>
+        <Grid item xs={12}>
+          <Typography className={styles.question}>
+            Question 2: How often do you choose Scotch whisky over other types
+            of whiskey?
+          </Typography>
+          <Box className={styles.content}>
             <Slider
               key="interest-slider"
               aria-label="Interest in Scotch over other types of whiskey"
@@ -106,23 +88,14 @@ export default function Survey(props) {
               min={1}
               max={5}
             />
-          </Grid>
+          </Box>
         </Grid>
-        <Grid
-          item
-          container
-          direction={"column"}
-          alignItems={"center"}
-          justifyContent={"center"}
-          spacing={2}
-        >
-          <Grid item>
-            <Typography>
-              Question 3: Which of these Scotch brands have you heard of before?
-              (you may choose more than one)
-            </Typography>
-          </Grid>
-          <Grid item width={300}>
+        <Grid item xs={12}>
+          <Typography className={styles.question}>
+            Question 3: Which of these Scotch brands have you heard of before?
+            (you may choose more than one)
+          </Typography>
+          <Box className={styles.content}>
             <Autocomplete
               multiple
               autoComplete
@@ -143,36 +116,28 @@ export default function Survey(props) {
               onChange={props.handleChangeScotchBrands}
               renderInput={(params) => <TextField {...params} />}
             />
-          </Grid>
+          </Box>
         </Grid>
-        <Grid
-          item
-          container
-          direction={"column"}
-          alignItems={"center"}
-          justifyContent={"center"}
-          spacing={2}
-        >
-          <Grid item>
-            <Typography>
-              Question 4: What is your favorite Scotch whisky?
-            </Typography>
-          </Grid>
-          <Grid item width={500}>
+        <Grid item xs={12}>
+          <Typography className={styles.question}>
+            Question 4: What is your favorite Scotch whisky?
+          </Typography>
+          <Box className={styles.content}>
             <Autocomplete
               onChange={props.handleChangeFavoriteWhisky}
               autoComplete
               options={props.whiskyList}
               renderInput={(params) => <TextField {...params} />}
             />
-          </Grid>
+          </Box>
         </Grid>
-        <Grid item>
+        <Grid item className={styles.buttonWrapper}>
           <Button
             variant="contained"
             type="submit"
             onClick={props.handleSurveySubmit}
             disabled={props.disableSubmit}
+            className={styles.button}
           >
             Submit Survey
           </Button>
