@@ -13,34 +13,21 @@ import {
   Toolbar,
 } from "@mui/material";
 import whiskyDbService from "../services/whiskyDbService";
-
-// Remove pagination; use inifinite scroll
-
-const headers = [
-  { id: "whisky", label: "Whisky" },
-  { id: "type", label: "Type" },
-  { id: "cost", label: "Cost" },
-  { id: "tags", label: "Tags", disableSorting: true },
-];
+import { headers } from "../constants/siteContent";
 
 export async function getStaticProps() {
   const whiskies = await whiskyDbService.getWhisky_db();
-
   return { props: { whiskies } };
 }
 
 export default function ScotchDb({ whiskies }) {
-  const title = "Scotch Whisky Search";
+  // state
   const [records, setRecords] = useState(whiskies);
-  // const [records, setRecords] = useState(getWhiskyDb());
-  console.log(records);
   const [filterFn, setFilterFn] = useState({
     fn: (items) => {
       return items;
     },
   });
-
-  // NEW useReducer method instead of useState
   const [filterInput, setFilterInput] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {
@@ -52,11 +39,14 @@ export default function ScotchDb({ whiskies }) {
     }
   );
 
+  // helpers
   const { TableContainer, TableHeader, TablePages, recordsAfterPagingSorting } =
     ResultsTable(records, headers, filterFn);
 
+  // handlers
+
   // V2 Search function w/ useReducer method
-  const handleSearchV2 = (event, newValue) => {
+  const handleSearch = (event, newValue) => {
     const { name, value, textContent } = event.target;
     name === "range"
       ? setFilterInput({ range: value, min: value[0], max: value[1] })
@@ -107,10 +97,7 @@ export default function ScotchDb({ whiskies }) {
   return (
     <>
       <DrawerAppBar title={navItems[6].title} />
-      <SearchInput
-        handleChangeValue={handleSearchV2}
-        searchValue={filterInput}
-      />
+      <SearchInput handleChangeValue={handleSearch} searchValue={filterInput} />
       <TablePages />
       <TableContainer>
         <TableHeader />

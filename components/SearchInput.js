@@ -13,39 +13,9 @@ import {
   AccordionDetails,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { rangeValues, searchTags } from "../constants/siteContent";
 
-const rangeValues = {
-  1: "$",
-  2: "$$",
-  3: "$$$",
-  4: "$$$$",
-  5: "$$$$$",
-  6: "$$$$$+",
-};
-
-const searchTags = [
-  "full-body",
-  "medium-body",
-  "light-body",
-  "sweet",
-  "semi-sweet",
-  "heavy smoke",
-  "pronounced sherry",
-  "fruity",
-  "malty",
-  "apertif-style",
-  "medium smoke",
-  "pungent",
-  "honey",
-  "medicinal",
-  "floral",
-  "spicy",
-  "nutty",
-  "notes of wine",
-  "no smoke",
-  "light smoke",
-];
-
+// Fix this
 function HideOnScroll(props) {
   const { children } = props;
   const trigger = useScrollTrigger();
@@ -57,13 +27,18 @@ function HideOnScroll(props) {
 }
 
 export default function SearchInput({ searchValue, handleChangeValue }) {
+  // state
   const [expanded, setExpanded] = React.useState(true);
+
+  // helpers
+  const trigger = useScrollTrigger();
+
+  // handlers
   const handleChange = () => (event, isExpanded) => {
     console.log(event);
     console.log(isExpanded);
     setExpanded(isExpanded ? true : false);
   };
-  const trigger = useScrollTrigger();
   return (
     <>
       <Accordion

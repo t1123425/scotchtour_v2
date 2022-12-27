@@ -1400,3 +1400,42 @@ export const brandCards = [
     ),
   },
 ];
+
+export const headers = [
+  { id: "whisky", label: "Whisky" },
+  { id: "type", label: "Type" },
+  { id: "cost", label: "Cost" },
+  { id: "tags", label: "Tags", disableSorting: true },
+];
+
+export const rangeValues = {
+  1: "$",
+  2: "$$",
+  3: "$$$",
+  4: "$$$$",
+  5: "$$$$$",
+  6: "$$$$$+",
+};
+
+export const searchTags = [
+  "full-body",
+  "medium-body",
+  "light-body",
+  "sweet",
+  "semi-sweet",
+  "heavy smoke",
+  "pronounced sherry",
+  "fruity",
+  "malty",
+  "apertif-style",
+  "medium smoke",
+  "pungent",
+  "honey",
+  "medicinal",
+  "floral",
+  "spicy",
+  "nutty",
+  "notes of wine",
+  "no smoke",
+  "light smoke",
+];

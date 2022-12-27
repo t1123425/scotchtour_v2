@@ -10,12 +10,14 @@ import React, { useState } from "react";
 import styles from "../styles/ResultsTable.module.css";
 
 export default function ResultsTable(records, headers, filterFn, filterInput) {
-  const pages = [5, 10, 25];
+  // state
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(pages[page]);
   const [order, setOrder] = useState();
   const [orderBy, setOrderBy] = useState();
 
+  // helpers
+  const pages = [5, 10, 25];
   const TableContainer = (props) => (
     <Table className={styles.tableContainer}>{props.children}</Table>
   );
@@ -25,7 +27,6 @@ export default function ResultsTable(records, headers, filterFn, filterInput) {
       setOrder(isAsc ? "desc" : "asc");
       setOrderBy(cellId);
     };
-
     return (
       <TableHead>
         <TableRow>
@@ -53,16 +54,6 @@ export default function ResultsTable(records, headers, filterFn, filterInput) {
       </TableHead>
     );
   };
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
   const TablePages = () => (
     <TablePagination
       component="div"
@@ -74,7 +65,6 @@ export default function ResultsTable(records, headers, filterFn, filterInput) {
       onRowsPerPageChange={handleChangeRowsPerPage}
     />
   );
-
   function objectSort(array, comparisonType) {
     const indexedArray = array.map((record, index) => [record, index]);
     indexedArray.sort((a, b) => {
@@ -106,6 +96,15 @@ export default function ResultsTable(records, headers, filterFn, filterInput) {
       filterFn.fn(records),
       getComparisonType(order, orderBy)
     ).slice(page * rowsPerPage, (page + 1) * rowsPerPage);
+  };
+
+  // handlers
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
   };
 
   return {
