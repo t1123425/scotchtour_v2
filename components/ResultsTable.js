@@ -8,16 +8,16 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import styles from "../styles/ResultsTable.module.css";
+import { rowsPerPageOptions } from "../constants/siteContent";
 
 export default function ResultsTable(records, headers, filterFn, filterInput) {
   // state
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(pages[page]);
+  const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageOptions[page]);
   const [order, setOrder] = useState();
   const [orderBy, setOrderBy] = useState();
 
   // helpers
-  const pages = [5, 10, 25];
   const TableContainer = (props) => (
     <Table className={styles.tableContainer}>{props.children}</Table>
   );
@@ -58,7 +58,7 @@ export default function ResultsTable(records, headers, filterFn, filterInput) {
     <TablePagination
       component="div"
       page={page}
-      rowsPerPageOptions={pages}
+      rowsPerPageOptions={rowsPerPageOptions}
       rowsPerPage={rowsPerPage}
       count={filterFn.fn(records).length}
       onPageChange={handleChangePage}

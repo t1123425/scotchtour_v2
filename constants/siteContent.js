@@ -1439,3 +1439,5 @@ export const searchTags = [
   "no smoke",
   "light smoke",
 ];
+
+export const rowsPerPageOptions = [5, 10, 25];
