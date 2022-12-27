@@ -54,7 +54,7 @@ export default function ResultsTable(records, headers, filterFn, filterInput) {
       </TableHead>
     );
   };
-  const TablePages = () => (
+  const TablePages = (props) => (
     <TablePagination
       component="div"
       page={page}
@@ -63,6 +63,7 @@ export default function ResultsTable(records, headers, filterFn, filterInput) {
       count={filterFn.fn(records).length}
       onPageChange={handleChangePage}
       onRowsPerPageChange={handleChangeRowsPerPage}
+      className={styles[props.scrollStyle]}
     />
   );
   function objectSort(array, comparisonType) {
@@ -91,11 +92,16 @@ export default function ResultsTable(records, headers, filterFn, filterInput) {
     return 0;
   }
 
-  const recordsAfterPagingSorting = () => {
+  const recordsAfterPagingSorting = (scrollStyle) => {
+    const sliceStyle =
+      scrollStyle === "pagination"
+        ? [page * rowsPerPage, (page + 1) * rowsPerPage]
+        : "";
+    console.log(sliceStyle);
     return objectSort(
       filterFn.fn(records),
       getComparisonType(order, orderBy)
-    ).slice(page * rowsPerPage, (page + 1) * rowsPerPage);
+    ).slice(...sliceStyle);
   };
 
   // handlers

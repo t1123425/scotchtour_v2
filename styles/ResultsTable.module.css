@@ -1,3 +1,11 @@
 .tableContainer {
     margin-top: 25px;
 }
+
+.pagination {
+    display: block
+}
+
+.infinite {
+    display: none
+}

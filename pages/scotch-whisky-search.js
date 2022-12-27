@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState, useEffect } from "react";
 import navItems from "../constants/navitems";
 import DrawerAppBar from "../components/DrawerAppBar";
 import SearchInput from "../components/SearchInput";
@@ -38,14 +38,18 @@ export default function ScotchDb({ whiskies }) {
       tags: [],
     }
   );
+  const [mobileWidth, setMobileWidth] = useState();
 
   // helpers
+  useEffect(() => {
+    setMobileWidth(window.innerWidth);
+  }, []);
+  const scrollStyle = mobileWidth >= 480 ? "pagination" : "infinite";
+  // console.log(scrollStyle);
   const { TableContainer, TableHeader, TablePages, recordsAfterPagingSorting } =
     ResultsTable(records, headers, filterFn);
 
   // handlers
-
-  // V2 Search function w/ useReducer method
   const handleSearch = (event, newValue) => {
     const { name, value, textContent } = event.target;
     name === "range"
@@ -98,13 +102,13 @@ export default function ScotchDb({ whiskies }) {
     <>
       <DrawerAppBar title={navItems[6].title} />
       <SearchInput handleChangeValue={handleSearch} searchValue={filterInput} />
-      <TablePages />
+
       <TableContainer>
         <TableHeader />
         <TableBody>
           {console.log(filterInput)}
           {console.log(filterFn.fn(records))}
-          {recordsAfterPagingSorting().map((item) => (
+          {recordsAfterPagingSorting(scrollStyle).map((item) => (
             <TableRow key={item.id}>
               <TableCell>{item.whisky}</TableCell>
               <TableCell>{item.type}</TableCell>
@@ -123,6 +127,7 @@ export default function ScotchDb({ whiskies }) {
           ))}
         </TableBody>
       </TableContainer>
+      <TablePages scrollStyle={scrollStyle} />
     </>
   );
 }
