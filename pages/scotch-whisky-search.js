@@ -1,16 +1,18 @@
-import React, { useReducer, useState, useEffect } from "react";
+import React, { useReducer, useState, useEffect, useRef } from "react";
 import navItems from "../constants/navitems";
 import DrawerAppBar from "../components/DrawerAppBar";
 import SearchInput from "../components/SearchInput";
 import ResultsTable from "../components/ResultsTable";
 import {
   Chip,
+  Table,
   TableBody,
   TableCell,
   TableRow,
   useScrollTrigger,
   Slide,
   Toolbar,
+  Paper,
 } from "@mui/material";
 import whiskyDbService from "../services/whiskyDbService";
 import { headers } from "../constants/siteContent";
@@ -39,10 +41,22 @@ export default function ScotchDb({ whiskies }) {
     }
   );
   const [mobileWidth, setMobileWidth] = useState();
+  const [navHeight, setNavHeight] = useState();
+  const [searchHeight, setSearchHeight] = useState();
 
   // helpers
+  const navRef = useRef();
+  const searchRef = useRef();
   useEffect(() => {
     setMobileWidth(window.innerWidth);
+    if (navRef.current) {
+      navRef.current.focus();
+    }
+    if (searchRef.current) {
+      searchRef.current.focus();
+    }
+    setNavHeight(navRef.current.clientHeight);
+    setSearchHeight(searchRef.current.clientHeight);
   }, []);
   const scrollStyle = mobileWidth >= 480 ? "pagination" : "infinite";
   // console.log(scrollStyle);
@@ -100,12 +114,17 @@ export default function ScotchDb({ whiskies }) {
 
   return (
     <>
-      <DrawerAppBar title={navItems[6].title} />
-      <SearchInput handleChangeValue={handleSearch} searchValue={filterInput} />
-
+      <DrawerAppBar title={navItems[6].title} ref={navRef} />
+      <SearchInput
+        handleChangeValue={handleSearch}
+        searchValue={filterInput}
+        ref={searchRef}
+        setSearchHeight={setSearchHeight}
+      />
       <TableContainer>
         <TableHeader />
         <TableBody>
+          {console.log(searchHeight)}
           {console.log(filterInput)}
           {console.log(filterFn.fn(records))}
           {recordsAfterPagingSorting(scrollStyle).map((item) => (

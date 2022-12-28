@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef, useCallback } from "react";
 import {
   Grid,
   TextField,
@@ -26,82 +26,78 @@ function HideOnScroll(props) {
   );
 }
 
-export default function SearchInput({ searchValue, handleChangeValue }) {
+function SearchInput({ searchValue, handleChangeValue, setSearchHeight }, ref) {
   // state
   const [expanded, setExpanded] = React.useState(true);
 
   // helpers
   const trigger = useScrollTrigger();
+  const updateSearchHeight = () => {
+    setSearchHeight(ref.current.clientHeight);
+  };
 
   // handlers
-  const handleChange = () => (event, isExpanded) => {
-    console.log(event);
-    console.log(isExpanded);
-    setExpanded(isExpanded ? true : false);
+  const handleChange = (newValue) => {
+    console.log(newValue);
+    setExpanded(newValue, updateSearchHeight());
   };
+
   return (
-    <>
-      <Accordion
-        expanded={expanded}
-        onChange={handleChange()}
-        // onScroll={handleChange()}
-      >
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h4">Whisky Search</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Grid container justifyContent={"center"} spacing={4}>
-            <Grid item xs={9}>
-              <TextField
-                variant="outlined"
-                label="Whisky"
-                name="whisky"
-                value={searchValue.whisky}
-                onChange={(event, newValue) =>
-                  handleChangeValue(event, newValue)
-                }
-                fullWidth
-              ></TextField>
-            </Grid>
-            <Grid item xs={9} md={4}>
-              <Slider
-                key="range"
-                aria-label="Range slider for cost represented in dollar signs"
-                name="range"
-                value={[searchValue.min, searchValue.max]}
-                onChange={(event) => handleChangeValue(event)}
-                valueLabelDisplay="auto"
-                valueLabelFormat={(value) => {
-                  return rangeValues[value];
-                }}
-                step={1}
-                marks
-                min={1}
-                max={6}
-              />
-              <Typography
-                align="center"
-                variant="subtitle1"
-                fontStyle={"italic"}
-              >
-                Cost Range
-              </Typography>
-            </Grid>
-            <Grid item xs={9}>
-              <Autocomplete
-                multiple
-                options={searchTags}
-                onChange={(event, newValue) =>
-                  handleChangeValue(event, newValue)
-                }
-                id="tags"
-                renderInput={(params) => <TextField label="Tags" {...params} />}
-                width="100%"
-              />
-            </Grid>
+    <Accordion
+      expanded={expanded}
+      onChange={(event, newValue) => handleChange(newValue)}
+      ref={ref}
+      // onScroll={handleChange()}
+    >
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <Typography variant="h4">Whisky Search</Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Grid container justifyContent={"center"} spacing={4}>
+          <Grid item xs={9}>
+            <TextField
+              variant="outlined"
+              label="Whisky"
+              name="whisky"
+              value={searchValue.whisky}
+              onChange={(event, newValue) => handleChangeValue(event, newValue)}
+              fullWidth
+            ></TextField>
           </Grid>
-        </AccordionDetails>
-      </Accordion>
-    </>
+          <Grid item xs={9} md={4}>
+            <Slider
+              key="range"
+              aria-label="Range slider for cost represented in dollar signs"
+              name="range"
+              value={[searchValue.min, searchValue.max]}
+              onChange={(event) => handleChangeValue(event)}
+              valueLabelDisplay="auto"
+              valueLabelFormat={(value) => {
+                return rangeValues[value];
+              }}
+              step={1}
+              marks
+              min={1}
+              max={6}
+            />
+            <Typography align="center" variant="subtitle1" fontStyle={"italic"}>
+              Cost Range
+            </Typography>
+          </Grid>
+          <Grid item xs={9}>
+            <Autocomplete
+              multiple
+              options={searchTags}
+              onChange={(event, newValue) => handleChangeValue(event, newValue)}
+              id="tags"
+              renderInput={(params) => <TextField label="Tags" {...params} />}
+              width="100%"
+            />
+          </Grid>
+        </Grid>
+      </AccordionDetails>
+    </Accordion>
   );
 }
+
+export default forwardRef(SearchInput);

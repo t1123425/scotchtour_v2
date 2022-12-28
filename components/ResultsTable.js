@@ -19,7 +19,9 @@ export default function ResultsTable(records, headers, filterFn, filterInput) {
 
   // helpers
   const TableContainer = (props) => (
-    <Table className={styles.tableContainer}>{props.children}</Table>
+    <Table stickyHeader className={styles.tableContainer}>
+      {props.children}
+    </Table>
   );
   const TableHeader = (props) => {
     const handleSortRequest = (cellId) => {

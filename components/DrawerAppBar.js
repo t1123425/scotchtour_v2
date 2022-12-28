@@ -15,10 +15,15 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
 import { navItems } from "../constants/siteContent";
 
-function DrawerAppBar(props) {
+function DrawerAppBar(props, ref) {
   const icon = "/whisky-still.png";
   const { window } = props;
   const [open, setOpen] = React.useState(false);
+  // const ref = React.useRef();
+  // React.useEffect(() => {
+  //   const localref = navRef.current;
+  //   console.log(localref);
+  // });
 
   const handleDrawerToggle = () => {
     setOpen(!open);
@@ -50,7 +55,7 @@ function DrawerAppBar(props) {
         <link rel="icon" href={icon} />
       </Head>
       <Box sx={{ display: "flex" }}>
-        <AppBar component="nav" position="fixed">
+        <AppBar component="nav" position="fixed" ref={ref}>
           <Toolbar>
             <IconButton
               color="inherit"
@@ -99,9 +104,9 @@ function DrawerAppBar(props) {
           </Drawer>
         </Box>
       </Box>
-      <Toolbar />
+      <Toolbar id="emptyToolbar" />
     </>
   );
 }
 
-export default DrawerAppBar;
+export default React.forwardRef(DrawerAppBar);
