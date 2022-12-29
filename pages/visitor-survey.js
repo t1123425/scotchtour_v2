@@ -40,7 +40,7 @@ export default function VisitorSurvey({ whiskies }) {
   // handlers
   const handleChangeValue = (event) => {
     const { name, value } = event.target;
-    setSurveyInput({ [name]: value });
+    setSurveyInput({ [name]: Number(value) });
   };
   const handleChangeScotchBrands = (event, newValue) => {
     setSurveyInput({ "scotch-brands": newValue });
@@ -53,6 +53,8 @@ export default function VisitorSurvey({ whiskies }) {
     setTestArr([...testArr, surveyInput]);
     setSubmitted(true);
   };
+  console.log(surveyInput);
+  console.log(testArr);
 
   return (
     <>

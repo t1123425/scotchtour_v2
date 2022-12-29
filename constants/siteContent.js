@@ -754,7 +754,7 @@ export const interestLabels = {
 };
 
 export const initialFormValues = {
-  "hover-feedback": "",
+  "hover-feedback": 0,
   "interest-slider": 3,
   "scotch-brands": [],
   "favorite-whisky": "",
