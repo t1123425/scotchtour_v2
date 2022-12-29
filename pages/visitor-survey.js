@@ -12,21 +12,23 @@ import {
 } from "../constants/siteContent";
 import SubmittedSurvey from "../components/SubmittedSurvey";
 import whiskyDbService from "../services/whiskyDbService";
+import surveyService from "../services/surveyService";
 
 export async function getStaticProps() {
   const whiskies = await whiskyDbService.getWhisky_db();
+  const surveyResults = await surveyService.getSurveyResults();
 
-  return { props: { whiskies } };
+  return { props: { whiskies, surveyResults } };
 }
 
-export default function VisitorSurvey({ whiskies }) {
+export default function VisitorSurvey({ whiskies, surveyResults }) {
   // state
   const [surveyInput, setSurveyInput] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
     initialFormValues
   );
   const [submitted, setSubmitted] = useState(null);
-  const [testArr, setTestArr] = useState([]);
+  const [surveyResponse, setSurveyResponse] = useState([]);
 
   // helpers
   const showSurvey = submitted ? "none" : "flex";
@@ -36,6 +38,7 @@ export default function VisitorSurvey({ whiskies }) {
     .every((v) => (v ? true : false))
     ? false
     : true;
+  console.log(surveyResults);
 
   // handlers
   const handleChangeValue = (event) => {
@@ -48,13 +51,12 @@ export default function VisitorSurvey({ whiskies }) {
   const handleChangeFavoriteWhisky = (event, newValue) => {
     setSurveyInput({ "favorite-whisky": newValue });
   };
-
   const handleSurveySubmit = () => {
-    setTestArr([...testArr, surveyInput]);
+    setSurveyResponse([surveyInput]);
     setSubmitted(true);
   };
   console.log(surveyInput);
-  console.log(testArr);
+  console.log(surveyResponse);
 
   return (
     <>

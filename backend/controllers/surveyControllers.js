@@ -15,17 +15,11 @@ const getSurveyResults = asyncHandler(async (req, res) => {
 // @route POST /api/visitor_survey
 // @access Private
 const submitSurvey = asyncHandler(async (req, res) => {
-  // if (!req.body.text) {
-  //   res.status(400);
-  //   throw new Error("Please add content");
-  // }
-
   const survey_submission = await SurveyModel.create({
-    text: req.body.text,
-    // "favorite-whisky": req.body["favorite-whisky"],
-    // "hover-feedback": req.body["hover-feedback"],
-    // "interest-slider": req.body["interest-slider"],
-    // "scotch-brands": req.body["scotch-brands"],
+    "favorite-whisky": req.body["favorite-whisky"],
+    "hover-feedback": req.body["hover-feedback"],
+    "interest-slider": req.body["interest-slider"],
+    "scotch-brands": req.body["scotch-brands"],
   });
 
   res.status(200).json(survey_submission);
