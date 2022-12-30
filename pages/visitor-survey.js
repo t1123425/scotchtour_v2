@@ -38,7 +38,7 @@ export default function VisitorSurvey({ whiskies, surveyResults }) {
     .every((v) => (v ? true : false))
     ? false
     : true;
-  console.log(surveyResults);
+  const submitSurvey = (data) => surveyService.submitSurvey(data);
 
   // handlers
   const handleChangeValue = (event) => {
@@ -52,11 +52,11 @@ export default function VisitorSurvey({ whiskies, surveyResults }) {
     setSurveyInput({ "favorite-whisky": newValue });
   };
   const handleSurveySubmit = () => {
-    setSurveyResponse([surveyInput]);
+    submitSurvey(surveyInput);
     setSubmitted(true);
   };
   console.log(surveyInput);
-  console.log(surveyResponse);
+  console.log(surveyResults);
 
   return (
     <>
