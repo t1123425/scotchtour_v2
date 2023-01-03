@@ -8,7 +8,7 @@ import {
   initialFormValues,
   exampleBrands,
   exampleScotch,
-  brandList,
+  brandData,
 } from "../constants/siteContent";
 import SubmittedSurvey from "../components/SubmittedSurvey";
 import whiskyDbService from "../services/whiskyDbService";
@@ -28,7 +28,6 @@ export default function VisitorSurvey({ whiskies, surveyResults }) {
     initialFormValues
   );
   const [submitted, setSubmitted] = useState(null);
-  const [surveyResponse, setSurveyResponse] = useState([]);
 
   // helpers
   const showSurvey = submitted ? "none" : "flex";
@@ -57,6 +56,7 @@ export default function VisitorSurvey({ whiskies, surveyResults }) {
   };
   console.log(surveyInput);
   console.log(surveyResults);
+  console.log(surveyResults.map((obj) => obj["scotch-brands"]).flat(1));
 
   return (
     <>
@@ -73,7 +73,7 @@ export default function VisitorSurvey({ whiskies, surveyResults }) {
         handleSurveySubmit={handleSurveySubmit}
         showSurvey={showSurvey}
         disableSubmit={disableSubmit}
-        brandList={brandList}
+        brandList={brandData.map((obj) => obj.name)}
         whiskyList={whiskies.map((obj) => obj.whisky)}
       />
       <SubmittedSurvey showSubmitted={showSubmitted} />
