@@ -5,12 +5,12 @@ import {
   regionButtons,
 } from "../constants/siteContent";
 
-export function SurveyChartData(whiskies, surveyResults) {
+export function SurveyChartData(whiskies, surveydata) {
   // Total Survey Responses
-  const totalcount = surveyResults.length;
+  const totalcount = surveydata.length;
 
   // Most Recognized Brands
-  const brandraw = surveyResults.map((obj) => obj["scotch-brands"]).flat(1);
+  const brandraw = surveydata.map((obj) => obj["scotch-brands"]).flat(1);
   const recognizeddata = [...new Set(brandraw)]
     .map((brand) => ({
       name: brand,
@@ -20,7 +20,7 @@ export function SurveyChartData(whiskies, surveyResults) {
     .slice(0, 5);
 
   // Most Beloved Brands
-  const favoriteraw = surveyResults.map((obj) => obj["favorite-whisky"]);
+  const favoriteraw = surveydata.map((obj) => obj["favorite-whisky"]);
   const beloveddata = [...new Set(favoriteraw)]
     .map((whisky) => ({
       name: whisky,
@@ -42,7 +42,7 @@ export function SurveyChartData(whiskies, surveyResults) {
   }));
 
   // Scotch vs. other Types of whisky
-  const comparedtoraw = surveyResults.map((obj) => obj["interest-slider"]);
+  const comparedtoraw = surveydata.map((obj) => obj["interest-slider"]);
   const comparedtodata = Object.keys(interestLabels)
     .sort((a, b) => a - b)
     .map((el) => ({
@@ -51,7 +51,7 @@ export function SurveyChartData(whiskies, surveyResults) {
     }));
 
   // How People Feel About Scotch
-  const hoverraw = surveyResults.map((obj) => obj["hover-feedback"]);
+  const hoverraw = surveydata.map((obj) => obj["hover-feedback"]);
   const hoverdata = Object.keys(ratingLabels)
     .sort((a, b) => a - b)
     .map((el) => ({

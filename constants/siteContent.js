@@ -1475,7 +1475,6 @@ export const brandData = [
   { name: "Strathclyde", founded: `1927`, region: "Lowlands", closed: "" },
   { name: "Strathisla", founded: `1786`, region: "Speyside", closed: "" },
   { name: "Strathmill", founded: `1891`, region: "Speyside", closed: "" },
-  { name: "Strathmore", founded: `1957`, region: "Highlands", closed: "" },
   { name: "Strathmore", founded: `1958`, region: "Lowlands", closed: "1980" },
   { name: "Stronachie", founded: `1890`, region: "Highlands", closed: "1928" },
   { name: "Talisker", founded: `1831`, region: "Islands", closed: "" },

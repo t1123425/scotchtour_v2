@@ -1,3 +1,4 @@
+import { SettingsEthernet } from "@mui/icons-material";
 import axios from "axios";
 
 const API_URL = "http://localhost:5001/api/visitor_survey";
@@ -10,10 +11,8 @@ const getSurveyResults = async () => {
 };
 
 // Submit survey response
-const submitSurvey = async (surveySubmitData) => {
-  const res = await axios.post(API_URL, surveySubmitData);
-
-  return res.data;
+const submitSurvey = (surveySubmitData) => {
+  axios.post(API_URL, surveySubmitData);
 };
 
 const surveyService = {

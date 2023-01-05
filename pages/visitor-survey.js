@@ -6,10 +6,7 @@ import {
   ratingLabels,
   interestLabels,
   initialFormValues,
-  exampleBrands,
-  exampleScotch,
   brandData,
-  regionButtons,
 } from "../constants/siteContent";
 import SubmittedSurvey from "../components/SubmittedSurvey";
 import whiskyDbService from "../services/whiskyDbService";
@@ -30,6 +27,7 @@ export default function VisitorSurvey({ whiskies, surveyResults }) {
     initialFormValues
   );
   const [submitted, setSubmitted] = useState(null);
+  const [surveydata, setSurveyData] = useState(surveyResults);
 
   // helpers
   const showSurvey = submitted ? "none" : "flex";
@@ -54,6 +52,7 @@ export default function VisitorSurvey({ whiskies, surveyResults }) {
   };
   const handleSurveySubmit = () => {
     submitSurvey(surveyInput);
+    setSurveyData([...surveyResults, surveyInput]);
     setSubmitted(true);
   };
   console.log(surveyInput);
@@ -67,14 +66,7 @@ export default function VisitorSurvey({ whiskies, surveyResults }) {
     comparedtodata,
     hoverdata,
     whiskynotedata,
-  } = SurveyChartData(whiskies, surveyResults);
-  console.log(totalcount);
-  console.log(recognizeddata);
-  console.log(beloveddata);
-  console.log(popularregiondata);
-  console.log(comparedtodata);
-  console.log(hoverdata);
-  console.log(whiskynotedata);
+  } = SurveyChartData(whiskies, surveydata);
 
   return (
     <>
@@ -82,8 +74,6 @@ export default function VisitorSurvey({ whiskies, surveyResults }) {
       <Survey
         ratingLabels={ratingLabels}
         interestLabels={interestLabels}
-        exampleBrands={exampleBrands}
-        exampleScotch={exampleScotch}
         surveyValues={surveyInput}
         handleChangeValue={handleChangeValue}
         handleChangeScotchBrands={handleChangeScotchBrands}
