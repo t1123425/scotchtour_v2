@@ -64,7 +64,7 @@ function DrawerAppBar(props, ref) {
               onClick={handleDrawerToggle}
               open={open}
               onClose={handleDrawerToggle}
-              ModalProps={{
+              modalprops={{
                 keepMounted: true,
               }}
               // sx={{ mr: 2, display: { sm: "none" } }}
@@ -89,7 +89,7 @@ function DrawerAppBar(props, ref) {
             variant="temporary"
             open={open}
             onClose={handleDrawerToggle}
-            ModalProps={{
+            modalprops={{
               keepMounted: true,
             }}
             sx={{

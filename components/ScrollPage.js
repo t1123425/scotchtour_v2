@@ -14,9 +14,9 @@ export default function ScrollPage(props) {
         textAlign={"center"}
         // sx={{ scrollSnapType: "y mandatory" }}
       >
-        {props.content.map((group) => (
-          <Grid item>
-            <ScrollBox content={group} />
+        {props.content.map((group, i) => (
+          <Grid item key={`grid-${i}`}>
+            <ScrollBox content={group} key={`scrollbox-${i}`} />
           </Grid>
         ))}
       </Grid>

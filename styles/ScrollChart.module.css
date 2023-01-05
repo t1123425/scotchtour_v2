@@ -1,0 +1,55 @@
+.blockWrapper {
+    width: 100vw;
+}
+
+.titleBlock {
+    overflow: visible;
+}
+
+.title {
+    position: sticky;
+    color: black;
+    padding: 15px 0px 15px 0px;
+    margin: 0 auto;
+    max-width: 680px;
+    width: calc(100% - 30px);
+    font-size: 4rem;
+    text-align: left;
+}
+
+.scrollWrapper {
+    text-align: center;
+    padding: 20px 0px;
+}
+
+ .imageShow {
+    max-width: 680px;
+    width: calc(100% - 30px);
+    margin: 0 15px; 
+ }
+
+ .imageHide {
+    display: none;
+    width: calc(100% - 30px);
+ }
+
+ .captionShow {
+    display: block;
+    font-style: italic;
+ }
+
+ .captionHide {
+    display: none;
+ }
+
+ .paragraphBlock {
+    padding: 15px 15px 0;
+    max-width: 680px;
+    text-align: left;
+    margin: 0 auto;
+ }
+
+ .chartContainer {
+   margin: 20px auto;
+   max-width: 900px;
+ }

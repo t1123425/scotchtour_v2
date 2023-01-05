@@ -386,6 +386,34 @@ export const whatIsContent = [
   },
 ];
 
+export const scrollChartContent = {
+  title: "By the Numbers",
+  imageUrl: "/scotch_glass_1.jpeg",
+  description: [
+    <p>
+      Scotch whisky (often simply called Scotch) is malt whisky or grain whisky
+      made in Scotland. Scotch whisky must be made in a manner specified by law.
+    </p>,
+    <p>
+      All Scotch whisky was originally made from malted barley. Commercial
+      distilleries began introducing whisky made from wheat and rye in the late
+      18th century. Scotch whisky is divided into five distinct categories:
+      single malt Scotch whisky, single grain Scotch whisky, blended malt Scotch
+      whisky (formerly called "vatted malt" or "pure malt"), blended grain
+      Scotch whisky, and blended Scotch whisky.
+    </p>,
+    <p>
+      All Scotch whisky must be aged in oak barrels for at least three years.
+      Any age statement on a bottle of Scotch whisky, expressed in numerical
+      form, must reflect the age of the youngest whisky used to produce that
+      product. A whisky with an age statement is known as guaranteed-age whisky.
+      A whisky without an age statement is known as a no age statement (NAS)
+      whisky, the only guarantee being that all whisky contained in that bottle
+      is at least three years old.
+    </p>,
+  ],
+};
+
 export const historyContent = [
   {
     title: "15th Century",

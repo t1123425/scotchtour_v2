@@ -90,7 +90,7 @@ export function SurveyChartData(whiskies, surveydata) {
   };
 }
 
-export function WhatIsChartData() {
+export function HistoryChartData() {
   // Total Distilleries w/ Opens + Closures Timeline
   const yearraw = [
     ...new Set(
@@ -126,6 +126,12 @@ export function WhatIsChartData() {
     }, 0),
   }));
 
+  return {
+    yeardata,
+  };
+}
+
+export function RegionChartData() {
   // Total Distilleries by Region
   const totalregiondata = regionButtons.map((obj) => ({
     region: obj.name,
@@ -133,7 +139,6 @@ export function WhatIsChartData() {
   }));
 
   return {
-    yeardata,
     totalregiondata,
   };
 }

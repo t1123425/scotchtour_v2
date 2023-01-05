@@ -57,8 +57,8 @@ export default function ScrollBox(props) {
             {props.content.caption}
           </Typography>
           <Box className={styles.paragraphBlock}>
-            {props.content.description.map((bit) => (
-              <div>{bit}</div>
+            {props.content.description.map((bit, i) => (
+              <div key={`bit-${i}`}>{bit}</div>
             ))}
           </Box>
         </motion.div>
