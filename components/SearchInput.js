@@ -38,7 +38,6 @@ function SearchInput({ searchValue, handleChangeValue, setSearchHeight }, ref) {
 
   // handlers
   const handleChange = (newValue) => {
-    console.log(newValue);
     setExpanded(newValue, updateSearchHeight());
   };
 

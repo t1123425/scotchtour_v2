@@ -3,6 +3,7 @@ import MapPage from "../components/MapPage";
 import navItems from "../constants/navitems";
 import DrawerAppBar from "../components/DrawerAppBar";
 import { regionButtons, regionContent } from "../constants/siteContent";
+import PopoverChart from "../components/PopoverChart";
 
 export default function Regions(pageProps) {
   // state
@@ -17,6 +18,7 @@ export default function Regions(pageProps) {
   return (
     <>
       <DrawerAppBar title={navItems[4].title} />
+      <PopoverChart chartStyle={chartStyle} />
       <MapPage regionButtons={regionButtons} regionContent={regionContent} />
     </>
   );
