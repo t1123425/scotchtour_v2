@@ -4,6 +4,7 @@ import navItems from "../constants/navitems";
 import DrawerAppBar from "../components/DrawerAppBar";
 import { regionButtons, regionContent } from "../constants/siteContent";
 import PopoverChart from "../components/PopoverChart";
+import { RegionChartData } from "../components/ChartData";
 
 export default function Regions(pageProps) {
   // state
@@ -13,12 +14,16 @@ export default function Regions(pageProps) {
   useEffect(() => {
     setMobileWidth(window.innerWidth);
   });
-  const chartStyle = mobileWidth >= 480 ? "popoverChart" : "swipeableChart";
+  const chartPopperStyle = mobileWidth >= 480 ? "top" : "bottom";
+  const { totalregiondata } = RegionChartData();
 
   return (
     <>
       <DrawerAppBar title={navItems[4].title} />
-      <PopoverChart chartStyle={chartStyle} />
+      <PopoverChart
+        chartPopperStyle={chartPopperStyle}
+        data={totalregiondata}
+      />
       <MapPage regionButtons={regionButtons} regionContent={regionContent} />
     </>
   );

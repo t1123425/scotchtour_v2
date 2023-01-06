@@ -1,7 +1,11 @@
+.popoverBox {
+    min-width: 300px;
+    max-width: 90vw;
+    width: 500px;
+    aspect-ratio: 1 / 1;
+}
 
-
-.button {
-    /* margin: 0 auto; */
+.topPopper {
     position: absolute;
     top: 10%;
     left: 50%;
@@ -9,15 +13,11 @@
     z-index: 10;
 }
 
-.popoverBox {
-    max-width: 350px;
-}
-
-.visible {
-    display: block;
-}
-
-.hidden {
-    display: none;
+.bottomPopper {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    z-index: 10;
 }
 

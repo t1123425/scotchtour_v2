@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Typography, Popover, Box, Button } from "@mui/material";
 import styles from "../styles/PopoverChart.module.css";
+import { Chart as ChartJS } from "chart.js/auto";
+import { Radar as RadarChart } from "react-chartjs-2";
 
 export default function PopoverChart(props) {
   // state
@@ -8,10 +10,21 @@ export default function PopoverChart(props) {
 
   // helpers
   const open = Boolean(anchorEl);
-  const popoverChart =
-    props.chartStyle === "popoverChart" ? styles.visible : styles.hidden;
-  const swipeableChart =
-    props.chartStyle === "swipeableChart" ? styles.visible : styles.hidden;
+  const popperStyle =
+    props.chartPopperStyle === "top" ? styles.topPopper : styles.bottomPopper;
+  const chartdata = {
+    labels: props.data.map((obj) => obj.region),
+    datasets: [
+      {
+        label: "# of Active Distilleries",
+        data: props.data.map((obj) => obj.count),
+      },
+    ],
+  };
+  const chartoptions = {
+    maintainAspectRatio: true,
+    responsive: true,
+  };
 
   // handlers
   const handleClick = (event) => {
@@ -23,16 +36,14 @@ export default function PopoverChart(props) {
 
   return (
     <>
-      <Box className={popoverChart}>
-        <Button
-          variant="contained"
-          className={styles.button}
-          size="small"
-          onClick={handleClick}
-        >
-          Breakdown by Region
-        </Button>
-      </Box>
+      <Button
+        variant="contained"
+        className={popperStyle}
+        size="small"
+        onClick={handleClick}
+      >
+        Breakdown by Region
+      </Button>
       <Popover
         open={open}
         anchorEl={anchorEl}
@@ -46,7 +57,9 @@ export default function PopoverChart(props) {
           horizontal: "center",
         }}
       >
-        <Box className={styles.popoverBox}></Box>
+        <Box className={styles.popoverBox}>
+          <RadarChart data={chartdata} options={chartoptions} />
+        </Box>
       </Popover>
     </>
   );
