@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import FullPage from "../components/FullPage";
-import navItems from "../constants/navitems";
+import { navItems } from "../constants/siteContent";
 import DrawerAppBar from "../components/DrawerAppBar";
 import { homeContent } from "../constants/siteContent";
 

@@ -1,6 +1,6 @@
 import React, { useReducer, useState } from "react";
 import Survey from "../components/Survey";
-import navItems from "../constants/navitems";
+import { navItems } from "../constants/siteContent";
 import DrawerAppBar from "../components/DrawerAppBar";
 import {
   ratingLabels,
@@ -8,36 +8,29 @@ import {
   initialFormValues,
   brandData,
 } from "../constants/siteContent";
-import SubmittedSurvey from "../components/SubmittedSurvey";
 import whiskyDbService from "../services/whiskyDbService";
 import surveyService from "../services/surveyService";
-import { SurveyChartData } from "../components/ChartData";
+import useRouter from "next/router";
 
 export async function getStaticProps() {
   const whiskies = await whiskyDbService.getWhisky_db();
-  const surveyResults = await surveyService.getSurveyResults();
 
-  return { props: { whiskies, surveyResults } };
+  return { props: { whiskies } };
 }
 
-export default function VisitorSurvey({ whiskies, surveyResults }) {
+export default function VisitorSurvey({ whiskies }) {
   // state
   const [surveyInput, setSurveyInput] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
     initialFormValues
   );
-  const [submitted, setSubmitted] = useState(null);
-  const [surveydata, setSurveyData] = useState(surveyResults);
-
-  // helpers
-  const showSurvey = submitted ? "none" : "flex";
-  const showSubmitted = !submitted ? "none" : "flex";
   const disableSubmit = Object.values(surveyInput)
     .map((v) => v)
     .every((v) => (v ? true : false))
     ? false
     : true;
   const submitSurvey = (data) => surveyService.submitSurvey(data);
+  const router = useRouter;
 
   // handlers
   const handleChangeValue = (event) => {
@@ -52,21 +45,8 @@ export default function VisitorSurvey({ whiskies, surveyResults }) {
   };
   const handleSurveySubmit = () => {
     submitSurvey(surveyInput);
-    setSurveyData([...surveyResults, surveyInput]);
-    setSubmitted(true);
+    router.push("/survey-stats");
   };
-  console.log(surveyInput);
-  console.log(surveyResults);
-
-  const {
-    totalcount,
-    recognizeddata,
-    beloveddata,
-    popularregiondata,
-    comparedtodata,
-    hoverdata,
-    whiskynotedata,
-  } = SurveyChartData(whiskies, surveydata);
 
   return (
     <>
@@ -79,12 +59,10 @@ export default function VisitorSurvey({ whiskies, surveyResults }) {
         handleChangeScotchBrands={handleChangeScotchBrands}
         handleChangeFavoriteWhisky={handleChangeFavoriteWhisky}
         handleSurveySubmit={handleSurveySubmit}
-        showSurvey={showSurvey}
         disableSubmit={disableSubmit}
         brandList={brandData.map((obj) => obj.name)}
         whiskyList={whiskies.map((obj) => obj.whisky)}
       />
-      <SubmittedSurvey showSubmitted={showSubmitted} />
     </>
   );
 }

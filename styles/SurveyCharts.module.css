@@ -1,0 +1,42 @@
+.totalCountStyle {
+    height: 350px;
+    background-color: red;
+    text-align: center;
+    
+}
+
+.recognizedDataStyle {
+    height: 350px;
+    background-color: orange;
+    text-align: center;
+}
+
+.belovedDataStyle {
+    height: 350px;
+    background-color: yellow;
+    text-align: center;
+}
+
+.popularRegionDataStyle {
+    height: 350px;
+    background-color: green;
+    text-align: center;
+}
+
+.comparedToDataStyle {
+    height: 350px;
+    background-color: lightblue;
+    text-align: center;
+}
+
+.hoverDataStyle {
+    height: 350px;
+    background-color: indigo;
+    text-align: center;
+}
+
+.whiskyNoteDataStyle {
+    height: 350px;
+    background-color: purple;
+    text-align: center;
+}

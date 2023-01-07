@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MapPage from "../components/MapPage";
-import navItems from "../constants/navitems";
+import { navItems } from "../constants/siteContent";
 import DrawerAppBar from "../components/DrawerAppBar";
 import { regionButtons, regionContent } from "../constants/siteContent";
 import PopoverChart from "../components/PopoverChart";

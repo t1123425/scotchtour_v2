@@ -43,6 +43,11 @@ export const navItems = [
   },
   {
     id: 8,
+    title: "Survey Statistics",
+    href: "/survey-stats",
+  },
+  {
+    id: 9,
     title: "About Me",
     href: "/about-me",
   },

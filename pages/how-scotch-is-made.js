@@ -1,5 +1,5 @@
 import React from "react";
-import navItems from "../constants/navitems";
+import { navItems } from "../constants/siteContent";
 import DrawerAppBar from "../components/DrawerAppBar";
 import ScrollPage from "../components/ScrollPage";
 import { processContent } from "../constants/siteContent";

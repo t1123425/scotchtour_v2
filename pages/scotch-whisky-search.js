@@ -1,5 +1,5 @@
 import React, { useReducer, useState, useEffect, useRef } from "react";
-import navItems from "../constants/navitems";
+import { navItems } from "../constants/siteContent";
 import DrawerAppBar from "../components/DrawerAppBar";
 import SearchInput from "../components/SearchInput";
 import ResultsTable from "../components/ResultsTable";
