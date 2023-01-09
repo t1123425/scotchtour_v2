@@ -1,42 +1,89 @@
 .totalCountStyle {
     height: 350px;
-    background-color: red;
     text-align: center;
-    
+    padding-top: 64px;
+}
+
+.totalCountStyle > h1 {
+    margin: 16px;
+    color: red;
 }
 
 .recognizedDataStyle {
     height: 350px;
-    background-color: orange;
+    padding-top: 64px;
     text-align: center;
 }
+
+.recognizedDataStyle > ol {
+   display: inline-block;
+   text-align: left;
+}
+
+.recognizedDataStyle li {
+    padding: 2px 8px;
+ }
 
 .belovedDataStyle {
     height: 350px;
-    background-color: yellow;
+    padding-top: 64px;
     text-align: center;
+}
+
+.belovedDataStyle > ol {
+    display: inline-block;
+    text-align: left;
+}
+
+.belovedDataStyle li {
+    padding: 2px 8px;
 }
 
 .popularRegionDataStyle {
-    height: 350px;
-    background-color: green;
+    height: 400px;
     text-align: center;
+    padding: 0 16px 16px;
+}
+
+.popularRegionDataStyle > h6 {
+    padding: 16px 0;
+}
+
+.popularRegionDataStyle > canvas {
+    margin: 0 auto;
 }
 
 .comparedToDataStyle {
-    height: 350px;
-    background-color: lightblue;
+    height: 400px;
     text-align: center;
+    padding: 0 16px 16px;
+}
+
+.comparedToDataStyle > h6 {
+    padding: 16px 0;
 }
 
 .hoverDataStyle {
-    height: 350px;
-    background-color: indigo;
+    height: 400px;
     text-align: center;
+    padding: 0 16px 16px;
+}
+
+.hoverDataStyle > h6 {
+    padding: 16px 0;
+}
+
+.hoverDataStyle > canvas {
+    margin: 0 auto;
 }
 
 .whiskyNoteDataStyle {
-    height: 350px;
-    background-color: purple;
     text-align: center;
+    padding: 0 16px 16px;
+    height: 400px;
+}
+
+.wordcloud {
+    width: 100%;
+    margin: 0 auto;
 }

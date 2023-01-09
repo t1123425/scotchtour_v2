@@ -1,8 +1,136 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid, Typography } from "@mui/material";
 import styles from "../styles/SurveyCharts.module.css";
+import { Chart as ChartJS } from "chart.js/auto";
+import {
+  Radar as RadarChart,
+  Bar as BarChart,
+  Doughnut as DonutChart,
+} from "react-chartjs-2";
+import { interestLabels, ratingLabels } from "../constants/siteContent";
+import { WordCloudController, WordElement } from "chartjs-chart-wordcloud";
+
+ChartJS.register(WordCloudController, WordElement);
 
 export default function SurveyCharts(props) {
+  useEffect(() => {
+    const wordcloud = new ChartJS(
+      document.getElementById("wordcloud").getContext("2d"),
+      {
+        type: "wordCloud",
+        data: {
+          labels: chartdata.whiskynotedata.map((el) => el.key),
+          datasets: [
+            {
+              label: "",
+              data: chartdata.whiskynotedata.map((el) => el.value * 5),
+            },
+          ],
+        },
+        options: {
+          maintainAspectRatio: true,
+          responsive: true,
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      }
+    );
+
+    return () => {
+      wordcloud.destroy();
+    };
+  }, []);
+
+  const splitLabel = (label) => {
+    if (/\s/.test(label)) {
+      return label.split(" ");
+    } else {
+      return label;
+    }
+  };
+
+  const chartdata = {
+    popularregiondata: {
+      labels: props.popularregiondata.map((obj) => obj.name),
+      datasets: [
+        {
+          label: "# of Distilleries",
+          data: props.popularregiondata.map((obj) => obj.count),
+        },
+      ],
+    },
+    comparedtodata: {
+      labels: props.comparedtodata.map((obj) =>
+        splitLabel(interestLabels[obj.rating])
+      ),
+      datasets: [
+        {
+          label: "Responses",
+          data: props.comparedtodata.map((obj) => obj.count),
+        },
+      ],
+    },
+    hoverdata: {
+      labels: props.hoverdata.map((obj) => ratingLabels[obj.rating]),
+      datasets: [
+        {
+          label: "% of Responses",
+          data: props.hoverdata.map((obj) => obj.percent),
+        },
+      ],
+    },
+    whiskynotedata: props.whiskynotedata.map((obj) => ({
+      key: obj.flavor,
+      value: obj.count,
+    })),
+  };
+
+  const chartoptions = {
+    responsive: {
+      maintainAspectRatio: true,
+      responsive: true,
+    },
+    comparedtooptions: {
+      maintainAspectRatio: true,
+      responsive: true,
+      plugins: {
+        tooltip: {
+          callbacks: {
+            title: (context) => {
+              return context[0].label.replaceAll(",", " ");
+            },
+          },
+        },
+      },
+    },
+    hoveroptions: {
+      maintainAspectRatio: true,
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+        },
+        tooltip: {
+          callbacks: {
+            title: function (context) {
+              let label = context[0].label;
+              if (label.length <= 30) {
+                return label;
+              } else {
+                return label.match(/.{1,30}(?:\s|$)/g);
+              }
+            },
+          },
+        },
+      },
+      circumference: 180,
+      rotation: -90,
+    },
+  };
+
   return (
     <>
       <Grid container>
@@ -12,23 +140,19 @@ export default function SurveyCharts(props) {
         </Grid>
         <Grid item xs={12} sm={6} md={4} className={styles.recognizedDataStyle}>
           <Typography variant="h6">Most Recognized Brands</Typography>
-          <Typography>
-            <ol>
-              {props.recognizeddata.map((el) => (
-                <li>{el.name}</li>
-              ))}
-            </ol>
-          </Typography>
+          <ol>
+            {props.recognizeddata.map((el) => (
+              <li>{el.name}</li>
+            ))}
+          </ol>
         </Grid>
         <Grid item xs={12} sm={6} md={4} className={styles.belovedDataStyle}>
           <Typography variant="h6">Most Beloved Scotch Whiskies</Typography>
-          <Typography>
-            <ol>
-              {props.beloveddata.map((el) => (
-                <li>{el.name}</li>
-              ))}
-            </ol>
-          </Typography>
+          <ol>
+            {props.beloveddata.map((el) => (
+              <li>{el.name}</li>
+            ))}
+          </ol>
         </Grid>
         <Grid
           item
@@ -37,7 +161,11 @@ export default function SurveyCharts(props) {
           lg={3}
           className={styles.popularRegionDataStyle}
         >
-          Most Popular Regions
+          <Typography variant="h6">Most Popular Regions</Typography>
+          <RadarChart
+            data={chartdata.popularregiondata}
+            options={chartoptions.responsive}
+          />
         </Grid>
         <Grid
           item
@@ -46,13 +174,22 @@ export default function SurveyCharts(props) {
           lg={4.5}
           className={styles.comparedToDataStyle}
         >
-          Scotch vs. Other Types of Whisky
+          <Typography variant="h6">Scotch vs. Other Types of Whisky</Typography>
+          <BarChart
+            data={chartdata.comparedtodata}
+            options={chartoptions.comparedtooptions}
+          />
         </Grid>
         <Grid item xs={12} md={6} lg={4.5} className={styles.hoverDataStyle}>
-          How People Feel About Scotch
+          <Typography variant="h6">How People Feel About Scotch</Typography>
+          <DonutChart
+            data={chartdata.hoverdata}
+            options={chartoptions.hoveroptions}
+          />
         </Grid>
         <Grid item xs={12} className={styles.whiskyNoteDataStyle}>
-          Best Whisky Notes
+          <Typography variant="h6">Best Whisky Notes</Typography>
+          <canvas id="wordcloud" className={styles.wordcloud}></canvas>
         </Grid>
       </Grid>
     </>

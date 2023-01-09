@@ -781,7 +781,7 @@ export const ratingLabels = {
 export const interestLabels = {
   1: `Rarely`,
   2: `Sometimes`,
-  3: `About half the time`,
+  3: `50/50`,
   4: `Often`,
   5: `Almost always`,
 };
