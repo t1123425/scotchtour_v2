@@ -110,7 +110,7 @@ export default function ScrollChart(props) {
           </Box>
         </motion.div>
       </Grid>
-      <Grid item xs={12} className={styles.chartContainer}>
+      <Grid item xs={12} sm={7} className={styles.chartContainer}>
         <motion.div
           initial={scrollChartVar.hidden}
           whileInView={scrollChartVar.visible}

@@ -15,6 +15,9 @@
     width: calc(100% - 30px);
     font-size: 4rem;
     text-align: left;
+    top: 64px;
+    z-index: 10;
+    background-color: rgba(255,255,255,0.8);
 }
 
 .scrollWrapper {
@@ -26,6 +29,8 @@
     max-width: 680px;
     width: calc(100% - 30px);
     margin: 0 15px; 
+    z-index: 10;
+    position: relative;
  }
 
  .imageHide {
@@ -36,6 +41,12 @@
  .captionShow {
     display: block;
     font-style: italic;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 5px 15px 0;
+    z-index: 10;
+    position: relative;
+    background-color: rgba(255,255,255,0.8);
  }
 
  .captionHide {
@@ -47,4 +58,11 @@
     max-width: 680px;
     text-align: left;
     margin: 0 auto;
+    
+ }
+
+ .paragraphBlock p {
+   position: relative;
+   z-index: 10;
+   background-color: rgba(255,255,255,0.8);
  }
