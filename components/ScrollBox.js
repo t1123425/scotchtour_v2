@@ -23,6 +23,11 @@ const scrollboxVar = {
 };
 
 export default function ScrollBox(props) {
+  const imgSizing = props.content.imgSizing === "grow" ? styles.grow : "";
+  const imgShow = props.content.imageUrl ? styles.imageShow : styles.imageHide;
+  const imgStyle = `${imgSizing} ${imgShow}`;
+  console.log(imgStyle);
+
   return (
     <Grid
       item
@@ -43,12 +48,7 @@ export default function ScrollBox(props) {
           whileInView={scrollboxVar.visible}
           viewport={{ once: true }}
         >
-          <img
-            src={props.content.imageUrl}
-            className={
-              props.content.imageUrl ? styles.imageShow : styles.imageHide
-            }
-          />
+          <img src={props.content.imageUrl} className={imgStyle} />
           <Typography
             className={
               props.content.caption ? styles.captionShow : styles.captionHide

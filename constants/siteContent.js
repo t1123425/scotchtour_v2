@@ -275,6 +275,7 @@ export const whatIsContent = [
   {
     title: "What is Scotch Whisky?",
     imageUrl: "/scotch_glass_1.jpeg",
+    imgSizing: "grow",
     description: [
       <p>
         Scotch whisky (often simply called Scotch) is malt whisky or grain
@@ -303,6 +304,7 @@ export const whatIsContent = [
   {
     title: "Comparison to Other Whiskies",
     imageUrl: "/whiskies.jpg",
+    imgSizing: "grow",
     caption:
       "Multiple types of whiskies including bourbon, Scotch, rye, and Irish whisky.",
     description: [
@@ -393,30 +395,6 @@ export const whatIsContent = [
 
 export const scrollChartContent = {
   title: "By the Numbers",
-  imageUrl: "/scotch_glass_1.jpeg",
-  description: [
-    <p>
-      Scotch whisky (often simply called Scotch) is malt whisky or grain whisky
-      made in Scotland. Scotch whisky must be made in a manner specified by law.
-    </p>,
-    <p>
-      All Scotch whisky was originally made from malted barley. Commercial
-      distilleries began introducing whisky made from wheat and rye in the late
-      18th century. Scotch whisky is divided into five distinct categories:
-      single malt Scotch whisky, single grain Scotch whisky, blended malt Scotch
-      whisky (formerly called "vatted malt" or "pure malt"), blended grain
-      Scotch whisky, and blended Scotch whisky.
-    </p>,
-    <p>
-      All Scotch whisky must be aged in oak barrels for at least three years.
-      Any age statement on a bottle of Scotch whisky, expressed in numerical
-      form, must reflect the age of the youngest whisky used to produce that
-      product. A whisky with an age statement is known as guaranteed-age whisky.
-      A whisky without an age statement is known as a no age statement (NAS)
-      whisky, the only guarantee being that all whisky contained in that bottle
-      is at least three years old.
-    </p>,
-  ],
 };
 
 export const historyContent = [
@@ -444,6 +422,7 @@ export const historyContent = [
   {
     title: "17th-18th Century",
     imageUrl: "/18th_century_scotch.jpg",
+    imgSizing: "grow",
     caption: "An 18th Century distiller making Scotch whisky.",
     description: [
       <p>
@@ -511,6 +490,7 @@ export const historyContent = [
   {
     title: "20th Century",
     imageUrl: "/scotch_barrels.jpg",
+    imgSizing: "grow",
     caption:
       "Distillers during the 20th Century realized that long-term storage in oak casks greatly improved the color, aroma and taste of whisky",
     description: [
@@ -535,6 +515,7 @@ export const processContent = [
   {
     title: "How Scotch Whisky is Made",
     imageUrl: "/whisky_process.jpg",
+    imgSizing: "grow",
     description: [
       <p>
         Single malt Scotch whisky is made using an age old process, beautiful in
@@ -554,6 +535,7 @@ export const processContent = [
   {
     title: "Malting",
     imageUrl: "/malt.jpg",
+    imgSizing: "true",
     description: [
       <p>
         The barley is first screened to remove any foreign matter and then
@@ -585,6 +567,7 @@ export const processContent = [
   {
     title: "Mashing",
     imageUrl: "/mash.jpg",
+    imgSizing: "true",
     description: [
       <p>
         The dried malt is ground in a mill and the grist, as it is now called.
@@ -607,6 +590,7 @@ export const processContent = [
   {
     title: "Fermentation",
     imageUrl: "/ferment.jpg",
+    imgSizing: "true",
     description: [
       <p>
         After cooling, the wort is passed into large vessels holding anything
@@ -623,6 +607,7 @@ export const processContent = [
   {
     title: "Distillation",
     imageUrl: "/distill.jpg",
+    imgSizing: "true",
     description: [
       <p>
         Malt Whisky is distilled twice in large copper Pot Stills. The liquid
@@ -654,6 +639,7 @@ export const processContent = [
   {
     title: "Maturation",
     imageUrl: "/scotch_barrels_2.jpg",
+    imgSizing: "grow",
     caption:
       "By Scottish law, any whisky to be considered scotch whisky must be aged in oak barrels for at least three years.",
     description: [
@@ -675,6 +661,8 @@ export const processContent = [
   },
   {
     title: "Blending",
+    imageUrl: "/blending_whisky.jpeg",
+    imgSizing: "grow",
     description: [
       <p>
         After maturation the different whiskies may be blended together with
@@ -695,6 +683,7 @@ export const processContent = [
   {
     title: "Packaging & Labeling",
     imageUrl: "/scotch_label.jpeg",
+    imgSizing: "grow",
     description: [
       <p>
         The final stage in production of Scotch Whisky is labelling and
