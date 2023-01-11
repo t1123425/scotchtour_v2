@@ -24,6 +24,15 @@ export default function SurveyCharts(props) {
             {
               label: "",
               data: chartdata.whiskynotedata.map((el) => el.value * 5),
+              color: [
+                "rgb(1,87,155)",
+                "#bba22b",
+                "#abb173",
+                "#818b59",
+                "#a58459",
+                "#819ca5",
+                "#7d627e",
+              ],
             },
           ],
         },
