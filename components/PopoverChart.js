@@ -18,6 +18,9 @@ export default function PopoverChart(props) {
       {
         label: "# of Active Distilleries",
         data: props.data.map((obj) => obj.count),
+        borderColor: "#01579b",
+        backgroundColor: "rgba(1,87,155, 0.4)",
+        borderWidth: 0,
       },
     ],
   };

@@ -9,6 +9,7 @@ import {
   TextField,
   Checkbox,
   Box,
+  Chip,
 } from "@mui/material";
 import {
   LocalDrink,
@@ -115,6 +116,16 @@ export default function Survey(props) {
               )}
               onChange={props.handleChangeScotchBrands}
               renderInput={(params) => <TextField {...params} />}
+              renderTags={(value, getTagProps) =>
+                value.map((option, index) => (
+                  <Chip
+                    variant="filled"
+                    label={option}
+                    sx={{ backgroundColor: "#d5ebff" }}
+                    {...getTagProps({ index })}
+                  />
+                ))
+              }
             />
           </Box>
         </Grid>

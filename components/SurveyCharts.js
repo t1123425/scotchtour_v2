@@ -59,6 +59,9 @@ export default function SurveyCharts(props) {
         {
           label: "# of Distilleries",
           data: props.popularregiondata.map((obj) => obj.count),
+          borderColor: "#01579b",
+          backgroundColor: "rgba(1,87,155, 0.4)",
+          borderWidth: 0,
         },
       ],
     },
@@ -70,6 +73,13 @@ export default function SurveyCharts(props) {
         {
           label: "Responses",
           data: props.comparedtodata.map((obj) => obj.count),
+          backgroundColor: [
+            "rgba(204, 232, 255, 0.7)",
+            "rgba(103, 187, 254, 0.7)",
+            "rgba(2, 142, 253, 0.7)",
+            "rgba(1, 100, 177, 0.7)",
+            "rgba(1, 87, 155, 0.7)",
+          ],
         },
       ],
     },
@@ -79,6 +89,18 @@ export default function SurveyCharts(props) {
         {
           label: "% of Responses",
           data: props.hoverdata.map((obj) => obj.percent),
+          backgroundColor: [
+            "rgba(234, 246, 255, 1)",
+            "rgba(192, 227, 255, 1)",
+            "rgba(149, 208, 254, 1)",
+            "rgba(107, 189, 254, 1)",
+            "rgba(65, 170, 254, 1)",
+            "rgba(23, 152, 253, 1)",
+            "rgba(2, 130, 232, 1)",
+            "rgba(1, 107, 190, 1)",
+            "rgba(1, 83, 148, 1)",
+            "rgba(1, 59, 106, 1)",
+          ],
         },
       ],
     },

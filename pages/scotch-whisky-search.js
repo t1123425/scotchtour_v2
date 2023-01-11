@@ -143,7 +143,7 @@ export default function ScotchDb({ whiskies }) {
                     sx={{
                       margin: "1px",
                       backgroundColor: filterInput.tags.includes(tag)
-                        ? "#9ad3ff"
+                        ? "#d5ebff"
                         : "transparent",
                     }}
                   />

@@ -11,6 +11,7 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Chip,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { rangeValues, searchTags } from "../constants/siteContent";
@@ -90,6 +91,16 @@ function SearchInput({ searchValue, handleChangeValue, setSearchHeight }, ref) {
               onChange={(event, newValue) => handleChangeValue(event, newValue)}
               id="tags"
               renderInput={(params) => <TextField label="Tags" {...params} />}
+              renderTags={(value, getTagProps) =>
+                value.map((option, index) => (
+                  <Chip
+                    variant="filled"
+                    label={option}
+                    sx={{ backgroundColor: "#d5ebff" }}
+                    {...getTagProps({ index })}
+                  />
+                ))
+              }
               width="100%"
             />
           </Grid>
