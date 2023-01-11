@@ -850,7 +850,7 @@ export const brandCards = [
     id: "dalwhinnie",
     imageUrl: "/brand_logos/dalwhinnie_logo.png",
     name: "Dalwhinnie",
-    region: "Highland",
+    region: "Highlands",
     founded: 1898,
     desc: [
       <p>
@@ -887,7 +887,7 @@ export const brandCards = [
     id: "erdradour",
     imageUrl: "/brand_logos/erdradour_logo.jpeg",
     name: "Erdradour",
-    region: "Highland",
+    region: "Highlands",
     founded: 1825,
     desc: [
       <p>
@@ -1018,7 +1018,7 @@ export const brandCards = [
     id: "glenmorangie",
     imageUrl: "/brand_logos/glenmorangie_logo.png",
     name: "Glenmorangie",
-    region: "Highland",
+    region: "Highlands",
     founded: 1843,
     desc: [
       <p>
@@ -1540,26 +1540,31 @@ export const rangeValues = {
 };
 
 export const searchTags = [
-  "full-body",
-  "medium-body",
-  "light-body",
-  "sweet",
-  "semi-sweet",
-  "heavy smoke",
-  "pronounced sherry",
-  "fruity",
-  "malty",
-  "apertif-style",
-  "medium smoke",
-  "pungent",
-  "honey",
-  "medicinal",
-  "floral",
-  "spicy",
-  "nutty",
-  "notes of wine",
-  "no smoke",
-  "light smoke",
+  // body
+  { name: "full-body", color: "" },
+  { name: "medium-body", color: "" },
+  { name: "light-body", color: "" },
+  // smoke
+  { name: "heavy smoke", color: "" },
+  { name: "medium smoke", color: "" },
+  { name: "light smoke", color: "" },
+  { name: "no smoke", color: "" },
+  // sweetness
+  { name: "sweet", color: "" },
+  { name: "semi-sweet", color: "" },
+  // wine characteristics
+  { name: "pronounced sherry", color: "" },
+  { name: "apertif-style", color: "" },
+  { name: "notes of wine", color: "" },
+  // misc descriptors
+  { name: "fruity", color: "" },
+  { name: "floral", color: "" },
+  { name: "honey", color: "" },
+  { name: "malty", color: "" },
+  { name: "pungent", color: "" },
+  { name: "medicinal", color: "" },
+  { name: "spicy", color: "" },
+  { name: "nutty", color: "" },
 ];
 
 export const rowsPerPageOptions = [5, 10, 25];

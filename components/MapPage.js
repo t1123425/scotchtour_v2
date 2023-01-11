@@ -1,12 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Typography, Popover, Box, Button } from "@mui/material";
 import styles from "../styles/MapPage.module.css";
-import { style } from "@mui/system";
+import { theme } from "../styles/theme";
 
 export default function MapPage(props) {
   // state
   const [anchorEl, setAnchorEl] = useState(null);
-  const [activeBtn, setActiveBtn] = useState(null);
+  const [activeBtn, setActiveBtn] = useState("islands");
 
   // helpers
   const popName = activeBtn ? props.regionContent[activeBtn].name : "sample";
@@ -38,6 +38,7 @@ export default function MapPage(props) {
         {props.regionButtons.map((region) => (
           <Button
             variant="contained"
+            color={"secondary"}
             id={region.name.toLowerCase()}
             className={styles.button}
             size="small"
@@ -64,12 +65,25 @@ export default function MapPage(props) {
           }}
         >
           <Box className={styles.popoverBox}>
-            <Typography variant="h5" className={styles.title}>
+            <Typography
+              variant="h5"
+              className={styles.title}
+              style={{
+                backgroundColor: theme.palette[activeBtn].main,
+              }}
+            >
               {popName}
             </Typography>
             <Typography className={styles.descBlock}>{popDesc}</Typography>
             <Typography className={styles.brandBlock}>
-              <strong>Notable Brands: </strong>
+              <strong
+                className={styles.notableBrands}
+                style={{
+                  backgroundColor: theme.palette[activeBtn].main,
+                }}
+              >
+                Notable Brands:{" "}
+              </strong>
               {popBrands}
             </Typography>
           </Box>

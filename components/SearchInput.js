@@ -86,7 +86,7 @@ function SearchInput({ searchValue, handleChangeValue, setSearchHeight }, ref) {
           <Grid item xs={9}>
             <Autocomplete
               multiple
-              options={searchTags}
+              options={searchTags.map((obj) => obj.name)}
               onChange={(event, newValue) => handleChangeValue(event, newValue)}
               id="tags"
               renderInput={(params) => <TextField label="Tags" {...params} />}

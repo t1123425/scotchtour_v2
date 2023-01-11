@@ -9,6 +9,7 @@ import {
   Popover,
 } from "@mui/material";
 import styles from "../styles/CardPage.module.css";
+import { theme } from "../styles/theme";
 
 function Card(props) {
   // state
@@ -52,8 +53,6 @@ export default function CardPage(props) {
   const popOffsetX = ref.current.clientWidth / 2;
   const activeData = props.content.filter((card) => card.id === activeCard);
 
-  console.log(activeData ? true : false);
-
   // handlers
   const handleClick = (event) => {
     setPopperOpen(event.currentTarget);
@@ -93,18 +92,48 @@ export default function CardPage(props) {
               {activeData[0] ? activeData[0].name : "sample"}
             </Typography>
             <Typography className={styles.popSpan}>
-              <strong>Region: </strong>
-              {activeData[0] ? activeData[0].region : "sample"}
+              <strong
+                className={styles.subDetails}
+                style={{
+                  backgroundColor: theme.palette.secondary.main,
+                }}
+              >
+                Region:{" "}
+              </strong>
+              <span
+                className={styles.regionPill}
+                style={{
+                  backgroundColor: activeData[0]
+                    ? theme.palette[activeData[0].region.toLowerCase()].main
+                    : "white",
+                }}
+              >
+                {activeData[0] ? activeData[0].region : "sample"}
+              </span>
             </Typography>
             <Typography className={styles.popSpan}>
-              <strong>Founded: </strong>
+              <strong
+                className={styles.subDetails}
+                style={{
+                  backgroundColor: theme.palette.secondary.main,
+                }}
+              >
+                Founded:{" "}
+              </strong>
               {activeData[0] ? activeData[0].founded : "sample"}
             </Typography>
             <Box className={styles.popBlock}>
               {activeData[0] ? activeData[0].desc.map((p) => p) : ""}
             </Box>
             <Typography className={styles.popFact}>
-              <strong>Interesting Fact: </strong>
+              <strong
+                className={styles.interestingFact}
+                style={{
+                  backgroundColor: theme.palette.secondary.main,
+                }}
+              >
+                Interesting Fact:{" "}
+              </strong>
               {activeData[0] ? activeData[0].interestingFact : "sample"}
             </Typography>
           </Box>

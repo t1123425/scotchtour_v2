@@ -43,6 +43,7 @@ export default function ScotchDb({ whiskies }) {
   const [mobileWidth, setMobileWidth] = useState();
   const [navHeight, setNavHeight] = useState();
   const [searchHeight, setSearchHeight] = useState();
+  console.log(filterInput.tags.includes("smoke"));
 
   // helpers
   const navRef = useRef();
@@ -139,6 +140,12 @@ export default function ScotchDb({ whiskies }) {
                     key={item.id + "-" + item.tags.indexOf(tag)}
                     label={tag}
                     size="small"
+                    sx={{
+                      margin: "1px",
+                      backgroundColor: filterInput.tags.includes(tag)
+                        ? "#9ad3ff"
+                        : "transparent",
+                    }}
                   />
                 ))}
               </TableCell>

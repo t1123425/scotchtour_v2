@@ -20,7 +20,7 @@
 }
 
 .popSpan {
-    margin: 0 15px;
+    margin: 0 15px 5px;
 }
 
 .popBlock {
@@ -30,4 +30,22 @@
 .popFact {
     margin: 0 15px;
     padding: 0 0 15px;
+}
+.interestingFact {
+    padding: 4px 2px 4px 8px;
+    margin-right: 6px;
+    border-radius: 4px;
+    
+}
+
+.subDetails {
+    padding: 4px 0px 4px 8px;
+    margin-right: 12px;
+    border-radius: 4px;
+}
+
+.regionPill {
+    border-radius: 16px;
+    padding: 4px 16px;
+    margin-left: -4px;
 }
