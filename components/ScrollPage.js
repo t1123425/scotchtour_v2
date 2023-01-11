@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Grid, Box } from "@mui/material";
+import { Grid } from "@mui/material";
 import ScrollBox from "./ScrollBox";
 
 export default function ScrollPage(props) {

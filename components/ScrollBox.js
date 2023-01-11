@@ -6,23 +6,18 @@ import styles from "../styles/ScrollBox.module.css";
 const scrollboxVar = {
   visible: {
     opacity: 1,
-    scale: 1,
+    // animation: "fade-bottom 2s ease-in",
     transition: {
-      type: "spring",
-      duration: 0.8,
-      bounce: 0.3,
+      duration: 0.4,
       ease: "easeIn",
     },
-    // filter: "blur(0)",
   },
   hidden: {
     opacity: 0,
-    scale: 0,
-    // filter: "blur(5px)"
   },
 };
 
-export default function ScrollBox(props) {
+export default function ScrollBox_test(props) {
   const imgSizing = props.content.imgSizing === "grow" ? styles.grow : "";
   const imgShow = props.content.imageUrl ? styles.imageShow : styles.imageHide;
   const imgStyle = `${imgSizing} ${imgShow}`;
@@ -49,6 +44,12 @@ export default function ScrollBox(props) {
           viewport={{ once: true }}
         >
           <img src={props.content.imageUrl} className={imgStyle} />
+        </motion.div>
+        <motion.div
+          initial={scrollboxVar.hidden}
+          whileInView={scrollboxVar.visible}
+          viewport={{ once: true }}
+        >
           <Typography
             className={
               props.content.caption ? styles.captionShow : styles.captionHide
@@ -56,12 +57,18 @@ export default function ScrollBox(props) {
           >
             {props.content.caption}
           </Typography>
-          <Box className={styles.paragraphBlock}>
-            {props.content.description.map((bit, i) => (
-              <div key={`bit-${i}`}>{bit}</div>
-            ))}
-          </Box>
         </motion.div>
+        <Box className={styles.paragraphBlock}>
+          {props.content.description.map((bit, i) => (
+            <motion.div
+              initial={scrollboxVar.hidden}
+              whileInView={scrollboxVar.visible}
+              viewport={{ once: true }}
+            >
+              <div key={`bit-${i}`}>{bit}</div>
+            </motion.div>
+          ))}
+        </Box>
       </Grid>
     </Grid>
   );

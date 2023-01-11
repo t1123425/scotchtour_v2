@@ -14,6 +14,7 @@ import Head from "next/head";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
 import { navItems } from "../constants/siteContent";
+import styles from "../styles/DrawerAppBar.module.css";
 
 function DrawerAppBar(props, ref) {
   const icon = "/whisky-still.png";
@@ -35,7 +36,7 @@ function DrawerAppBar(props, ref) {
         {navItems.map((item) => (
           <ListItem key={item.title} disablePadding>
             <ListItemButton>
-              <Link href={item.href}>
+              <Link href={item.href} className={styles.navLink}>
                 <Typography>{item.title}</Typography>
               </Link>
             </ListItemButton>
@@ -53,6 +54,12 @@ function DrawerAppBar(props, ref) {
       <Head>
         <title>{props.title}</title>
         <link rel="icon" href={icon} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Amiri&family=Ballet:opsz@16..72&family=Bellefair&family=Bona+Nova&family=Buda&family=Caudex&family=Charm&family=Cinzel&family=Cinzel+Decorative&family=Cormorant+Garamond&family=Cormorant+Unicase&family=Della+Respira&family=Felipa&family=Fondamento&family=Gilda+Display&family=Goudy+Bookletter+1911&family=Habibi&family=IM+Fell+English&family=Jim+Nightshade&family=Joan&family=Josefin+Slab&family=Kings&family=Macondo&family=Noto+Serif+JP&family=Nova+Cut&family=Quintessential&family=Shippori+Mincho&family=Simonetta&family=Spectral&family=Vesper+Libre&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <Box sx={{ display: "flex" }}>
         <AppBar component="nav" position="fixed" ref={ref}>
