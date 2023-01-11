@@ -1,0 +1,26 @@
+.wrapper {
+  position: sticky;
+  padding: 32px;
+  border-radius: 16px;
+  margin: 16px 32px;
+}
+
+.title {
+    text-align: center;
+}
+
+.textInput {
+    max-width: 900px;
+    margin: 16px auto;
+}
+
+.costSliderWrapper {
+    max-width: 750px;
+    margin: 16px auto;
+}
+
+.costSliderLabel {
+    margin-top: -8px;
+    text-align: center;
+    font-style: italic;
+}

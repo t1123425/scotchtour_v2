@@ -7,7 +7,6 @@ import {
   Autocomplete,
   Slide,
   useScrollTrigger,
-  AppBar,
   Accordion,
   AccordionSummary,
   AccordionDetails,
@@ -91,16 +90,16 @@ function SearchInput({ searchValue, handleChangeValue, setSearchHeight }, ref) {
               onChange={(event, newValue) => handleChangeValue(event, newValue)}
               id="tags"
               renderInput={(params) => <TextField label="Tags" {...params} />}
-              renderTags={(value, getTagProps) =>
-                value.map((option, index) => (
-                  <Chip
-                    variant="filled"
-                    label={option}
-                    sx={{ backgroundColor: "#d5ebff" }}
-                    {...getTagProps({ index })}
-                  />
-                ))
-              }
+              // renderTags={(value, getTagProps) =>
+              //   value.map((option, index) => (
+              //     <Chip
+              //       variant="filled"
+              //       label={option}
+              //       sx={{ backgroundColor: "#d5ebff" }}
+              //       {...getTagProps({ index })}
+              //     />
+              //   ))
+              // }
               width="100%"
             />
           </Grid>

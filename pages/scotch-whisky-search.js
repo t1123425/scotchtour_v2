@@ -1,7 +1,6 @@
 import React, { useReducer, useState, useEffect, useRef } from "react";
 import { navItems } from "../constants/siteContent";
 import DrawerAppBar from "../components/DrawerAppBar";
-import SearchInput from "../components/SearchInput";
 import ResultsTable from "../components/ResultsTable";
 import {
   Chip,
@@ -16,6 +15,7 @@ import {
 } from "@mui/material";
 import whiskyDbService from "../services/whiskyDbService";
 import { headers } from "../constants/siteContent";
+import SearchInputScroll from "../components/SearchInputScroll";
 
 export async function getStaticProps() {
   const whiskies = await whiskyDbService.getWhisky_db();
@@ -42,7 +42,7 @@ export default function ScotchDb({ whiskies }) {
   );
   const [mobileWidth, setMobileWidth] = useState();
   const [navHeight, setNavHeight] = useState();
-  const [searchHeight, setSearchHeight] = useState();
+  // const [searchHeight, setSearchHeight] = useState();
   console.log(filterInput.tags.includes("smoke"));
 
   // helpers
@@ -57,16 +57,29 @@ export default function ScotchDb({ whiskies }) {
       searchRef.current.focus();
     }
     setNavHeight(navRef.current.clientHeight);
-    setSearchHeight(searchRef.current.clientHeight);
+    // setSearchHeight(searchRef.current.clientHeight);
   }, []);
   const scrollStyle = mobileWidth >= 480 ? "pagination" : "infinite";
   // console.log(scrollStyle);
   const { TableContainer, TableHeader, TablePages, recordsAfterPagingSorting } =
     ResultsTable(records, headers, filterFn);
+  const tester = records.filter((obj) => records.indexOf(obj) <= 5);
+  const testTags = ["medium-body", "fruity"];
+  console.log(
+    tester.filter((item) =>
+      testTags.every((v) => {
+        return item.tags.includes(v);
+      })
+    )
+  );
 
   // handlers
   const handleSearch = (event, newValue) => {
     const { name, value, textContent } = event.target;
+    console.log(name);
+    console.log(value);
+    // console.log(newValue.length);
+    console.log(textContent);
     name === "range"
       ? setFilterInput({ range: value, min: value[0], max: value[1] })
       : name
@@ -79,7 +92,9 @@ export default function ScotchDb({ whiskies }) {
             return item.whisky
               .toLowerCase()
               .includes(
-                name === "whisky" ? value.toLowerCase() : filterInput.whisky
+                name === "whisky"
+                  ? value.toLowerCase()
+                  : filterInput.whisky.toLowerCase()
               );
           })
           .filter((item) => {
@@ -116,16 +131,15 @@ export default function ScotchDb({ whiskies }) {
   return (
     <>
       <DrawerAppBar title={navItems[6].title} ref={navRef} />
-      <SearchInput
+      <SearchInputScroll
         handleChangeValue={handleSearch}
         searchValue={filterInput}
         ref={searchRef}
-        setSearchHeight={setSearchHeight}
+        // setSearchHeight={setSearchHeight}
       />
       <TableContainer>
         <TableHeader />
         <TableBody>
-          {console.log(searchHeight)}
           {console.log(filterInput)}
           {console.log(filterFn.fn(records))}
           {recordsAfterPagingSorting(scrollStyle).map((item) => (

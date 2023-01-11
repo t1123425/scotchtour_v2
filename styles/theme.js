@@ -31,7 +31,14 @@ export const theme = createTheme({
       main: "#7d627e",
     },
   },
-  //   typography: {
-  //     fontFamily: "Noto Serif Japanese",
-  //   },
+  typography: {
+    fontFamily: "Spectral",
+    fontSize: 16,
+    h1: {
+      fontFamily: "Fondamento",
+    },
+    h5: {
+      fontFamily: "Fondamento",
+    },
+  },
 });
