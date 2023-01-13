@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, useCallback } from "react";
+import React, { useState, forwardRef, useEffect } from "react";
 import {
   Grid,
   TextField,
@@ -7,105 +7,107 @@ import {
   Autocomplete,
   Slide,
   useScrollTrigger,
+  Chip,
+  Box,
+  Paper,
   Accordion,
   AccordionSummary,
-  AccordionDetails,
-  Chip,
 } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { rangeValues, searchTags } from "../constants/siteContent";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import styles from "../styles/SearchInputScroll.module.css";
 
-// Fix this
 function HideOnScroll(props) {
+  const [hidden, setHidden] = useState(false);
   const { children } = props;
-  const trigger = useScrollTrigger();
+  const trigger = useScrollTrigger({ threshold: 0 });
   return (
-    <Slide appear={false} direction="down" in={!trigger}>
+    <Slide
+      appear={false}
+      direction="up"
+      in={!trigger}
+      addEndListener={console.log(trigger)}
+    >
       {children}
     </Slide>
   );
 }
 
-function SearchInput({ searchValue, handleChangeValue, setSearchHeight }, ref) {
+function SearchInput({ searchValue, handleChangeValue }, ref) {
   // state
-  const [expanded, setExpanded] = React.useState(true);
+  const [expanded, setExpanded] = useState(true);
+  // console.log(expanded);
 
   // helpers
-  const trigger = useScrollTrigger();
-  const updateSearchHeight = () => {
-    setSearchHeight(ref.current.clientHeight);
-  };
+  const trigger = useScrollTrigger({ threshold: 0 });
+  // console.log(expanded);
 
   // handlers
-  const handleChange = (newValue) => {
-    setExpanded(newValue, updateSearchHeight());
+  const handleExpand = () => {
+    setExpanded(!expanded);
+    // setSearchHeight(ref.current.clientHeight);
   };
 
   return (
-    <Accordion
-      expanded={expanded}
-      onChange={(event, newValue) => handleChange(newValue)}
-      ref={ref}
-      // onScroll={handleChange()}
-    >
-      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography variant="h4">Whisky Search</Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <Grid container justifyContent={"center"} spacing={4}>
-          <Grid item xs={9}>
-            <TextField
-              variant="outlined"
-              label="Whisky"
-              name="whisky"
-              value={searchValue.whisky}
-              onChange={(event, newValue) => handleChangeValue(event, newValue)}
-              fullWidth
-            ></TextField>
-          </Grid>
-          <Grid item xs={9} md={4}>
-            <Slider
-              key="range"
-              aria-label="Range slider for cost represented in dollar signs"
-              name="range"
-              value={[searchValue.min, searchValue.max]}
-              onChange={(event) => handleChangeValue(event)}
-              valueLabelDisplay="auto"
-              valueLabelFormat={(value) => {
-                return rangeValues[value];
-              }}
-              step={1}
-              marks
-              min={1}
-              max={6}
-            />
-            <Typography align="center" variant="subtitle1" fontStyle={"italic"}>
-              Cost Range
-            </Typography>
-          </Grid>
-          <Grid item xs={9}>
-            <Autocomplete
-              multiple
-              options={searchTags.map((obj) => obj.name)}
-              onChange={(event, newValue) => handleChangeValue(event, newValue)}
-              id="tags"
-              renderInput={(params) => <TextField label="Tags" {...params} />}
-              // renderTags={(value, getTagProps) =>
-              //   value.map((option, index) => (
-              //     <Chip
-              //       variant="filled"
-              //       label={option}
-              //       sx={{ backgroundColor: "#d5ebff" }}
-              //       {...getTagProps({ index })}
-              //     />
-              //   ))
-              // }
-              width="100%"
-            />
-          </Grid>
-        </Grid>
-      </AccordionDetails>
-    </Accordion>
+    <>
+      {/* <HideOnScroll scrollStyle={scrollStyle}> */}
+      <Accordion
+        expanded={expanded}
+        onChange={(ref) => handleExpand(ref)}
+        ref={ref}
+        sx={{ top: "64px" }}
+        className={styles.wrapper}
+        elevation={6}
+      >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h4" className={styles.title} align={"center"}>
+            Whisky Search
+          </Typography>
+        </AccordionSummary>
+        <Box className={styles.textInput}>
+          <TextField
+            variant="outlined"
+            label="Whisky"
+            name="whisky"
+            value={searchValue.whisky}
+            onChange={(event, newValue) => handleChangeValue(event, newValue)}
+            fullWidth
+          ></TextField>
+        </Box>
+        <Box className={styles.costSliderWrapper}>
+          <Slider
+            key="range"
+            aria-label="Range slider for cost represented in dollar signs"
+            name="range"
+            value={[searchValue.min, searchValue.max]}
+            onChange={(event) => handleChangeValue(event)}
+            valueLabelDisplay="auto"
+            valueLabelFormat={(value) => {
+              return rangeValues[value];
+            }}
+            step={1}
+            marks
+            min={1}
+            max={6}
+            className={styles.costSlider}
+          />
+          <Typography variant="subtitle1" className={styles.costSliderLabel}>
+            Cost Range
+          </Typography>
+        </Box>
+        <Box className={styles.textInput}>
+          <Autocomplete
+            multiple
+            options={searchTags.map((obj) => obj.name)}
+            onChange={(event, newValue) => handleChangeValue(event, newValue)}
+            id="tags"
+            renderInput={(params) => <TextField label="Tags" {...params} />}
+            width="100%"
+          />
+        </Box>
+      </Accordion>
+      {/* </HideOnScroll> */}
+    </>
   );
 }
 

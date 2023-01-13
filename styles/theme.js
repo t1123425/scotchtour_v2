@@ -40,5 +40,9 @@ export const theme = createTheme({
     h5: {
       fontFamily: "Fondamento",
     },
+    h6: {
+      fontFamily: "Fondamento",
+      fontSize: "1.3rem",
+    },
   },
 });

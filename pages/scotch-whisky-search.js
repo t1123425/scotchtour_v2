@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import whiskyDbService from "../services/whiskyDbService";
 import { headers } from "../constants/siteContent";
-import SearchInputScroll from "../components/SearchInputScroll";
+import SearchDrawer from "../components/SearchDrawer";
 
 export async function getStaticProps() {
   const whiskies = await whiskyDbService.getWhisky_db();
@@ -42,12 +42,11 @@ export default function ScotchDb({ whiskies }) {
   );
   const [mobileWidth, setMobileWidth] = useState();
   const [navHeight, setNavHeight] = useState();
-  // const [searchHeight, setSearchHeight] = useState();
-  console.log(filterInput.tags.includes("smoke"));
 
   // helpers
   const navRef = useRef();
   const searchRef = useRef();
+  const tableHeaderRef = useRef();
   useEffect(() => {
     setMobileWidth(window.innerWidth);
     if (navRef.current) {
@@ -56,30 +55,20 @@ export default function ScotchDb({ whiskies }) {
     if (searchRef.current) {
       searchRef.current.focus();
     }
+    if (tableHeaderRef.current) {
+      tableHeaderRef.current.focus();
+    }
+    console.log(tableHeaderRef);
     setNavHeight(navRef.current.clientHeight);
     // setSearchHeight(searchRef.current.clientHeight);
   }, []);
   const scrollStyle = mobileWidth >= 480 ? "pagination" : "infinite";
-  // console.log(scrollStyle);
   const { TableContainer, TableHeader, TablePages, recordsAfterPagingSorting } =
-    ResultsTable(records, headers, filterFn);
-  const tester = records.filter((obj) => records.indexOf(obj) <= 5);
-  const testTags = ["medium-body", "fruity"];
-  console.log(
-    tester.filter((item) =>
-      testTags.every((v) => {
-        return item.tags.includes(v);
-      })
-    )
-  );
+    ResultsTable(records, headers, filterFn, navHeight);
 
   // handlers
   const handleSearch = (event, newValue) => {
     const { name, value, textContent } = event.target;
-    console.log(name);
-    console.log(value);
-    // console.log(newValue.length);
-    console.log(textContent);
     name === "range"
       ? setFilterInput({ range: value, min: value[0], max: value[1] })
       : name
@@ -112,7 +101,9 @@ export default function ScotchDb({ whiskies }) {
                     return item.tags.includes(v);
                   })
                 : item
-              : item;
+              : filterInput.tags.every((v) => {
+                  return item.tags.includes(v);
+                });
           })
           .filter((item) => {
             let tempMin, tempMax;
@@ -127,25 +118,55 @@ export default function ScotchDb({ whiskies }) {
       },
     });
   };
+  const handleReset = () => {
+    setFilterInput({
+      whisky: "",
+      min: 1,
+      max: 6,
+      range: [1, 6],
+      tags: [],
+    });
+    setFilterFn({
+      fn: (items) => {
+        return items;
+      },
+    });
+  };
 
   return (
     <>
       <DrawerAppBar title={navItems[6].title} ref={navRef} />
-      <SearchInputScroll
+      {/* <SearchInput
         handleChangeValue={handleSearch}
         searchValue={filterInput}
         ref={searchRef}
         // setSearchHeight={setSearchHeight}
+        // handleExpand={handleExpand}
+        // expanded={expanded}
+        scrollStyle={scrollStyle}
+      /> */}
+      {/* <SearchInputScroll
+        handleChangeValue={handleSearch}
+        searchValue={filterInput}
+        ref={searchRef}
+        scrollStyle={scrollStyle}
+      /> */}
+      <SearchDrawer
+        handleChangeValue={handleSearch}
+        searchValue={filterInput}
+        ref={searchRef}
+        scrollStyle={scrollStyle}
+        handleReset={handleReset}
       />
-      <TableContainer>
-        <TableHeader />
+      <TableContainer maxWidth={"100vw"}>
+        <TableHeader stick={navHeight} />
         <TableBody>
           {console.log(filterInput)}
           {console.log(filterFn.fn(records))}
           {recordsAfterPagingSorting(scrollStyle).map((item) => (
             <TableRow key={item.id}>
               <TableCell>{item.whisky}</TableCell>
-              <TableCell>{item.type}</TableCell>
+              {/* <TableCell>{item.type}</TableCell> */}
               <TableCell>{item.cost}</TableCell>
               <TableCell>
                 {item.tags.map((tag) => (
@@ -159,6 +180,10 @@ export default function ScotchDb({ whiskies }) {
                       backgroundColor: filterInput.tags.includes(tag)
                         ? "#d5ebff"
                         : "transparent",
+                      fontSize: {
+                        xs: "0.75rem",
+                        md: "1rem",
+                      },
                     }}
                   />
                 ))}

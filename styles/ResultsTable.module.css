@@ -9,3 +9,8 @@
 .infinite {
     display: none
 }
+
+.topRow {
+    background-color: #4f83cc;
+    border: 10px #01579b;
+}

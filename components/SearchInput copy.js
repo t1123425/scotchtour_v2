@@ -7,39 +7,26 @@ import {
   Autocomplete,
   Slide,
   useScrollTrigger,
-  Chip,
-  Box,
-  Paper,
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Popover,
+  Chip,
 } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { rangeValues, searchTags } from "../constants/siteContent";
-import styles from "../styles/SearchInputScroll.module.css";
 
 // Fix this
 function HideOnScroll(props) {
-  const [hidden, setHidden] = useState(false);
   const { children } = props;
-  const trigger = useScrollTrigger({ threshold: 0 });
-  const handleClickAway = () => {
-    setHidden(!hidden);
-  };
-  console.log(hidden);
+  const trigger = useScrollTrigger();
   return (
-    <Slide appear={false} direction="up" in={!trigger}>
+    <Slide appear={false} direction="down" in={!trigger}>
       {children}
     </Slide>
   );
 }
 
-export default function SearchInputScroll({
-  searchValue,
-  handleChangeValue,
-  setSearchHeight,
-  scrollStyle,
-}) {
+function SearchInput({ searchValue, handleChangeValue, setSearchHeight }, ref) {
   // state
   const [expanded, setExpanded] = React.useState(true);
 
@@ -55,13 +42,18 @@ export default function SearchInputScroll({
   };
 
   return (
-    <>
-      <HideOnScroll scrollStyle={scrollStyle}>
-        <Paper sx={{ top: "64px" }} className={styles.wrapper} elevation={6}>
-          <Typography variant="h4" className={styles.title}>
-            Whisky Search
-          </Typography>
-          <Box className={styles.textInput}>
+    <Accordion
+      expanded={expanded}
+      onChange={(event, newValue) => handleChange(newValue)}
+      ref={ref}
+      // onScroll={handleChange()}
+    >
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <Typography variant="h4">Whisky Search</Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Grid container justifyContent={"center"} spacing={4}>
+          <Grid item xs={9}>
             <TextField
               variant="outlined"
               label="Whisky"
@@ -70,8 +62,8 @@ export default function SearchInputScroll({
               onChange={(event, newValue) => handleChangeValue(event, newValue)}
               fullWidth
             ></TextField>
-          </Box>
-          <Box className={styles.costSliderWrapper}>
+          </Grid>
+          <Grid item xs={9} md={4}>
             <Slider
               key="range"
               aria-label="Range slider for cost represented in dollar signs"
@@ -86,26 +78,35 @@ export default function SearchInputScroll({
               marks
               min={1}
               max={6}
-              className={styles.costSlider}
             />
-            <Typography variant="subtitle1" className={styles.costSliderLabel}>
+            <Typography align="center" variant="subtitle1" fontStyle={"italic"}>
               Cost Range
             </Typography>
-          </Box>
-          <Box className={styles.textInput}>
+          </Grid>
+          <Grid item xs={9}>
             <Autocomplete
               multiple
               options={searchTags.map((obj) => obj.name)}
               onChange={(event, newValue) => handleChangeValue(event, newValue)}
               id="tags"
               renderInput={(params) => <TextField label="Tags" {...params} />}
+              // renderTags={(value, getTagProps) =>
+              //   value.map((option, index) => (
+              //     <Chip
+              //       variant="filled"
+              //       label={option}
+              //       sx={{ backgroundColor: "#d5ebff" }}
+              //       {...getTagProps({ index })}
+              //     />
+              //   ))
+              // }
               width="100%"
             />
-          </Box>
-        </Paper>
-      </HideOnScroll>
-    </>
+          </Grid>
+        </Grid>
+      </AccordionDetails>
+    </Accordion>
   );
 }
 
-// export default forwardRef(SearchInputScroll);
+export default forwardRef(SearchInput);

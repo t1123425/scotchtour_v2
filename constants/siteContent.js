@@ -1525,7 +1525,7 @@ export const brandData = [
 
 export const headers = [
   { id: "whisky", label: "Whisky" },
-  { id: "type", label: "Type" },
+  // { id: "type", label: "Type" },
   { id: "cost", label: "Cost" },
   { id: "tags", label: "Tags", disableSorting: true },
 ];
@@ -1540,31 +1540,31 @@ export const rangeValues = {
 };
 
 export const searchTags = [
-  // body
-  { name: "full-body", color: "" },
-  { name: "medium-body", color: "" },
-  { name: "light-body", color: "" },
-  // smoke
-  { name: "heavy smoke", color: "" },
-  { name: "medium smoke", color: "" },
-  { name: "light smoke", color: "" },
-  { name: "no smoke", color: "" },
-  // sweetness
-  { name: "sweet", color: "" },
-  { name: "semi-sweet", color: "" },
-  // wine characteristics
-  { name: "pronounced sherry", color: "" },
-  { name: "apertif-style", color: "" },
-  { name: "notes of wine", color: "" },
-  // misc descriptors
-  { name: "fruity", color: "" },
-  { name: "floral", color: "" },
-  { name: "honey", color: "" },
-  { name: "malty", color: "" },
-  { name: "pungent", color: "" },
-  { name: "medicinal", color: "" },
-  { name: "spicy", color: "" },
-  { name: "nutty", color: "" },
+  // body - green shades
+  { name: "full-body", color: "#065b00" },
+  { name: "medium-body", color: "#43891f" },
+  { name: "light-body", color: "#74ba4e" },
+  // smoke - grey shades
+  { name: "heavy smoke", color: "#42555c" },
+  { name: "medium smoke", color: "#6e8189" },
+  { name: "light smoke", color: "#9db0b9" },
+  { name: "no smoke", color: "#d4ecff" },
+  // sweetness - blue shades
+  { name: "sweet", color: "#37a4cc" },
+  { name: "semi-sweet", color: "#73d5ff" },
+  // wine characteristics - purple shades
+  { name: "pronounced sherry", color: "#761e4b" },
+  { name: "apertif-style", color: "#a84d77" },
+  { name: "notes of wine", color: "#dc7ca6" },
+  // misc descriptors - various
+  { name: "fruity", color: "#ea172e" },
+  { name: "floral", color: "#db56db" },
+  { name: "honey", color: "#efdc72" },
+  { name: "malty", color: "#efb563" },
+  { name: "pungent", color: "#96a717" },
+  { name: "medicinal", color: "#ef8067" },
+  { name: "spicy", color: "#b40000" },
+  { name: "nutty", color: "#70150f" },
 ];
 
 export const rowsPerPageOptions = [5, 10, 25];

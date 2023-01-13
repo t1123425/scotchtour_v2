@@ -5,8 +5,9 @@ import {
   TableRow,
   TablePagination,
   TableSortLabel,
+  Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styles from "../styles/ResultsTable.module.css";
 import { rowsPerPageOptions } from "../constants/siteContent";
 
@@ -36,9 +37,13 @@ export default function ResultsTable(records, headers, filterFn, filterInput) {
             <TableCell
               key={header.id}
               sortDirection={orderBy === header.id ? order : false}
+              className={styles.topRow}
+              // sx={{ top: props.stick }}
+              sx={{ top: 164 }}
+              // sx={{ top: expanded === true ? 461 : 200 }}
             >
               {header.disableSorting ? (
-                header.label
+                <Typography>{header.label}</Typography>
               ) : (
                 <TableSortLabel
                   active={orderBy === header.id}
@@ -47,7 +52,9 @@ export default function ResultsTable(records, headers, filterFn, filterInput) {
                     handleSortRequest(header.id);
                   }}
                 >
-                  {header.label}
+                  {header.label === "Whisky"
+                    ? `${header.label} (${filterFn.fn(records).length})`
+                    : header.label}
                 </TableSortLabel>
               )}
             </TableCell>

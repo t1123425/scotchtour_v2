@@ -1,7 +1,20 @@
+.navBar {
+    min-height: 64px;
+}
+
 .navLink {
     text-decoration: none;
 }
 
+.listItem:hover {
+    background-color: #4f83cc;
+    color: whitesmoke;
+}
+
 .navLink:visited {
     color: inherit
+}
+
+.list {
+    color: #01579b
 }

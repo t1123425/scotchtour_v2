@@ -7,6 +7,7 @@ import {
   List,
   ListItem,
   ListItemButton,
+  SwipeableDrawer,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -31,13 +32,13 @@ function DrawerAppBar(props, ref) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <List>
+    <Box onClick={handleDrawerToggle}>
+      <List className={styles.list}>
         {navItems.map((item) => (
-          <ListItem key={item.title} disablePadding>
+          <ListItem key={item.title} disablePadding className={styles.listItem}>
             <ListItemButton>
               <Link href={item.href} className={styles.navLink}>
-                <Typography>{item.title}</Typography>
+                <Typography variant={"h6"}>{item.title}</Typography>
               </Link>
             </ListItemButton>
           </ListItem>
@@ -62,7 +63,12 @@ function DrawerAppBar(props, ref) {
         />
       </Head>
       <Box sx={{ display: "flex" }}>
-        <AppBar component="nav" position="fixed" ref={ref}>
+        <AppBar
+          component="nav"
+          position="fixed"
+          ref={ref}
+          className={styles.navBar}
+        >
           <Toolbar>
             <IconButton
               color="inherit"
@@ -78,7 +84,7 @@ function DrawerAppBar(props, ref) {
             >
               <MenuIcon />
             </IconButton>
-            <Typography>{props.title}</Typography>
+            <Typography variant={"h6"}>{props.title}</Typography>
             {/* <Box sx={{ display: { xs: "none", sm: "block" } }}>
                 {navItems.map((item) => (
                 <Link href={item.href}>
@@ -91,7 +97,7 @@ function DrawerAppBar(props, ref) {
           </Toolbar>
         </AppBar>
         <Box component="nav">
-          <Drawer
+          <SwipeableDrawer
             container={container}
             variant="temporary"
             open={open}
@@ -99,16 +105,18 @@ function DrawerAppBar(props, ref) {
             modalprops={{
               keepMounted: true,
             }}
+            className={styles.drawer}
             sx={{
               // display: { xs: "block", sm: "none" },
               "& .MuiDrawer-paper": {
                 boxSizing: "border-box",
                 width: { xs: "45%", sm: "30%", lg: "15%" },
+                backgroundColor: "#fbf7f5",
               },
             }}
           >
             {drawer}
-          </Drawer>
+          </SwipeableDrawer>
         </Box>
       </Box>
       <Toolbar id="emptyToolbar" />

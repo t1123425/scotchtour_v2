@@ -3,10 +3,25 @@
   padding: 32px;
   border-radius: 16px;
   margin: 16px 32px;
+  z-index: 15;
+  /* background-color: aliceblue; */
+}
+
+.headerBox {
+  position: sticky;
+  z-index: 15;
+  background-color: aliceblue;
 }
 
 .title {
-    text-align: center;
+    display: inline-block;
+}
+
+.icon {
+    display: inline-block;
+    margin: 16px;
+    padding-top: 20px;
+    border-radius: 32px;
 }
 
 .textInput {
@@ -23,4 +38,8 @@
     margin-top: -8px;
     text-align: center;
     font-style: italic;
+}
+
+.resetButton {
+    margin: 0 auto;
 }
