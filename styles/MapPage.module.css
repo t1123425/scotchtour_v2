@@ -22,13 +22,14 @@
     margin: 20px auto;
     font-weight: bold;
     border-radius: 48px;
-    max-width: 60%;
-    padding: 4px 0;
+    max-width: 65%;
+    padding: 2px 0;
+    font-size: 1.8rem;
 }
 
 .notableBrands {
     border-radius: 16px;
-    padding: 4px 0px 4px 8px;
+    padding: 0px 4px 0px 8px;
     margin-right: 6px;
     /* margin-bottom: 4px; */
 }

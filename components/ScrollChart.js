@@ -59,8 +59,13 @@ export default function ScrollChart(props) {
   const options = {
     maintainAspectRatio: true,
     responsive: true,
+    labels: {
+      font: {
+        family: "Helvetica",
+      },
+    },
     legend: {
-      display: false,
+      // display: false,
     },
     elements: {
       point: {

@@ -4,7 +4,7 @@
 
 .title {
     padding: 15px 0px 15px;
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin: 0 auto;
     max-width: 680px;
     width: calc(100% - 30px);
@@ -16,6 +16,12 @@
     padding: 15px 0px 15px;
     text-align: center;
     max-width: 600px;
+    font-size: 1.4rem;
+}
+
+.questionSpan {
+    font-weight: bold;
+    color: #01579b
 }
 
 .content {
@@ -39,4 +45,8 @@
 
 .buttonWrapper {
     margin: 15px auto;
+}
+
+.slider {
+    max-width: 75%;
 }

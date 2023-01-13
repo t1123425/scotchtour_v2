@@ -66,7 +66,7 @@ export default function MapPage(props) {
         >
           <Box className={styles.popoverBox}>
             <Typography
-              variant="h5"
+              variant="h6"
               className={styles.title}
               style={{
                 backgroundColor: theme.palette[activeBtn].main,

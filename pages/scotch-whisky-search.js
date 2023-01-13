@@ -40,31 +40,13 @@ export default function ScotchDb({ whiskies }) {
       tags: [],
     }
   );
-  const [mobileWidth, setMobileWidth] = useState();
-  const [navHeight, setNavHeight] = useState();
 
   // helpers
-  const navRef = useRef();
-  const searchRef = useRef();
-  const tableHeaderRef = useRef();
-  useEffect(() => {
-    setMobileWidth(window.innerWidth);
-    if (navRef.current) {
-      navRef.current.focus();
-    }
-    if (searchRef.current) {
-      searchRef.current.focus();
-    }
-    if (tableHeaderRef.current) {
-      tableHeaderRef.current.focus();
-    }
-    console.log(tableHeaderRef);
-    setNavHeight(navRef.current.clientHeight);
-    // setSearchHeight(searchRef.current.clientHeight);
-  }, []);
-  const scrollStyle = mobileWidth >= 480 ? "pagination" : "infinite";
-  const { TableContainer, TableHeader, TablePages, recordsAfterPagingSorting } =
-    ResultsTable(records, headers, filterFn, navHeight);
+  const { TableContainer, TableHeader, recordsAfterSorting } = ResultsTable(
+    records,
+    headers,
+    filterFn
+  );
 
   // handlers
   const handleSearch = (event, newValue) => {
@@ -135,38 +117,18 @@ export default function ScotchDb({ whiskies }) {
 
   return (
     <>
-      <DrawerAppBar title={navItems[6].title} ref={navRef} />
-      {/* <SearchInput
-        handleChangeValue={handleSearch}
-        searchValue={filterInput}
-        ref={searchRef}
-        // setSearchHeight={setSearchHeight}
-        // handleExpand={handleExpand}
-        // expanded={expanded}
-        scrollStyle={scrollStyle}
-      /> */}
-      {/* <SearchInputScroll
-        handleChangeValue={handleSearch}
-        searchValue={filterInput}
-        ref={searchRef}
-        scrollStyle={scrollStyle}
-      /> */}
+      <DrawerAppBar title={navItems[6].title} />
       <SearchDrawer
         handleChangeValue={handleSearch}
         searchValue={filterInput}
-        ref={searchRef}
-        scrollStyle={scrollStyle}
         handleReset={handleReset}
       />
       <TableContainer maxWidth={"100vw"}>
-        <TableHeader stick={navHeight} />
+        <TableHeader />
         <TableBody>
-          {console.log(filterInput)}
-          {console.log(filterFn.fn(records))}
-          {recordsAfterPagingSorting(scrollStyle).map((item) => (
+          {recordsAfterSorting().map((item) => (
             <TableRow key={item.id}>
               <TableCell>{item.whisky}</TableCell>
-              {/* <TableCell>{item.type}</TableCell> */}
               <TableCell>{item.cost}</TableCell>
               <TableCell>
                 {item.tags.map((tag) => (
@@ -192,7 +154,6 @@ export default function ScotchDb({ whiskies }) {
           ))}
         </TableBody>
       </TableContainer>
-      <TablePages scrollStyle={scrollStyle} />
     </>
   );
 }

@@ -37,7 +37,7 @@ export default function SurveyCharts(props) {
           ],
         },
         options: {
-          maintainAspectRatio: true,
+          // maintainAspectRatio: true,
           responsive: true,
           plugins: {
             legend: {

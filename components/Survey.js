@@ -16,6 +16,7 @@ import {
   CheckBox,
   CheckBoxOutlineBlank,
 } from "@mui/icons-material";
+import { brandList } from "../constants/siteContent";
 import styles from "../styles/Survey.module.css";
 
 export default function Survey(props) {
@@ -34,13 +35,14 @@ export default function Survey(props) {
     <>
       <Grid container display={props.showSurvey} className={styles.wrapper}>
         <Grid item xs={12}>
-          <Typography variant="h2" className={styles.title}>
+          <Typography variant="h1" className={styles.title}>
             Visitor Survey
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Typography className={styles.question}>
-            Question 1: How much do you like Scotch?
+          <Typography className={styles.question} variant="h4">
+            <span className={styles.questionSpan}>Question 1:</span> How much do
+            you like Scotch?
           </Typography>
           <Box align="center" className={styles.content}>
             <Rating
@@ -68,9 +70,9 @@ export default function Survey(props) {
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <Typography className={styles.question}>
-            Question 2: How often do you choose Scotch whisky over other types
-            of whiskey?
+          <Typography className={styles.question} variant="h4">
+            <span className={styles.questionSpan}>Question 2:</span> How often
+            do you choose Scotch whisky over other types of whiskey?
           </Typography>
           <Box className={styles.content}>
             <Slider
@@ -88,20 +90,22 @@ export default function Survey(props) {
               marks
               min={1}
               max={5}
+              className={styles.slider}
             />
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <Typography className={styles.question}>
-            Question 3: Which of these Scotch brands have you heard of before?
-            (you may choose more than one)
+          <Typography className={styles.question} variant="h4">
+            <span className={styles.questionSpan}>Question 3:</span> Which of
+            these Scotch brands have you heard of before? (you may choose more
+            than one)
           </Typography>
           <Box className={styles.content}>
             <Autocomplete
               multiple
               autoComplete
               disableCloseOnSelect
-              options={props.brandList}
+              options={brandList}
               getOptionLabel={(option) => option}
               renderOption={(props, option, { selected }) => (
                 <li {...props}>
@@ -130,8 +134,9 @@ export default function Survey(props) {
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <Typography className={styles.question}>
-            Question 4: What is your favorite Scotch whisky?
+          <Typography className={styles.question} variant="h4">
+            <span className={styles.questionSpan}>Question 4:</span> What is
+            your favorite Scotch whisky?
           </Typography>
           <Box className={styles.content}>
             <Autocomplete

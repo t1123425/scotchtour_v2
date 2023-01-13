@@ -17,6 +17,9 @@ import { rangeValues, searchTags } from "../constants/siteContent";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import styles from "../styles/SearchInputScroll.module.css";
 
+// Editor's note - Original attempt to create a search input; Accordion + HideOnScroll logic was bad
+// UX and the trigger logic was a bit unruly/didn't want to sink more time figuring it out.
+
 function HideOnScroll(props) {
   const [hidden, setHidden] = useState(false);
   const { children } = props;

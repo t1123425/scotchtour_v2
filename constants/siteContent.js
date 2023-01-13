@@ -1,5 +1,3 @@
-import { Typography } from "@mui/material";
-
 export const navItems = [
   {
     id: 0,
@@ -1280,6 +1278,38 @@ export const brandCards = [
   },
 ];
 
+export const brandList = [
+  "AnCnon",
+  "Arbeg",
+  "Arran",
+  "Aberlour",
+  "Balblair",
+  "Balvenie",
+  "BenRiach",
+  "Bowmore",
+  "Bruichladdich",
+  "Chivas Regal",
+  "Compass Box",
+  "Deanston",
+  "Glendronach",
+  "Glenfiddich",
+  "Glenallachie",
+  "Glenglassaugh",
+  "Glen Grant",
+  "Glenlivet",
+  "Imperial",
+  "Johnnie Walker",
+  "Kilchoman",
+  "Lagavulin",
+  "Laphroaig",
+  "Macallan",
+  "Mortlach",
+  "Old Pulteney",
+  "Speyburn",
+  "Talisker",
+  "Wemyss",
+];
+
 export const brandData = [
   { name: "Aberfeldy", founded: `1898`, region: "Highlands", closed: "" },
   { name: "Aberlour", founded: `1879`, region: "Speyside", closed: "" },
@@ -1524,10 +1554,9 @@ export const brandData = [
 ];
 
 export const headers = [
-  { id: "whisky", label: "Whisky" },
-  // { id: "type", label: "Type" },
+  { id: "whisky", label: "Whisky Name" },
   { id: "cost", label: "Cost" },
-  { id: "tags", label: "Tags", disableSorting: true },
+  { id: "tags", label: "Tasting Notes/Attributes", disableSorting: true },
 ];
 
 export const rangeValues = {
@@ -1566,5 +1595,3 @@ export const searchTags = [
   { name: "spicy", color: "#b40000" },
   { name: "nutty", color: "#70150f" },
 ];
-
-export const rowsPerPageOptions = [5, 10, 25];

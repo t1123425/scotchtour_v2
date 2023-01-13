@@ -70,3 +70,16 @@
    z-index: 10;
    background-color: rgba(251, 247, 245,0.8);
  }
+
+ .paragraphBlock ul {
+   list-style: none;
+ }
+
+ .paragraphBlock ul li::before {
+   content: "\2022";
+   color: #01579b;
+   font-weight: bold;
+   display: inline-block;
+   width: 1rem;
+   margin-left: -1em
+ }

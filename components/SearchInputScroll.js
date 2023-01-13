@@ -18,7 +18,9 @@ import {
 import { rangeValues, searchTags } from "../constants/siteContent";
 import styles from "../styles/SearchInputScroll.module.css";
 
-// Fix this
+// Editor's note - This was the v2 solution for the search input. I got the scroll trigger to work in a way I liked
+// but the HideOnScroll modal just wasn't user-friendly. Eventually opted for a sliding drawer effect - cleanest option.
+
 function HideOnScroll(props) {
   const [hidden, setHidden] = useState(false);
   const { children } = props;
