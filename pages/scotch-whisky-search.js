@@ -128,7 +128,7 @@ export default function ScotchDb({ whiskies }) {
         <TableBody>
           {recordsAfterSorting().map((item) => (
             <TableRow key={item.id}>
-              <TableCell>{item.whisky}</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>{item.whisky}</TableCell>
               <TableCell>{item.cost}</TableCell>
               <TableCell>
                 {item.tags.map((tag) => (

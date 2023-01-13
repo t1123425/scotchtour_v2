@@ -34,8 +34,6 @@
     /* margin-bottom: 4px; */
 }
 
-
-
 .descBlock {
     margin: 0 15px;
 }
@@ -44,3 +42,14 @@
     margin: 0 15px 20px;
 }
 
+.descBlock a {
+    text-decoration: none;
+    color: #01579b;
+    font-weight: bold;
+}
+
+.descBlock a:visited {
+    color: inherit;
+    color: #01579b;
+    font-weight: bold;
+}

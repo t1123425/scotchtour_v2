@@ -12,8 +12,13 @@ import {
   IconButton,
   ClickAwayListener,
   Button,
+  Tooltip,
 } from "@mui/material";
-import { rangeValues, searchTags } from "../constants/siteContent";
+import {
+  rangeValues,
+  searchTags,
+  costSliderTooltip,
+} from "../constants/siteContent";
 import SearchIcon from "@mui/icons-material/Search";
 import styles from "../styles/SearchInputScroll.module.css";
 
@@ -47,6 +52,7 @@ export default function SearchDrawer(props) {
             props.handleChangeValue(event, newValue)
           }
           fullWidth
+          placeholder="Search by brand and/or name of whisky"
         ></TextField>
       </Box>
       <Box className={styles.costSliderWrapper}>
@@ -66,9 +72,11 @@ export default function SearchDrawer(props) {
           max={6}
           className={styles.costSlider}
         />
-        <Typography variant="subtitle1" className={styles.costSliderLabel}>
-          Cost Range
-        </Typography>
+        <Tooltip title={costSliderTooltip}>
+          <Typography variant="subtitle1" className={styles.costSliderLabel}>
+            Cost Range
+          </Typography>
+        </Tooltip>
       </Box>
       <Box className={styles.textInput}>
         <Autocomplete
@@ -80,7 +88,9 @@ export default function SearchDrawer(props) {
             props.handleChangeValue(event, newValue)
           }
           id="tags"
-          renderInput={(params) => <TextField label="Tags" {...params} />}
+          renderInput={(params) => (
+            <TextField label="Tasting Notes/Attributes" {...params} />
+          )}
           width="100%"
           value={props.searchValue.tags}
           sx={{

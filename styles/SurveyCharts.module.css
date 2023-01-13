@@ -5,7 +5,9 @@
 }
 
 .totalCountStyle > h1 {
-    margin: 16px;
+    margin: 4px;
+    font-size: 9rem;
+    font-family: 'Cormorant Unicase';
     color: #a51914;
 }
 

@@ -111,7 +111,10 @@ export default function ScrollChart(props) {
         >
           <Box className={styles.paragraphBlock}>
             Today, scotch whisky is enjoyed almost every country around the
-            world. There are over 150 scotch whisky distilleries active today.
+            world.{" "}
+            <strong>
+              There are over 150 scotch whisky distilleries active today.
+            </strong>{" "}
             Every second, 44 bottles of scotch are shipped from Scotland across
             the globe - helping to support tens of thousands of jobs in Scotland
             and ensuring that millions of consumers can enjoy a dram. It's a

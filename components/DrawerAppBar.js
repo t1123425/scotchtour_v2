@@ -17,7 +17,7 @@ import Link from "next/link";
 import { navItems } from "../constants/siteContent";
 import styles from "../styles/DrawerAppBar.module.css";
 
-function DrawerAppBar(props, ref) {
+export default function DrawerAppBar(props) {
   const icon = "/whisky-still.png";
   const { window } = props;
   const [open, setOpen] = React.useState(false);
@@ -36,10 +36,12 @@ function DrawerAppBar(props, ref) {
       <List className={styles.list}>
         {navItems.map((item) => (
           <ListItem key={item.title} disablePadding className={styles.listItem}>
-            <ListItemButton>
-              <Link href={item.href} className={styles.navLink}>
-                <Typography variant={"h6"}>{item.title}</Typography>
-              </Link>
+            <ListItemButton
+              component={Link}
+              to={item.href}
+              className={styles.navLink}
+            >
+              <Typography variant={"h6"}>{item.title}</Typography>
             </ListItemButton>
           </ListItem>
         ))}
@@ -63,12 +65,7 @@ function DrawerAppBar(props, ref) {
         />
       </Head>
       <Box sx={{ display: "flex" }}>
-        <AppBar
-          component="nav"
-          position="fixed"
-          ref={ref}
-          className={styles.navBar}
-        >
+        <AppBar component="nav" position="fixed" className={styles.navBar}>
           <Toolbar>
             <IconButton
               color="inherit"
@@ -123,5 +120,3 @@ function DrawerAppBar(props, ref) {
     </>
   );
 }
-
-export default React.forwardRef(DrawerAppBar);
