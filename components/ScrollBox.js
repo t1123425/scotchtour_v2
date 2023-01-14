@@ -6,7 +6,6 @@ import styles from "../styles/ScrollBox.module.css";
 const scrollboxVar = {
   visible: {
     opacity: 1,
-    // animation: "fade-bottom 2s ease-in",
     transition: {
       duration: 0.4,
       ease: "easeIn",
@@ -17,7 +16,7 @@ const scrollboxVar = {
   },
 };
 
-export default function ScrollBox_test(props) {
+export default function ScrollBox(props) {
   const imgSizing = props.content.imgSizing === "grow" ? styles.grow : "";
   const imgShow = props.content.imageUrl ? styles.imageShow : styles.imageHide;
   const imgStyle = `${imgSizing} ${imgShow}`;

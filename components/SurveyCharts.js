@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Grid, Typography } from "@mui/material";
 import styles from "../styles/SurveyCharts.module.css";
 import { Chart as ChartJS } from "chart.js/auto";
@@ -13,45 +13,48 @@ import { WordCloudController, WordElement } from "chartjs-chart-wordcloud";
 ChartJS.register(WordCloudController, WordElement);
 
 export default function SurveyCharts(props) {
-  useEffect(() => {
-    const wordcloud = new ChartJS(
-      document.getElementById("wordcloud").getContext("2d"),
-      {
-        type: "wordCloud",
-        data: {
-          labels: chartdata.whiskynotedata.map((el) => el.key),
-          datasets: [
-            {
-              label: "",
-              data: chartdata.whiskynotedata.map((el) => el.value * 5),
-              color: [
-                "rgb(1,87,155)",
-                "#bba22b",
-                "#abb173",
-                "#818b59",
-                "#a58459",
-                "#819ca5",
-                "#7d627e",
-              ],
-            },
-          ],
-        },
-        options: {
-          // maintainAspectRatio: true,
-          responsive: true,
-          plugins: {
-            legend: {
-              display: false,
-            },
-          },
-        },
-      }
-    );
+  // Unused WordCloud Component - was taxing to load; may revisit in the future
+  // useEffect(() => {
+  //   const wordcloud = new ChartJS(
+  //     document
+  //       .getElementById("wordcloud")
+  //       .getContext("2d", { willReadFrequently: true }),
+  //     {
+  //       type: "wordCloud",
+  //       data: {
+  //         labels: chartdata.whiskynotedata.map((el) => el.key),
+  //         datasets: [
+  //           {
+  //             label: "",
+  //             data: chartdata.whiskynotedata.map((el) => el.value * 5),
+  //             color: [
+  //               "rgb(1,87,155)",
+  //               "#bba22b",
+  //               "#abb173",
+  //               "#818b59",
+  //               "#a58459",
+  //               "#819ca5",
+  //               "#7d627e",
+  //             ],
+  //           },
+  //         ],
+  //       },
+  //       options: {
+  //         // maintainAspectRatio: true,
+  //         responsive: true,
+  //         plugins: {
+  //           legend: {
+  //             display: false,
+  //           },
+  //         },
+  //       },
+  //     }
+  //   );
 
-    return () => {
-      wordcloud.destroy();
-    };
-  }, []);
+  //   return () => {
+  //     wordcloud.destroy();
+  //   };
+  // }, []);
 
   const splitLabel = (label) => {
     if (/\s/.test(label)) {
@@ -173,7 +176,7 @@ export default function SurveyCharts(props) {
           <Typography variant="h6">Most Recognized Brands</Typography>
           <ol>
             {props.recognizeddata.map((el) => (
-              <li>{el.name}</li>
+              <li key={el.name}>{el.name}</li>
             ))}
           </ol>
         </Grid>
@@ -181,7 +184,7 @@ export default function SurveyCharts(props) {
           <Typography variant="h6">Most Beloved Scotch Whiskies</Typography>
           <ol>
             {props.beloveddata.map((el) => (
-              <li>{el.name}</li>
+              <li key={el.name}>{el.name}</li>
             ))}
           </ol>
         </Grid>
@@ -218,10 +221,10 @@ export default function SurveyCharts(props) {
             options={chartoptions.hoveroptions}
           />
         </Grid>
-        <Grid item xs={12} className={styles.whiskyNoteDataStyle}>
+        {/* <Grid item xs={12} className={styles.whiskyNoteDataStyle}>
           <Typography variant="h6">Best Whisky Notes</Typography>
           <canvas id="wordcloud" className={styles.wordcloud}></canvas>
-        </Grid>
+        </Grid> */}
       </Grid>
     </>
   );

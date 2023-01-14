@@ -6,7 +6,7 @@ import {
   TableSortLabel,
   Typography,
 } from "@mui/material";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import styles from "../styles/ResultsTable.module.css";
 
 export default function ResultsTable(records, headers, filterFn, filterInput) {
@@ -106,8 +106,6 @@ export default function ResultsTable(records, headers, filterFn, filterInput) {
   const recordsAfterSorting = () => {
     return objectSort(filterFn.fn(records), getComparisonType(order, orderBy));
   };
-
-  // handlers
 
   return {
     TableContainer,

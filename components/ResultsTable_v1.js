@@ -11,7 +11,8 @@ import React, { useState, useRef } from "react";
 import styles from "../styles/ResultsTable.module.css";
 import { rowsPerPageOptions } from "../constants/siteContent";
 
-// Editor's note - original version of Results Table with pagination logic; ended up being not user friendly so opted for infinite scroll
+// Unused component; original version of Results Table with pagination logic;
+// ended up being not user friendly so opted for infinite scroll
 
 export default function ResultsTable_v1(
   records,

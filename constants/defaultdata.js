@@ -1,3 +1,5 @@
+// Original default data used for prototyping
+
 const defaultdata = {
   header: "An Example Title",
   text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla

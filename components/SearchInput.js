@@ -1,15 +1,12 @@
-import React, { useState, forwardRef, useEffect } from "react";
+import React, { useState, forwardRef } from "react";
 import {
-  Grid,
   TextField,
   Typography,
   Slider,
   Autocomplete,
   Slide,
   useScrollTrigger,
-  Chip,
   Box,
-  Paper,
   Accordion,
   AccordionSummary,
 } from "@mui/material";
@@ -17,7 +14,7 @@ import { rangeValues, searchTags } from "../constants/siteContent";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import styles from "../styles/SearchInputScroll.module.css";
 
-// Editor's note - Original attempt to create a search input; Accordion + HideOnScroll logic was bad
+// Unused component; Original attempt to create a search input; Accordion + HideOnScroll logic was bad
 // UX and the trigger logic was a bit unruly/didn't want to sink more time figuring it out.
 
 function HideOnScroll(props) {

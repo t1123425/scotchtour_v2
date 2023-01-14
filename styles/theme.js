@@ -1,20 +1,25 @@
 import { createTheme } from "@mui/material";
+import { Amiri, Fondamento, Cormorant_Unicase } from "@next/font/google";
+
+const amiri = Amiri({ weight: "400" });
+const fondamento = Fondamento({ weight: "400" });
+const cormorant = Cormorant_Unicase({ weight: "400" });
 
 export const theme = createTheme({
   typography: {
-    fontFamily: "Amiri",
+    fontFamily: amiri.style.fontFamily,
     fontSize: 16,
     h1: {
-      fontFamily: "Fondamento",
+      fontFamily: fondamento.style.fontFamily,
     },
     h4: {
-      fontFamily: "Fondamento",
+      fontFamily: fondamento.style.fontFamily,
     },
     h5: {
-      fontFamily: "Fondamento",
+      fontFamily: fondamento.style.fontFamily,
     },
     h6: {
-      fontFamily: "Cormorant Unicase",
+      fontFamily: cormorant.style.fontFamily,
       fontSize: "1.3rem",
       fontWeight: "bold",
     },

@@ -1,7 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
-import { Typography, Popover, Box, Button } from "@mui/material";
+import React, { useState } from "react";
+import { Popover, Box, Button } from "@mui/material";
 import styles from "../styles/PopoverChart.module.css";
-import { Chart as ChartJS } from "chart.js/auto";
 import { Radar as RadarChart } from "react-chartjs-2";
 
 export default function PopoverChart(props) {

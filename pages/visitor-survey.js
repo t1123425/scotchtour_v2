@@ -1,4 +1,4 @@
-import React, { Suspense, useReducer, useState } from "react";
+import React, { useReducer } from "react";
 import Survey from "../components/Survey";
 import { navItems } from "../constants/siteContent";
 import DrawerAppBar from "../components/DrawerAppBar";

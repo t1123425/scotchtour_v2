@@ -1,11 +1,10 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { navItems } from "../constants/siteContent";
 import DrawerAppBar from "../components/DrawerAppBar";
 import SurveyCharts from "../components/SurveyCharts";
 import whiskyDbService from "../services/whiskyDbService";
 import surveyService from "../services/surveyService";
 import { SurveyChartData } from "../components/ChartData";
-import Loading_SurveyCharts from "../components/Loading_SurveyCharts";
 
 export async function getStaticProps() {
   const whiskies = await whiskyDbService.getWhisky_db();
@@ -15,8 +14,6 @@ export async function getStaticProps() {
 }
 
 export default function SurveyStats({ whiskies, surveyResults }) {
-  // state
-
   // helpers
   const {
     totalcount,
@@ -27,8 +24,6 @@ export default function SurveyStats({ whiskies, surveyResults }) {
     hoverdata,
     whiskynotedata,
   } = SurveyChartData(whiskies, surveyResults);
-
-  // handlers
 
   return (
     <>

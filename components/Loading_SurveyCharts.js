@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Skeleton } from "@mui/material";
-import styles from "../styles/SurveyCharts.module.css";
+
+// Placeholder Skeleton for SurveyCharts page as I wasn't sure how fast it would serve in prod
 
 export default function Loading_SurveyCharts(props) {
   return (

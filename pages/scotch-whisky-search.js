@@ -1,18 +1,8 @@
-import React, { useReducer, useState, useEffect, useRef } from "react";
+import React, { useReducer, useState } from "react";
 import { navItems } from "../constants/siteContent";
 import DrawerAppBar from "../components/DrawerAppBar";
 import ResultsTable from "../components/ResultsTable";
-import {
-  Chip,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-  useScrollTrigger,
-  Slide,
-  Toolbar,
-  Paper,
-} from "@mui/material";
+import { Chip, TableBody, TableCell, TableRow } from "@mui/material";
 import whiskyDbService from "../services/whiskyDbService";
 import { headers } from "../constants/siteContent";
 import SearchDrawer from "../components/SearchDrawer";

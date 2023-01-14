@@ -5,8 +5,6 @@ const {
   submitSurvey,
 } = require("../controllers/surveyControllers");
 
-// router.route("/").get(getSurveyResults).post(submitSurvey);
-
 router.post("/", submitSurvey);
 
 router.get("/", getSurveyResults);

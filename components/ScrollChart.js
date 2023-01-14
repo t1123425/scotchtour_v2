@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Typography, Grid, Box } from "@mui/material";
 import styles from "../styles/ScrollChart.module.css";
-import { Chart as ChartJS } from "chart.js/auto";
 import { Line as LineChart } from "react-chartjs-2";
 
 const scrollChartVar = {
@@ -15,12 +14,10 @@ const scrollChartVar = {
       bounce: 0.3,
       ease: "easeIn",
     },
-    // filter: "blur(0)",
   },
   hidden: {
     opacity: 0,
     scale: 0,
-    // filter: "blur(5px)"
   },
 };
 
@@ -63,9 +60,6 @@ export default function ScrollChart(props) {
       font: {
         family: "Helvetica",
       },
-    },
-    legend: {
-      // display: false,
     },
     elements: {
       point: {

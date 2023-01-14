@@ -56,11 +56,6 @@ export default function CardPage(props) {
   // handlers
   const handleClick = (event) => {
     setPopperOpen(event.currentTarget);
-    // console.log(activeCard);
-    // console.log(ref);
-    // console.log(popOffsetY);
-    // console.log(popOffsetX);
-    // console.log(ref.current);
   };
   const handleClose = () => {
     setPopperOpen(null);

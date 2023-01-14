@@ -23,7 +23,6 @@ const submitSurvey = asyncHandler(async (req, res) => {
   });
 
   res.status(200).json(survey_submission);
-  // res.status(200).json({ message: "Posted!" });
 });
 
 module.exports = {

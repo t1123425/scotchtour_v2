@@ -5,7 +5,6 @@ import ScrollPage from "../components/ScrollPage";
 import { processContent } from "../constants/siteContent";
 
 export default function Process(pageProps) {
-  const title = "How Scotch is Made";
   return (
     <>
       <DrawerAppBar title={navItems[3].title} />

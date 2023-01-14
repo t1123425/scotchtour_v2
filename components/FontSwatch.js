@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 
+// Unused component originall used for testing out font styles
 export default function FontSwatch(props) {
   const fontList = [
     // Regular

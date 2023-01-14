@@ -1,16 +1,13 @@
-import React, { useState, forwardRef, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Grid,
   TextField,
   Typography,
   Slider,
   Autocomplete,
-  Chip,
   Box,
-  Paper,
-  Drawer,
+  SwipeableDrawer,
   IconButton,
-  ClickAwayListener,
   Button,
   Tooltip,
 } from "@mui/material";
@@ -58,7 +55,6 @@ export default function SearchDrawer(props) {
       <Box className={styles.costSliderWrapper}>
         <Slider
           key="range"
-          aria-label="Range slider for cost represented in dollar signs"
           name="range"
           value={[props.searchValue.min, props.searchValue.max]}
           onChange={(event) => props.handleChangeValue(event)}
@@ -128,20 +124,20 @@ export default function SearchDrawer(props) {
           onClick={handleDrawerToggle}
           open={open}
           onClose={handleDrawerToggle}
-          ModalProps={{
+          modalprops={{
             keepMounted: true,
           }}
           className={styles.icon}
-          // sx={{ mr: 2, display: { sm: "none" } }}
         >
           <SearchIcon />
         </IconButton>
-        <Drawer
+        <SwipeableDrawer
           container={container}
           variant="temporary"
           anchor="top"
           open={open}
           onClose={handleDrawerToggle}
+          onOpen={handleDrawerToggle}
           modalprops={{
             keepMounted: true,
           }}
@@ -154,7 +150,7 @@ export default function SearchDrawer(props) {
           }}
         >
           {searchPanel}
-        </Drawer>
+        </SwipeableDrawer>
       </Grid>
     </>
   );
