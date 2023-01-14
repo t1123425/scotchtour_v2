@@ -14,6 +14,12 @@ export async function getStaticProps() {
 }
 
 export default function SurveyStats({ whiskies, surveyResults }) {
+  if (!whiskies || !surveyResults)
+    return (
+      <>
+        <Typography>404 Error</Typography>
+      </>
+    );
   // helpers
   const {
     totalcount,

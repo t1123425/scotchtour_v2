@@ -2,7 +2,13 @@ import React, { useReducer, useState } from "react";
 import { navItems } from "../constants/siteContent";
 import DrawerAppBar from "../components/DrawerAppBar";
 import ResultsTable from "../components/ResultsTable";
-import { Chip, TableBody, TableCell, TableRow } from "@mui/material";
+import {
+  Chip,
+  TableBody,
+  TableCell,
+  TableRow,
+  Typography,
+} from "@mui/material";
 import whiskyDbService from "../services/whiskyDbService";
 import { headers } from "../constants/siteContent";
 import SearchDrawer from "../components/SearchDrawer";
@@ -13,6 +19,12 @@ export async function getStaticProps() {
 }
 
 export default function ScotchDb({ whiskies }) {
+  if (!whiskies)
+    return (
+      <>
+        <Typography>404 Error</Typography>
+      </>
+    );
   // state
   const [records, setRecords] = useState(whiskies);
   const [filterFn, setFilterFn] = useState({

@@ -19,6 +19,12 @@ export async function getStaticProps() {
 }
 
 export default function VisitorSurvey({ whiskies }) {
+  if (!whiskies)
+    return (
+      <>
+        <Typography>404 Error</Typography>
+      </>
+    );
   // state
   const [surveyInput, setSurveyInput] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
