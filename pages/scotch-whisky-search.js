@@ -9,11 +9,11 @@ import SearchDrawer from "../components/SearchDrawer";
 
 export async function getStaticProps() {
   const whiskies = await whiskyDbService.getWhisky_db();
-  // if (!whiskies) {
-  //   return {
-  //     notFound: true,
-  //   };
-  // }
+  if (!whiskies) {
+    return {
+      notFound: true,
+    };
+  }
   return { props: { whiskies } };
 }
 

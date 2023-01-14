@@ -1,4 +1,3 @@
-import { SettingsEthernet } from "@mui/icons-material";
 import axios from "axios";
 
 const API_URL = "http://localhost:5001/api/visitor_survey";
