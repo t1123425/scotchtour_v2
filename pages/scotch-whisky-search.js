@@ -2,19 +2,23 @@ import React, { useReducer, useState } from "react";
 import { navItems } from "../constants/siteContent";
 import DrawerAppBar from "../components/DrawerAppBar";
 import ResultsTable from "../components/ResultsTable";
-import {
-  Chip,
-  TableBody,
-  TableCell,
-  TableRow,
-  Typography,
-} from "@mui/material";
-import whiskyDbService from "../services/whiskyDbService";
+import { Chip, TableBody, TableCell, TableRow } from "@mui/material";
+// import whiskyDbService from "../services/whiskyDbService";
 import { headers } from "../constants/siteContent";
 import SearchDrawer from "../components/SearchDrawer";
+import axios from "axios";
+
+// db playgroup
 
 export async function getStaticProps() {
-  const whiskies = await whiskyDbService.getWhisky_db();
+  const WHISKY_URL = "http://localhost:5001/api/whisky_db";
+  const whisky_res = await axios.get(WHISKY_URL);
+  const whiskies = await whisky_res.data;
+  if (!whiskies) {
+    return {
+      notFound: true,
+    };
+  }
   return { props: { whiskies } };
 }
 
@@ -110,12 +114,6 @@ export default function ScotchDb({ whiskies }) {
       },
     });
   };
-  if (!whiskies)
-    return (
-      <>
-        <Typography>404 Error</Typography>
-      </>
-    );
 
   return (
     <>
