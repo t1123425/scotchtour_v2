@@ -13,7 +13,7 @@ export default function Regions(pageProps) {
   // helpers
   useEffect(() => {
     setMobileWidth(window.innerWidth);
-  });
+  }, []);
   const chartPopperStyle = mobileWidth >= 480 ? "top" : "bottom";
   const { totalregiondata } = RegionChartData();
 

@@ -289,12 +289,12 @@ export const whatIsContent = [
     imageUrl: "/scotch_glass_1.jpeg",
     imgSizing: "grow",
     description: [
-      <p>
+      <p key="whatis-1">
         Scotch whisky (<em>often simply called Scotch</em>) is malt whisky or
         grain whisky made in Scotland. Scotch whisky must be made in a manner
         specified by law.
       </p>,
-      <p>
+      <p key="whatis-2">
         All Scotch whisky was originally made from malted barley. Commercial
         distilleries began introducing whisky made from wheat and rye in the
         late 18th century. Scotch whisky is divided into five distinct
@@ -303,7 +303,7 @@ export const whatIsContent = [
         <em>pure malt</em>"), blended grain Scotch whisky, and blended Scotch
         whisky.
       </p>,
-      <p>
+      <p key="whatis-3">
         All Scotch whisky must be aged in oak barrels for at least three years.
         Any age statement on a bottle of Scotch whisky, expressed in numerical
         form, must reflect the age of the youngest whisky used to produce that
@@ -321,12 +321,12 @@ export const whatIsContent = [
     caption:
       "Multiple types of whiskies including bourbon, Scotch, rye, and Irish whisky.",
     description: [
-      <p>
+      <p key="comparison-1">
         Outside of Scotch whisky, there are several other types of whisky found
         all over the world. Some of the most commonly recognized whiskies
         include:`
       </p>,
-      <ul>
+      <ul key="comparison-2">
         <li>
           <strong>Whiskey/Whiskey</strong>, a broad category of distilled liquor
           made from fermented grain mash.
@@ -341,7 +341,7 @@ export const whatIsContent = [
           (which may not include rye wheat in the production process at all).
         </li>
       </ul>,
-      <p>
+      <p key="comparison-3">
         <strong>
           A common confusion among drinkers of whiskey/whisky is which spelling
           is correct;
@@ -361,7 +361,7 @@ export const whatIsContent = [
   {
     title: "Legal Definition",
     description: [
-      <div>
+      <div key="legal-1">
         As of 23 November 2009, the <em>Scotch Whisky Regulations</em> (
         <strong>SWR</strong>) define and regulate the production, labelling,
         packaging as well as the advertising of Scotch whisky in the United
@@ -370,7 +370,7 @@ export const whatIsContent = [
         some provisions of the SWR apply in various other countries as well as
         in the UK. The SWR define "Scotch whisky" as whisky that is:
       </div>,
-      <ul>
+      <ul key="legal-2">
         <li>
           Produced at a distillery in Scotland from water and malted barley (to
           which only whole grains of other cereals may be added) all of which
@@ -427,7 +427,7 @@ export const historyContent = [
   {
     title: "15th Century",
     description: [
-      <p>
+      <p key="15th-1">
         According to the Scotch Whisky Association, Scotch whisky evolved from a
         Scottish drink called <em>uisge beatha</em>, which means "
         <strong>water of life</strong>". The earliest record of distillation in
@@ -439,7 +439,7 @@ export const historyContent = [
         1,500 bottles, which suggests that distillation was well-established by
         the late 15th century.
       </p>,
-      <p>
+      <p key="15th-2">
         Initially, whisky was also consumed as a tonic for medicinal purposes.
         In 1505, the City of Edinburgh awarded the medical practitioners,{" "}
         <em>The Guild of Surgeon Barbers</em>, the rights to monopolize whisky
@@ -453,7 +453,7 @@ export const historyContent = [
     imgSizing: "grow",
     caption: "An 18th Century distiller making Scotch whisky.",
     description: [
-      <p>
+      <p key="17th-1">
         Whisky production was first taxed in 1644 by the Scottish Customs &
         Excise (known affectionately as <em>Gougers</em>), causing a rise in
         illicit whisky distilling in the country. This drove many distillers to
@@ -466,7 +466,7 @@ export const historyContent = [
         with the likes of popular brands such as Bowmore, Glenturret, and
         Strathisla all vying for the honor.
       </p>,
-      <p>
+      <p key="17th-2">
         Between the 1760s and the 1830s a substantial unlicensed trade
         originated from the Highlands, forming a significant part of region's
         export economy. In 1782, more than 1,000 illegal stills were seized in
@@ -486,14 +486,14 @@ export const historyContent = [
   {
     title: "19th Century",
     description: [
-      <p>
+      <p key="19th-1">
         With an ever growing demand for whisky from outside the Scottish
         borders, unauthorised distillation was ubiquitous by the 1820s. Nearly
         half the whisky drunk in Scotland came from illicit stills, with no
         payment of duty, even though Excise Gaugers seized up to 14,000 illicit
         stills every year.
       </p>,
-      <p>
+      <p key="19th-2">
         The Highland magistrates, themselves members of the landowning classes,
         had a lenient attitude to unlicensed distillers - all of whom would be
         tenants in the local area. They understood that the trade supported the
@@ -509,7 +509,7 @@ export const historyContent = [
         million gallons of whisky had duty paid on it; in 1824 this increased to
         4.3 million gallons.
       </p>,
-      <p>
+      <p key="19th-3">
         Two events helped to increase whisky's popularity: first, the
         introduction in 1831 of the column still; the whisky produced with this
         process was generally less expensive to produce and also less intense
@@ -527,7 +527,7 @@ export const historyContent = [
     caption:
       "Distillers during the 20th Century realized that long-term storage in oak casks greatly improved the color, aroma and taste of whisky",
     description: [
-      <p>
+      <p key="20th-1">
         Perhaps one of the most significant developments in the history of
         Scotch Whisky was the use of oak casks for maturation. During the 1700s
         and 1800s, whisky was most likely drunk unmatured; however, oak wine,
@@ -550,7 +550,7 @@ export const processContent = [
     imageUrl: "/whisky_process.jpg",
     imgSizing: "grow",
     description: [
-      <p>
+      <p key="process-1">
         Single malt Scotch whisky is made using an age old process, beautiful in
         its simplicity. It uses natural, raw ingredients:{" "}
         <strong>
@@ -566,7 +566,7 @@ export const processContent = [
         </strong>
         .
       </p>,
-      <p>
+      <p key="process-2">
         Although traditional Scotch whisky is made from exlusively 100% malted
         barley, the repeal of the{" "}
         <strong>
@@ -591,7 +591,7 @@ export const processContent = [
     imageUrl: "/malt.jpg",
     imgSizing: "true",
     description: [
-      <p>
+      <p key="malting-1">
         The barley is first screened to remove any foreign matter and then
         soaked for two or three days in tanks of water known as{" "}
         <strong>
@@ -606,7 +606,7 @@ export const processContent = [
         turned at regular intervals to control the temperature and rate of
         germination.
       </p>,
-      <p>
+      <p key="malting-2">
         At the appropriate moment germination is stopped by drying the malted
         barley or green malt in the malt kiln. More usually nowadays malting is
         carried out in Saladin boxes or in drum maltings. in both of which the
@@ -627,7 +627,7 @@ export const processContent = [
     imageUrl: "/mash.jpg",
     imgSizing: "true",
     description: [
-      <p>
+      <p key="mashing-1">
         The dried malt is ground in a mill into a fine powder. At this stage,
         the{" "}
         <strong>
@@ -645,7 +645,7 @@ export const processContent = [
         . This is drawn off from the mash tun and the solids remaining are
         removed for use as cattle food.
       </p>,
-      <p>
+      <p key="mashing-2">
         For blended and single-grain scotch, the mash includes (or solely
         consists of) unmalted cereals, respectively. Any unmalted cereals used
         are cooked under steam pressure in{" "}
@@ -665,7 +665,7 @@ export const processContent = [
     imageUrl: "/ferment.jpg",
     imgSizing: "true",
     description: [
-      <p>
+      <p key="fermenting-1">
         After cooling, the wort is passed into large vessels holding anything
         from 9,000 to 45,000 litres of liquid where it is fermented by the
         addition of yeast. For single-grain and blended scotch, the wort is
@@ -686,7 +686,7 @@ export const processContent = [
     imageUrl: "/distill.jpg",
     imgSizing: "true",
     description: [
-      <p>
+      <p key="distilling-1">
         Malt Whisky is distilled twice in large copper Pot Stills. The liquid
         wash is heated to a point at which the alcohol becomes vapor. This rises
         up the still and is passed into the cooling plant where it is condensed
@@ -694,7 +694,7 @@ export const processContent = [
         copper tube or worm that is kept in continuously running cold water, or
         it may be another type of condenser.
       </p>,
-      <p>
+      <p key="distilling-2">
         The first distillation separates the alcohol from the fermented liquid
         and eliminates the residue of the yeast and unfermentable matter. This
         distillate (known as{" "}
@@ -713,7 +713,7 @@ export const processContent = [
         but drawn off and kept, together with the first running, for
         redistillation with the next low wines.
       </p>,
-      <p>
+      <p key="distilling-3">
         For single-grain and blended whiskies, distillation is carried out in a
         patent or Coffey still and the spirit collected at a much higher
         strength.
@@ -727,7 +727,7 @@ export const processContent = [
     caption:
       "By Scottish law, any whisky to be considered scotch whisky must be aged in oak barrels for at least three years.",
     description: [
-      <p>
+      <p key="mature-1">
         Both Malt and Grain Whisky must be matured after distillation has been
         completed. The new spirit is filled into casks of oak wood which, being
         permeable, allows air to pass in and evaporation takes place. By this
@@ -748,7 +748,7 @@ export const processContent = [
     imageUrl: "/blending_whisky.jpeg",
     imgSizing: "grow",
     description: [
-      <p>
+      <p key="blending-1">
         After maturation the different whiskies may be blended together with
         other whiskies.The blend is then reduced to the strength required by the
         addition of soft water. The different whiskies in the blend will have
@@ -769,7 +769,7 @@ export const processContent = [
     imageUrl: "/scotch_label.jpeg",
     imgSizing: "grow",
     description: [
-      <p>
+      <p key="packaging-1">
         The final stage in production of Scotch Whisky is labelling and
         packaging. Most Scotch Whiskies are marketed at home and abroad in
         branded bottles. A Scotch whisky label comprises several elements that
@@ -777,7 +777,7 @@ export const processContent = [
         these elements are regulated by the <em>Scotch Whisky Regulations</em> (
         <strong>SWR</strong>), and some reflect tradition and marketing.
       </p>,
-      <p>
+      <p key="packaging-2">
         The label always features a declaration of the malt or grain whiskies
         used. A single malt Scotch whisky is one that is entirely produced from
         malt in one distillery. One may also encounter the term "
@@ -802,7 +802,7 @@ export const processContent = [
         some bottlers maintain that consumers confuse the term with "blended
         Scotch whisky", which contains some proportion of grain whisky.
       </p>,
-      <p>
+      <p key="packaging-3">
         The brand name featured on the label is usually the same as the
         distillery name (for example, the Talisker Distillery labels its
         whiskies with the Talisker name).In addition to requiring that Scotch
@@ -810,7 +810,7 @@ export const processContent = [
         and labelled in Scotland. Labels may also indicate the region of the
         distillery (for example, <em>Islay</em> or <em>Speyside</em>).
       </p>,
-      <p>
+      <p key="packaging-4">
         Alcoholic strength is expressed on the label with "
         <em>Alcohol By Volume</em>" (<strong>ABV</strong>) or sometimes simply "
         <em>Vol</em>". Typically, bottled whisky is between 40% and 46% ABV.
@@ -823,7 +823,7 @@ export const processContent = [
         </strong>
         .
       </p>,
-      <p>
+      <p key="packaging-5">
         A whisky's age may be listed on the bottle providing a guarantee of the
         youngest whisky used. An age statement on the bottle, in the form of a
         number, must reflect the age of the youngest whisky used to produce that
@@ -836,7 +836,7 @@ export const processContent = [
         bottled, so if no age statement is provided, one may calculate the age
         of the whisky if both the distillation date and bottling date are given.
       </p>,
-      <p>
+      <p key="packaging-6">
         Labels may also carry various declarations of filtration techniques or
         final maturation processes. A Scotch whisky labelled as "
         <strong>
@@ -902,7 +902,7 @@ export const brandCards = [
     region: "Islands",
     founded: 1995,
     desc: [
-      <p>
+      <p key="arran-1">
         Although the Arran distillery is relatively new (production started in
         1995), the island in the Firth of Clyde has a long history of
         whisky-making. A fertile place, the farmers in the south of the island
@@ -910,7 +910,7 @@ export const brandCards = [
         small stills were effectively banned in the late 18th century, they
         simply went underground.
       </p>,
-      <p>
+      <p key="arran-2">
         All that changed in 1995 when a consortium, headed by former Chivas Bros
         MD <strong>Harold Currie</strong>, chose a site at Lochranza in the
         north of the island. The decision to move to a part of Arran that was
@@ -935,7 +935,7 @@ export const brandCards = [
     region: "Speyside",
     founded: 1824,
     desc: [
-      <p>
+      <p key="cardhu-1">
         One of the oldest distilleries in Speyside, Cardhu (
         <em>
           at that point <strong>Cardow</strong>
@@ -951,7 +951,7 @@ export const brandCards = [
         Glen Livet. Legend has it when the gaugers arrived at the farm, Helen
         would distract them and run a red flag up a pole alerting their cronies.
       </p>,
-      <p>
+      <p key="cardhu-2">
         In 1893, the distillery was sold to long-term customer John Walker &
         Sons on the understanding that the family would still run the distillery
         and have a seat on the Walker board. The distillery was expanded from
@@ -972,13 +972,13 @@ export const brandCards = [
     region: "Highlands",
     founded: 1898,
     desc: [
-      <p>
+      <p key="dalwhinnie-1">
         Given the importance to the whisky trade of the railway line which
         linked Inverness (and Speyside) with the central belt, it is surprising
         that it took until 1897 for a distillery to be built close to the
         settlement nearest its highest point, Dalwhinnie.
       </p>,
-      <p>
+      <p key="dalwhinnie-2">
         Three local businessmen, <strong>John Grant</strong>,{" "}
         <strong>George Sellar</strong> and <strong>Alexander Mackenzie</strong>,
         joined together to make whisky at such an advantageous location, but
@@ -989,7 +989,7 @@ export const brandCards = [
         distillery to be owned by a non-UK company, a relationship which ended
         14 years later when blenders Macdonald Greenless took charge.
       </p>,
-      <p>
+      <p key="dalwhinnie-3">
         Though well connected by road and rail, Dalwhinnie’s exposed location
         means that it is regularly cut off in winter – it holds the dubious
         distinction of being the coldest settlement in the UK, with an average
@@ -1010,7 +1010,7 @@ export const brandCards = [
     region: "Highlands",
     founded: 1825,
     desc: [
-      <p>
+      <p key="erdradour-1">
         Another of central Perthshire’s multiplicity of farm distilleries,
         Edradour started production at its current site in 1837, although one of
         the farmers who formed that original consortium,{" "}
@@ -1020,7 +1020,7 @@ export const brandCards = [
         so it is entirely possible (even probable) that Forbes knew the
         intricacies of whisky-making before going legit.
       </p>,
-      <p>
+      <p key="erdradour-2">
         It remained associated with the original grouping until 1933, when the
         Mackintosh family sold it as a (barely) going concern to the famous
         blending house of <strong>William Whiteley</strong>. Quite why Whiteley
@@ -1034,7 +1034,7 @@ export const brandCards = [
         sales of King’s Ransom. This slightly unusual arrangement lasted until
         Haim’s death in 1976.
       </p>,
-      <p>
+      <p key="erdradour-3">
         As of 2002, Erdradour is owned by independent bottler Signatory Vintage.
         One of the prettiest distilleries in Scotland, Edradour remains a major
         tourist attraction.
@@ -1054,7 +1054,7 @@ export const brandCards = [
     region: "Speyside",
     founded: 1805,
     desc: [
-      <p>
+      <p key="glenfarclas-1">
         Glenfarclas means ‘
         <strong>
           <em>valley of the green grass</em>
@@ -1068,7 +1068,7 @@ export const brandCards = [
         Hay died in 1865 his neighbour <strong>John Grant</strong> bought the
         distillery for £512. It has remained in his family’s hands ever since.
       </p>,
-      <p>
+      <p key="glenfarclas-2">
         This continuity has allowed Glenfarclas to still reflect an older way of
         making whisky, but this willingness to retain tradition is not down to a
         romantic belief in the past. Glenfarclas is nothing if not a successful
@@ -1092,7 +1092,7 @@ export const brandCards = [
     region: "Speyside",
     founded: 1824,
     desc: [
-      <p>
+      <p key="glenlivet-1">
         Although The Glenlivet is widely believed to be the oldest operational
         distillery in Scotland, it isn’t. That honor is up for debate - often
         going to Strathisla, while others like Glen Garioch could be even older.
@@ -1101,7 +1101,7 @@ export const brandCards = [
         <strong>1823 Excise Act</strong>, which is often accepted as being the
         starting point of the modern Scotch whisky industry.
       </p>,
-      <p>
+      <p key="glenlivet-2">
         <strong>George Smith</strong> was the man who did it. A farmer (which in
         those days in this region pretty much meant an illicit distiller), he
         had the <strong>tack</strong> ("<em>rent</em>") of the Upper Drumin farm
@@ -1110,14 +1110,14 @@ export const brandCards = [
         that Smith wouldn’t get a knock on the door from the Duke’s factors
         "persuading" him to mend his ways.
       </p>,
-      <p>
+      <p key="glenlivet-3">
         Not that this was without danger. Whisky smuggling had been underway for
         almost 40 years by that time and the gangs were both well-established
         and relatively wealthy. Plenty of the new distilleries were razed to the
         ground. George Smith famously travelled with a pair of pistols in case
         he was attacked by his former colleagues.
       </p>,
-      <p>
+      <p key="glenlivet-4">
         His venture was a success, and his Glenlivet whisky – conceivably made
         in a lighter style even at this stage – became popular. As the money
         came in, he took the tacks of Minmore and Nevie and with demand rising,
@@ -1127,7 +1127,7 @@ export const brandCards = [
         <em>Old Vatted Glenlivet</em>") initially as a vatted malt and then the
         first recognized blend. Smith’s Glenlivet was at the core of both.
       </p>,
-      <p>
+      <p key="glenlivet-5">
         Since its humble beginnings, the Glenlivet brand sells over a million
         cases of scotch whisky a year (compared to less than 700 cases in the
         1950s). Current owners Chivas Brothers aims to make The Glenlivet the
@@ -1153,7 +1153,7 @@ export const brandCards = [
     region: "Highlands",
     founded: 1843,
     desc: [
-      <p>
+      <p key="glenmorangie-1">
         Situated next to the <strong>Dornoch Firth</strong> in a series of
         handsome red sandstone buildings, the Glenmorangie distillery started
         life as the local brewery for the town of Tain. In 1843,{" "}
@@ -1162,7 +1162,7 @@ export const brandCards = [
         Distillery Co, co-owned by the <strong>Maitland brothers</strong> and{" "}
         <strong>Duncan Cameron</strong>.
       </p>,
-      <p>
+      <p key="glenmorangie-2">
         After the First World War, the business was sold to a partnership
         between two blending and broking firms, Macdonald & Muir and Durham &
         Co, soon passing entirely to the former, which used the whisky for
@@ -1170,7 +1170,7 @@ export const brandCards = [
         quantities from the 1920s, a change of strategy in 1959 saw Glenmorangie
         revived as a single malt that soon became Scotland’s biggest seller.
       </p>,
-      <p>
+      <p key="glenmorangie-3">
         Since 2004, Glenmorangie has been owned by French luxury goods firm
         Louis Vuitton Moet Hennessy (<strong>LMVH</strong>), who also owns the
         Arbeg brand.
@@ -1190,7 +1190,7 @@ export const brandCards = [
     region: "Islands",
     founded: 1798,
     desc: [
-      <p>
+      <p key="highland-park-1">
         The origins of distilleries are often, as they should be, obscured by
         the clouds of half-truth and myth. Such is the case with Highland Park.
         Was it founded by famed priest turned smuggler{" "}
@@ -1198,7 +1198,7 @@ export const brandCards = [
         <strong>David Robertson</strong> in 1798? The distillery’s ornate
         wrought ironwork gate certainly attests to the 1798 story.
       </p>,
-      <p>
+      <p key="highland-park-2">
         Whatever the slight mystery over its origins, it is accepted that it
         wasn’t until the late 19th century that Kirkwall’s then only distillery
         found its feet properly in the 1870s under the ownership of first
@@ -1206,7 +1206,7 @@ export const brandCards = [
         with his business partner James Grant (previously the manager of The
         Glenlivet) who took full control in 1895.
       </p>,
-      <p>
+      <p key="highland-park-3">
         It first appeared as single malt in the late 1970s, as an
         eight-year-old, but the packaging was revamped in the 1980s (and
         repeatedly ever since) when the 12- and 18-year-old expressions were
@@ -1230,14 +1230,14 @@ export const brandCards = [
     region: "Islay",
     founded: 1816,
     desc: [
-      <p>
+      <p key="lagavulin-1">
         Founded on Islay’s south Kildalton coast and situated between Ardbeg and
         Laphroaig, legal distilling was started at Lagavulin in 1816 by{" "}
         <strong>John Johnston</strong>. A second distillery shared the site
         which was first bought by the same family in 1825, before production was
         absorbed into Lagavulin in 1837.
       </p>,
-      <p>
+      <p key="lagavulin-2">
         It came to wider public awareness in 1862 when blender{" "}
         <strong>John Logan Mackie </strong>
         bought the distillery. His nephew <strong>Peter J. Mackie</strong> made
@@ -1247,7 +1247,7 @@ export const brandCards = [
         century whisky. He created the White Horse blend in 1890, co-founded
         Craigellachie distillery and was noted as a great innovator.
       </p>,
-      <p>
+      <p key="lagavulin-3">
         In 1908, irritated by the loss of the agency for Laphroaig, Mackie built
         a replica distillery at Lagavulin which he called Malt Mill. It ran
         until 1962 and though it was set up to produce the same character as
@@ -1273,7 +1273,7 @@ export const brandCards = [
     region: "Islay",
     founded: 1815,
     desc: [
-      <p>
+      <p key="laphroaig-1">
         The reason so many existing Islay distilleries came into being before
         the "official" 1824 start date is down to the influence of Islay’s
         laird, <strong>Walker Frederick Campbell</strong>. Islay was less
@@ -1283,14 +1283,14 @@ export const brandCards = [
         that Campbell was also actively involved meant that it was harder to
         continue with illicit activities.
       </p>,
-      <p>
+      <p key="laphroaig-2">
         So, in 1815, brothers <strong>Alexander</strong> and{" "}
         <strong>Donald Johnston</strong> built a distillery at Laphroaig.
         Donald, who ran the distillery, tragically died in 1847 after falling
         into a vat of boiling pot ale. Laphroaig however remained in the control
         of D. Johnston & Co. until the 1960s.
       </p>,
-      <p>
+      <p key="laphroaig-3">
         Its rise to fame began at the start of the 20th century with the arrival
         of Donald's great-grandson, <strong>Ian Hunter</strong>. It was he who,
         in 1908, changed agent from <strong>Peter Mackie</strong> and prompted
@@ -1300,7 +1300,7 @@ export const brandCards = [
         <strong>Bessie Williamson</strong> who had been the de-facto manager
         during his extensive international sales trips.
       </p>,
-      <p>
+      <p key="laphroaig-4">
         A period of passing through various hands and amalgamations ended when
         Jim Beam purchased it from Allied Distillers in 2005. Beam’s takeover by
         Suntory in 2014 has resulted in the Japanese-American giant now owning
@@ -1321,7 +1321,7 @@ export const brandCards = [
     region: "Speyside",
     founded: 1824,
     desc: [
-      <p>
+      <p key="macallan-1">
         One of the original farm distilleries of Speyside, Macallan became legal
         in 1824 when <strong>Alexander Reid</strong> obtained (or rather, was
         "persuaded to obtain") one of the new licences issued after the passing
@@ -1333,14 +1333,14 @@ export const brandCards = [
         retained ownership until the 1996 takeover by Highland Distillers (now
         Edrington).
       </p>,
-      <p>
+      <p key="macallan-2">
         For a distillery which has become synonymous with the growth of single
         malt, it is worth remembering that Macallan has always been an important
         malt for blending. It wasn’t until the early 1980s, faced with a
         downturn in the market for fillings, that Macallan decided to focus more
         strongly on the then new single malt category.
       </p>,
-      <p>
+      <p key="macallan-3">
         A firm belief in the fusion of the oily, heavy, new make style and
         ex-Sherry casks saw Macallan, under Edrington’s governance, become the
         first distillery to create so-called "<em>bespoke</em>" casks: selecting
@@ -1351,7 +1351,7 @@ export const brandCards = [
         Investment in wood has increased significantly in recent years, with a
         complex of massive warehouses being built on the estate.
       </p>,
-      <p>
+      <p key="macallan-4">
         In recent years, a greater emphasis has been placed on the nascent
         luxury whisky market with bottlings of 50- and 60-year-old Macallan in
         Lalique decanters, the creation of the Fine & Rare vintage range dating
@@ -1377,7 +1377,7 @@ export const brandCards = [
     region: "Islands",
     founded: 1830,
     desc: [
-      <p>
+      <p key="talisker-1">
         Talisker’s founders, brothers <strong>Hugh</strong> and{" "}
         <strong>Kenneth MacAskill</strong> were classic Clearance landlords.
         Having bought the <strong>tack</strong> ("<em>rent</em>") of Talisker
@@ -1386,25 +1386,25 @@ export const brandCards = [
         settlements at Carbost and Portnalong on the shores of Loch Harport and
         Portnalong, or off the island entirely.
       </p>,
-      <p>
+      <p key="talisker-2">
         As well as replacing subsistence farmers with more profitable sheep,
         another of the MacAskill’s money-making schemes was distilling. In 1830,
         they opened their Talisker distillery in Carbost using the cleared
         populace as its workforce.
       </p>,
-      <p>
+      <p key="talisker-3">
         Their venture into whisky-making was not a success, and by 1848 the bank
         was in control. For the next three decades Talisker stumbled through a
         series of other owners who found it hard to keep afloat a distillery
         which is remote - even by 21st century standards.
       </p>,
-      <p>
+      <p key="talisker-4">
         In 1880, Talisker’s fortunes changed when <strong>Roderick Kemp</strong>{" "}
         and <strong>Alexander Allen</strong> bought the distillery and proceeded
         to expand the site and construct a distillery pier – until then all the
         casks had to be floated out to waiting ships.
       </p>,
-      <p>
+      <p key="talisker-5">
         Kemp sold his share in 1892 in order to buy Macallan and on Allen’s
         death in 1895, his business partner <strong>Thomas Mackenzie</strong>{" "}
         took charge and three years later Talisker was formally merged with

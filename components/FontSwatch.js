@@ -52,7 +52,7 @@ export default function FontSwatch(props) {
           </Typography>
         </Grid>
         {fontList.map((obj) => (
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={3} key={obj.fontFamily}>
             <Typography variant="h4" align="center" sx={obj}>
               {obj.fontFamily}
             </Typography>
@@ -65,11 +65,11 @@ export default function FontSwatch(props) {
               continued learnings in web development.
             </Typography>
             <Typography sx={obj} p={2}>
-              In this website you'll find some neat (no pun intended) resources
-              on the history, production, and types of scotch whisky. The Scotch
-              Database can be used to filter hundreds of scotch whiskies based
-              on name, price, and flavor profile. You can also provide some
-              feedback in our Visitor Survey.
+              In this website you`&apos;`ll find some neat (no pun intended)
+              resources on the history, production, and types of scotch whisky.
+              The Scotch Database can be used to filter hundreds of scotch
+              whiskies based on name, price, and flavor profile. You can also
+              provide some feedback in our Visitor Survey.
             </Typography>
             <Typography sx={obj} p={2}>
               I hope you find this website fun and informative. Cheers!
@@ -84,7 +84,7 @@ export default function FontSwatch(props) {
           </Typography>
         </Grid>
         {titleList.map((obj) => (
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} key={obj.fontFamily}>
             <Typography variant="h2" align="center" sx={obj}>
               {obj.fontFamily}
             </Typography>
