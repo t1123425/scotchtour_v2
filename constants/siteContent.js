@@ -31,7 +31,7 @@ export const navItems = [
   },
   {
     id: 6,
-    title: "Scotch Database",
+    title: "Scotch Whisky Database",
     href: "/scotch-whisky-search",
   },
   {
