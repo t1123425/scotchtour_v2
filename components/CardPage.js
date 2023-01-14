@@ -72,6 +72,7 @@ export default function CardPage(props) {
               setActiveCard={setActiveCard}
               handleClick={handleClick}
               handleClose={handleClose}
+              key={card.id}
             />
           ))}
         </Grid>

@@ -63,6 +63,7 @@ export default function ScrollBox(props) {
               initial={scrollboxVar.hidden}
               whileInView={scrollboxVar.visible}
               viewport={{ once: true }}
+              key={`motion-${i}`}
             >
               <div key={`bit-${i}`}>{bit}</div>
             </motion.div>

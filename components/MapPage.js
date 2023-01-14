@@ -47,6 +47,7 @@ export default function MapPage(props) {
               top: region.top,
               left: region.left,
             }}
+            key={region.name.toLowerCase()}
           >
             {region.name}
           </Button>

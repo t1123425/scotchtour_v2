@@ -127,6 +127,7 @@ export default function Survey(props) {
                     label={option}
                     sx={{ backgroundColor: "#d5ebff" }}
                     {...getTagProps({ index })}
+                    key={index}
                   />
                 ))
               }
