@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Typography, Grid, Box } from "@mui/material";
 import styles from "../styles/ScrollChart.module.css";
+import { Chart as ChartJS } from "chart.js/auto";
 import { Line as LineChart } from "react-chartjs-2";
 
 const scrollChartVar = {

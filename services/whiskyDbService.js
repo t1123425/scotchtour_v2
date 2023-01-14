@@ -1,7 +1,6 @@
 import axios from "axios";
 
-// const API_URL = "http://localhost:5001/api/whisky_db";
-const API_URL = "http://localhost:5000/api/whisky_db";
+const API_URL = "http://localhost:5001/api/whisky_db";
 
 // Get all whiskies from db
 const getWhisky_db = async () => {
