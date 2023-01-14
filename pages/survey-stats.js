@@ -5,6 +5,7 @@ import SurveyCharts from "../components/SurveyCharts";
 import whiskyDbService from "../services/whiskyDbService";
 import surveyService from "../services/surveyService";
 import { SurveyChartData } from "../components/ChartData";
+import { Typography } from "@mui/material";
 
 export async function getStaticProps() {
   const whiskies = await whiskyDbService.getWhisky_db();
@@ -14,12 +15,6 @@ export async function getStaticProps() {
 }
 
 export default function SurveyStats({ whiskies, surveyResults }) {
-  if (!whiskies || !surveyResults)
-    return (
-      <>
-        <Typography>404 Error</Typography>
-      </>
-    );
   // helpers
   const {
     totalcount,
@@ -30,6 +25,13 @@ export default function SurveyStats({ whiskies, surveyResults }) {
     hoverdata,
     whiskynotedata,
   } = SurveyChartData(whiskies, surveyResults);
+
+  if (!whiskies || !surveyResults)
+    return (
+      <>
+        <Typography>404 Error</Typography>
+      </>
+    );
 
   return (
     <>

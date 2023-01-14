@@ -11,6 +11,7 @@ import {
 import whiskyDbService from "../services/whiskyDbService";
 import surveyService from "../services/surveyService";
 import useRouter from "next/router";
+import { Typography } from "@mui/material";
 
 export async function getStaticProps() {
   const whiskies = await whiskyDbService.getWhisky_db();
@@ -19,12 +20,6 @@ export async function getStaticProps() {
 }
 
 export default function VisitorSurvey({ whiskies }) {
-  if (!whiskies)
-    return (
-      <>
-        <Typography>404 Error</Typography>
-      </>
-    );
   // state
   const [surveyInput, setSurveyInput] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
@@ -53,6 +48,13 @@ export default function VisitorSurvey({ whiskies }) {
     submitSurvey(surveyInput);
     router.push("/survey-stats");
   };
+
+  if (!whiskies)
+    return (
+      <>
+        <Typography>404 Error</Typography>
+      </>
+    );
 
   return (
     <>

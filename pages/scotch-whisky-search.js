@@ -19,12 +19,6 @@ export async function getStaticProps() {
 }
 
 export default function ScotchDb({ whiskies }) {
-  if (!whiskies)
-    return (
-      <>
-        <Typography>404 Error</Typography>
-      </>
-    );
   // state
   const [records, setRecords] = useState(whiskies);
   const [filterFn, setFilterFn] = useState({
@@ -116,6 +110,12 @@ export default function ScotchDb({ whiskies }) {
       },
     });
   };
+  if (!whiskies)
+    return (
+      <>
+        <Typography>404 Error</Typography>
+      </>
+    );
 
   return (
     <>
