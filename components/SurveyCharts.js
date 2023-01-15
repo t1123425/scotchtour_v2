@@ -8,9 +8,9 @@ import {
   Doughnut as DonutChart,
 } from "react-chartjs-2";
 import { interestLabels, ratingLabels } from "../constants/siteContent";
-import { WordCloudController, WordElement } from "chartjs-chart-wordcloud";
+// import { WordCloudController, WordElement } from "chartjs-chart-wordcloud";
 
-ChartJS.register(WordCloudController, WordElement);
+// ChartJS.register(WordCloudController, WordElement);
 
 export default function SurveyCharts(props) {
   // Unused WordCloud Component - was taxing to load; may revisit in the future
