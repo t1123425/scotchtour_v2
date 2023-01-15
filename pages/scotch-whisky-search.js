@@ -8,7 +8,7 @@ import { headers } from "../constants/siteContent";
 import SearchDrawer from "../components/SearchDrawer";
 import axios from "axios";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const whiskies = await whiskyDbService.getWhisky_db();
   // const WHISKY_URL = "http://localhost:5001/api/whisky_db";
   // const whisky_res = await axios.get(WHISKY_URL);
