@@ -6,19 +6,33 @@ import { Chip, TableBody, TableCell, TableRow } from "@mui/material";
 import whiskyDbService from "../services/whiskyDbService";
 import { headers } from "../constants/siteContent";
 import SearchDrawer from "../components/SearchDrawer";
+// added to create serverless functions
+// import connectDb from "../services/connectDb";
 import axios from "axios";
 
 export async function getServerSideProps() {
-  const whiskies = await whiskyDbService.getWhisky_db();
-  // const WHISKY_URL = "http://localhost:5001/api/whisky_db";
-  // const whisky_res = await axios.get(WHISKY_URL);
-  // const whiskies = await whisky_res.data;
+  // const db = await connectDb().db("whisky_db");
+  // const whiskies = await db.find({}).toArray();
+  // let res = await fetch("http://localhost:3000/api/whiskies", {
+  //   method: "GET",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // });
+
+  // let whiskies = await res.json();
+
+  // const whiskies = await whiskyDbService.getWhisky_db();
+
+  const WHISKY_URL = "http://localhost:3000/api/whiskies";
+  const whisky_res = await axios.get(WHISKY_URL);
+  const whiskies = await whisky_res.data;
   if (!whiskies) {
     return {
       notFound: true,
     };
   }
-  return { props: { whiskies }, revalidate: 10 };
+  return { props: { whiskies } };
 }
 
 export default function ScotchDb({ whiskies }) {

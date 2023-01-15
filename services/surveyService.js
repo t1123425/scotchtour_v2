@@ -1,7 +1,12 @@
 import axios from "axios";
 
-// const API_URL = "http://localhost:5001/api/visitor_survey";
-const API_URL = "/api/visitor_survey";
+const baseURL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "scotchtour-v2.vercel.app";
+
+const API_URL = baseURL + "/api/surveys";
+// const API_URL = "/api/visitor_survey";
 
 // Get all whiskies from db
 const getSurveyResults = async () => {

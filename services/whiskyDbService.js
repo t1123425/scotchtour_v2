@@ -1,12 +1,17 @@
 import axios from "axios";
 
-// const API_URL = "http://localhost:5001/api/whisky_db";
-const API_URL = "/api/whisky_db";
+const baseURL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "scotchtour-v2.vercel.app";
+
+const API_URL = baseURL + "/api/whiskies";
+// const API_URL = "/api/whisky_db";
 
 // Get all whiskies from db
 const getWhisky_db = async () => {
   const res = await axios.get(API_URL);
-
+  console.log(baseURL + "/api/whiskies");
   return res.data;
 };
 
