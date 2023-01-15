@@ -15,10 +15,14 @@ import { Typography } from "@mui/material";
 import axios from "axios";
 
 export async function getServerSideProps() {
-  const baseURL =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : "https://scotchtour-v2-ricechrisdtreat.vercel.app";
+  // const baseURL =
+  //   process.env.NODE_ENV === "development"
+  //     ? "http://localhost:3000"
+  //     : "https://scotchtour-v2-ricechrisdtreat.vercel.app";
+  const baseURL = "https://scotchtour-v2-ricechrisdtreat.vercel.app";
+  // process.env.NODE_ENV === "development"
+  //   ? "http://localhost:3000"
+  //   : "https://scotchtour-v2-ricechrisdtreat.vercel.app";
 
   const WHISKY_URL = baseURL + "/api/whiskies";
   const SURVEY_URL = baseURL + "/api/surveys";
