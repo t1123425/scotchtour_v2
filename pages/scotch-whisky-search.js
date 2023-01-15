@@ -18,7 +18,7 @@ export async function getStaticProps() {
       notFound: true,
     };
   }
-  return { props: { whiskies } };
+  return { props: { whiskies }, revalidate: 10 };
 }
 
 export default function ScotchDb({ whiskies }) {
