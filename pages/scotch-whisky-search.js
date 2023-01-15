@@ -9,9 +9,10 @@ import SearchDrawer from "../components/SearchDrawer";
 import axios from "axios";
 
 export async function getStaticProps() {
-  const WHISKY_URL = "http://localhost:5001/api/whisky_db";
-  const whisky_res = await axios.get(WHISKY_URL);
-  const whiskies = await whisky_res.data;
+  const whiskies = await whiskyDbService.getWhisky_db();
+  // const WHISKY_URL = "http://localhost:5001/api/whisky_db";
+  // const whisky_res = await axios.get(WHISKY_URL);
+  // const whiskies = await whisky_res.data;
   if (!whiskies) {
     return {
       notFound: true,
