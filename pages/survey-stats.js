@@ -8,7 +8,7 @@ import { SurveyChartData } from "../components/ChartData";
 import { Typography } from "@mui/material";
 import axios from "axios";
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const WHISKY_URL = "http://localhost:5001/api/whisky_db";
   const SURVEY_URL = "http://localhost:5001/api/visitor_survey";
   const whisky_res = await axios.get(WHISKY_URL);
