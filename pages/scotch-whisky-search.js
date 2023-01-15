@@ -13,12 +13,13 @@ import axios from "axios";
 export async function getServerSideProps() {
   // const whiskies = await whiskyDbService.getWhisky_db();
 
-  const baseURL =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : "https://scotchtour-v2-ricechrisdtreat.vercel.app";
+  // const baseURL = 'https://scotchtour-v2-ricechrisdtreat.vercel.app'
+  // process.env.NODE_ENV === "development"
+  //   ? "http://localhost:3000"
+  //   : "https://scotchtour-v2-ricechrisdtreat.vercel.app";
 
-  const WHISKY_URL = baseURL + "/api/whiskies";
+  const WHISKY_URL =
+    "https://scotchtour-v2-ricechrisdtreat.vercel.app/api/whiskies";
   const whisky_res = await axios.get(WHISKY_URL);
   const whiskies = await whisky_res.data;
   if (!whiskies) {

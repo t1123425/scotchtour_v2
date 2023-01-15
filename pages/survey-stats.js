@@ -15,13 +15,15 @@ export async function getServerSideProps() {
   //   process.env.NODE_ENV === "development"
   //     ? "http://localhost:3000"
   //     : "https://scotchtour-v2-ricechrisdtreat.vercel.app";
-  const baseURL = "https://scotchtour-v2-ricechrisdtreat.vercel.app";
+  // const baseURL = "https://scotchtour-v2-ricechrisdtreat.vercel.app";
   // process.env.NODE_ENV === "development"
   //   ? "http://localhost:3000"
   //   : "https://scotchtour-v2-ricechrisdtreat.vercel.app";
 
-  const WHISKY_URL = baseURL + "/api/whiskies";
-  const SURVEY_URL = baseURL + "/api/surveys";
+  const WHISKY_URL =
+    "https://scotchtour-v2-ricechrisdtreat.vercel.app/api/whiskies";
+  const SURVEY_URL =
+    "https://scotchtour-v2-ricechrisdtreat.vercel.app/api/surveys";
   const whisky_res = await axios.get(WHISKY_URL);
   const survey_res = await axios.get(SURVEY_URL);
   const whiskies = await whisky_res.data;
