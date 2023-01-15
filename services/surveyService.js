@@ -3,7 +3,7 @@ import axios from "axios";
 const baseURL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
-    : "scotchtour-v2.vercel.app";
+    : "https://scotchtour-v2-ricechrisdtreat.vercel.app";
 
 const API_URL = baseURL + "/api/surveys";
 // const API_URL = "/api/visitor_survey";
