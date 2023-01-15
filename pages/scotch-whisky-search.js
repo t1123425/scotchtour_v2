@@ -11,20 +11,14 @@ import SearchDrawer from "../components/SearchDrawer";
 import axios from "axios";
 
 export async function getServerSideProps() {
-  // const db = await connectDb().db("whisky_db");
-  // const whiskies = await db.find({}).toArray();
-  // let res = await fetch("http://localhost:3000/api/whiskies", {
-  //   method: "GET",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // });
-
-  // let whiskies = await res.json();
-
   // const whiskies = await whiskyDbService.getWhisky_db();
 
-  const WHISKY_URL = "http://localhost:3000/api/whiskies";
+  const baseURL =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://scotchtour-v2-ricechrisdtreat.vercel.app";
+
+  const WHISKY_URL = baseURL + "/api/whiskies";
   const whisky_res = await axios.get(WHISKY_URL);
   const whiskies = await whisky_res.data;
   if (!whiskies) {
