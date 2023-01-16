@@ -28,10 +28,10 @@ export async function getServerSideProps() {
     "https://scotchtour-v2-ricechrisdtreat.vercel.app/api/whiskies";
   const SURVEY_URL =
     "https://scotchtour-v2-ricechrisdtreat.vercel.app/api/surveys";
-  const whisky_res = await axios.get(WHISKY_URL);
-  const survey_res = await axios.get(SURVEY_URL);
+  const whisky_res = await axios.get(WHISKY_URL, {
+    headers: { "Accept-Encoding": "gzip,deflate,compress" },
+  });
   const whiskies = await whisky_res.data;
-  const surveyResults = await survey_res.data;
 
   // const whiskies = await whiskyDbService.getWhisky_db();
   // const surveyResults = await surveyService.getSurveyResults();
@@ -41,12 +41,7 @@ export async function getServerSideProps() {
       notFound: true,
     };
   }
-  if (!surveyResults) {
-    return {
-      notFound: true,
-    };
-  }
-  return { props: { whiskies, surveyResults } };
+  return { props: { whiskies } };
 }
 
 export default function VisitorSurvey({ whiskies }) {
@@ -78,13 +73,6 @@ export default function VisitorSurvey({ whiskies }) {
     submitSurvey(surveyInput);
     router.push("/survey-stats");
   };
-
-  if (!whiskies)
-    return (
-      <>
-        <Typography>404 Error</Typography>
-      </>
-    );
 
   return (
     <>

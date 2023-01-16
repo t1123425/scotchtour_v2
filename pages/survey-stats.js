@@ -24,10 +24,15 @@ export async function getServerSideProps() {
     "https://scotchtour-v2-ricechrisdtreat.vercel.app/api/whiskies";
   const SURVEY_URL =
     "https://scotchtour-v2-ricechrisdtreat.vercel.app/api/surveys";
-  const whisky_res = await axios.get(WHISKY_URL);
-  const survey_res = await axios.get(SURVEY_URL);
+  const whisky_res = await axios.get(WHISKY_URL, {
+    headers: { "Accept-Encoding": "gzip,deflate,compress" },
+  });
+  const survey_res = await axios.get(SURVEY_URL, {
+    headers: { "Accept-Encoding": "gzip,deflate,compress" },
+  });
   const whiskies = await whisky_res.data;
   const surveyResults = await survey_res.data;
+  console.log(surveyResults);
 
   if (!whiskies) {
     return {

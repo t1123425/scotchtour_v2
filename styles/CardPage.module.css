@@ -10,8 +10,9 @@
 }
 
 .popWrapper {
-    max-height: 650px;
+    max-height: 80vh;
     max-width: 900px;
+    border-radius: 16px;
 }
 
 .popTitle {
