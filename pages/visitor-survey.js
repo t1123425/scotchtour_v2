@@ -26,8 +26,6 @@ export async function getServerSideProps() {
 
   const WHISKY_URL =
     "https://scotchtour-v2-ricechrisdtreat.vercel.app/api/whiskies";
-  const SURVEY_URL =
-    "https://scotchtour-v2-ricechrisdtreat.vercel.app/api/surveys";
   const whisky_res = await axios.get(WHISKY_URL, {
     headers: { "Accept-Encoding": "gzip,deflate,compress" },
   });
