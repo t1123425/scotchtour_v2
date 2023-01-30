@@ -9,28 +9,41 @@ import SearchDrawer from "../components/SearchDrawer";
 // added to create serverless functions
 // import connectDb from "../services/connectDb";
 import axios from "axios";
+import clientPromise from "../mongodb";
 
-export async function getServerSideProps() {
-  // const whiskies = await whiskyDbService.getWhisky_db();
-
-  // const baseURL = 'https://scotchtour-v2-ricechrisdtreat.vercel.app'
-  // process.env.NODE_ENV === "development"
-  //   ? "http://localhost:3000"
-  //   : "https://scotchtour-v2-ricechrisdtreat.vercel.app";
-
-  const WHISKY_URL =
-    "https://scotchtour-v2-ricechrisdtreat.vercel.app/api/whiskies";
-  const whisky_res = await axios.get(WHISKY_URL, {
-    headers: { "Accept-Encoding": "gzip,deflate,compress" },
-  });
-  const whiskies = await whisky_res.data;
+export async function getStaticProps() {
+  const client = await clientPromise;
+  const db = client.db("scotch_tour_v2");
+  const whiskies = await db.collection("whisky_db").find({}).toArray();
   if (!whiskies) {
     return {
       notFound: true,
     };
   }
-  return { props: { whiskies } };
+  return { props: { whiskies: JSON.parse(JSON.stringify(whiskies)) } };
 }
+
+// export async function getServerSideProps() {
+//   // const whiskies = await whiskyDbService.getWhisky_db();
+
+//   // const baseURL = 'https://scotchtour-v2-ricechrisdtreat.vercel.app'
+//   // process.env.NODE_ENV === "development"
+//   //   ? "http://localhost:3000"
+//   //   : "https://scotchtour-v2-ricechrisdtreat.vercel.app";
+
+//   const WHISKY_URL =
+//     "https://scotchtour-v2-ricechrisdtreat.vercel.app/api/whiskies";
+//   const whisky_res = await axios.get(WHISKY_URL, {
+//     headers: { "Accept-Encoding": "gzip,deflate,compress" },
+//   });
+//   const whiskies = await whisky_res.data;
+//   if (!whiskies) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+//   return { props: { whiskies } };
+// }
 
 export default function ScotchDb({ whiskies }) {
   // state
