@@ -1,6 +1,7 @@
 import { Typography, Grid } from "@mui/material";
 import React from "react";
 import styles from "../styles/FullPage.module.css";
+import Image from "next/image";
 
 export default function FullPage(props) {
   return (
@@ -11,7 +12,16 @@ export default function FullPage(props) {
         </Typography>
       </Grid>
       <Grid item lg={5}>
-        <img src={props.hero} className={styles.image} />
+        <div className={styles.imageWrapper}>
+          <Image
+            src={props.hero}
+            alt={props.alt}
+            className={styles.image}
+            fill
+            // height={props.imgHeight}
+            // width={props.imgWidth}
+          />
+        </div>
       </Grid>
       <Grid item xs={12} lg={5} className={styles.paragraphBlock}>
         {props.mainText.map((p) => p)}

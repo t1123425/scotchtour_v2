@@ -12,6 +12,9 @@ export default function Home(props) {
         title={homeContent.mainTitle}
         hero={homeContent.hero}
         mainText={homeContent.mainText}
+        // alt={homeContent.alt}
+        // imgHeight={homeContent.imgHeight}
+        // imgWidth={homeContent.imgWidth}
       />
     </>
   );

@@ -12,6 +12,9 @@ export default function AboutMe() {
         title={aboutMeContent.mainTitle}
         hero={aboutMeContent.hero}
         mainText={aboutMeContent.mainText}
+        alt={aboutMeContent.alt}
+        imgHeight={aboutMeContent.imgHeight}
+        imgWidth={aboutMeContent.imgWidth}
       />
     </>
   );

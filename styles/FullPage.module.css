@@ -8,11 +8,16 @@
     text-align: center;
 }
 
-.image {
+.imageWrapper {
     max-width: 680px;
     width: calc(100% - 30px);
     margin: 0 15px; 
+}
+
+.image {
     border-radius: 16px;
+    object-fit: contain;
+    position: relative !important;
 }
 
 .paragraphBlock p {

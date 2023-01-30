@@ -54,6 +54,9 @@ export const navItems = [
 export const homeContent = {
   mainTitle: "The Art of Scotch Whisky",
   hero: "/main_hero.webp",
+  alt: "A photo of a hand pouring scotch whisky into two glasses",
+  imgHeight: 453.2,
+  imgWidth: 680,
   mainText: [
     <p>
       Greetings! Welcome to my website celebrating the storied history and art
@@ -81,6 +84,9 @@ export const homeContent = {
 export const aboutMeContent = {
   mainTitle: "About the Author",
   hero: "/aboutme_hero.jpg",
+  alt: "A dashing photo of the author holding up a glass to the viewer",
+  imgHeight: 680,
+  imgWidth: 680,
   mainText: [
     <p>
       <strong>Hi! I'm Chris.</strong>
