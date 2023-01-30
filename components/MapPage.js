@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Typography, Popover, Box, Button } from "@mui/material";
 import styles from "../styles/MapPage.module.css";
 import { theme } from "../styles/theme";
+import Image from "next/image";
 
 export default function MapPage(props) {
   // state
@@ -34,6 +35,7 @@ export default function MapPage(props) {
           src="/scotch-regions.png"
           alt="Scotch regions"
           className={styles.image}
+          loading="eager"
         />
         {props.regionButtons.map((region) => (
           <Button
