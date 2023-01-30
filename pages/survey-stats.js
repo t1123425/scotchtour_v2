@@ -7,32 +7,16 @@ import surveyService from "../services/surveyService";
 import { SurveyChartData } from "../components/ChartData";
 import { Typography } from "@mui/material";
 import axios from "axios";
+import clientPromise from "../mongodb";
 
 export async function getServerSideProps() {
-  // const whiskies = await whiskyDbService.getWhisky_db();
-  // const surveyResults = await surveyService.getSurveyResults();
-  // const baseURL =
-  //   process.env.NODE_ENV === "development"
-  //     ? "http://localhost:3000"
-  //     : "https://scotchtour-v2-ricechrisdtreat.vercel.app";
-  // const baseURL = "https://scotchtour-v2-ricechrisdtreat.vercel.app";
-  // process.env.NODE_ENV === "development"
-  //   ? "http://localhost:3000"
-  //   : "https://scotchtour-v2-ricechrisdtreat.vercel.app";
-
-  const WHISKY_URL =
-    "https://scotchtour-v2-ricechrisdtreat.vercel.app/api/whiskies";
-  const SURVEY_URL =
-    "https://scotchtour-v2-ricechrisdtreat.vercel.app/api/surveys";
-  const whisky_res = await axios.get(WHISKY_URL, {
-    headers: { "Accept-Encoding": "gzip,deflate,compress" },
-  });
-  const survey_res = await axios.get(SURVEY_URL, {
-    headers: { "Accept-Encoding": "gzip,deflate,compress" },
-  });
-  const whiskies = await whisky_res.data;
-  const surveyResults = await survey_res.data;
-  console.log(surveyResults);
+  const client = await clientPromise;
+  const db = client.db("scotch_tour_v2");
+  const whiskies = await db.collection("whisky_db").find({}).toArray();
+  const surveyResults = await db
+    .collection("visitor_survey")
+    .find({})
+    .toArray();
 
   if (!whiskies) {
     return {
@@ -44,7 +28,12 @@ export async function getServerSideProps() {
       notFound: true,
     };
   }
-  return { props: { whiskies, surveyResults } };
+  return {
+    props: {
+      whiskies: JSON.parse(JSON.stringify(whiskies)),
+      surveyResults: JSON.parse(JSON.stringify(surveyResults)),
+    },
+  };
 }
 
 export default function SurveyStats({ whiskies, surveyResults }) {
