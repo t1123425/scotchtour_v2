@@ -21,6 +21,7 @@ export default function FullPage(props) {
             priority="true"
             sizes="(max-width: 1200px) calc(100vw - 30px),
             41.6vw"
+            // placeholder="blur"
             // height={props.imgHeight}
             // width={props.imgWidth}
           />
