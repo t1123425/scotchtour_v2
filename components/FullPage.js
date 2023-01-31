@@ -19,6 +19,8 @@ export default function FullPage(props) {
             className={styles.image}
             fill
             priority="true"
+            sizes="(max-width: 1200px) calc(100vw - 30px),
+            41.6vw"
             // height={props.imgHeight}
             // width={props.imgWidth}
           />
