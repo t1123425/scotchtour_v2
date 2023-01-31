@@ -17,7 +17,7 @@ import styles from "../styles/DrawerAppBar.module.css";
 import Head from "next/head";
 
 export default function DrawerAppBar(props) {
-  const icon = "/whisky-still.png";
+  const icon = "/whisky-still.webp";
   const { window } = props;
   const [open, setOpen] = React.useState(false);
 

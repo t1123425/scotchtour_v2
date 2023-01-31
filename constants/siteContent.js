@@ -83,7 +83,7 @@ export const homeContent = {
 
 export const aboutMeContent = {
   mainTitle: "About the Author",
-  hero: "/aboutme_hero.jpg",
+  hero: "/aboutme_hero.webp",
   alt: "A dashing photo of the author holding up a glass to the viewer",
   imgHeight: 680,
   imgWidth: 680,
@@ -553,7 +553,7 @@ export const historyContent = [
 export const processContent = [
   {
     title: "How Scotch Whisky is Made",
-    imageUrl: "/whisky_process.jpg",
+    imageUrl: "/whisky_process.webp",
     imgSizing: "grow",
     description: [
       <p key="process-1">
@@ -728,7 +728,7 @@ export const processContent = [
   },
   {
     title: "Maturation",
-    imageUrl: "/scotch_barrels_2.jpg",
+    imageUrl: "/scotch_barrels_2.webp",
     imgSizing: "grow",
     caption:
       "By Scottish law, any whisky to be considered scotch whisky must be aged in oak barrels for at least three years.",
@@ -751,7 +751,7 @@ export const processContent = [
   },
   {
     title: "Blending",
-    imageUrl: "/blending_whisky.jpeg",
+    imageUrl: "/blending_whisky.webp",
     imgSizing: "grow",
     description: [
       <p key="blending-1">
@@ -772,7 +772,7 @@ export const processContent = [
   },
   {
     title: "Packaging & Labeling",
-    imageUrl: "/scotch_label.jpeg",
+    imageUrl: "/scotch_label.webp",
     imgSizing: "grow",
     description: [
       <p key="packaging-1">
@@ -903,7 +903,7 @@ export const initialFormValues = {
 export const brandCards = [
   {
     id: "arran",
-    imageUrl: "/brand_logos/arran_logo.jpeg",
+    imageUrl: "/brand_logos/arran_logo.webp",
     name: "Arran",
     region: "Islands",
     founded: 1995,
@@ -936,7 +936,7 @@ export const brandCards = [
   },
   {
     id: "cardhu",
-    imageUrl: "/brand_logos/cardhu_logo.jpeg",
+    imageUrl: "/brand_logos/cardhu_logo.webp",
     name: "Cardhu",
     region: "Speyside",
     founded: 1824,
@@ -973,7 +973,7 @@ export const brandCards = [
   },
   {
     id: "dalwhinnie",
-    imageUrl: "/brand_logos/dalwhinnie_logo.png",
+    imageUrl: "/brand_logos/dalwhinnie_logo.webp",
     name: "Dalwhinnie",
     region: "Highlands",
     founded: 1898,
@@ -1011,7 +1011,7 @@ export const brandCards = [
   },
   {
     id: "erdradour",
-    imageUrl: "/brand_logos/erdradour_logo.jpeg",
+    imageUrl: "/brand_logos/erdradour_logo.webp",
     name: "Erdradour",
     region: "Highlands",
     founded: 1825,
@@ -1093,7 +1093,7 @@ export const brandCards = [
   },
   {
     id: "glenlivet",
-    imageUrl: "/brand_logos/glenlivet_logo.png",
+    imageUrl: "/brand_logos/glenlivet_logo.webp",
     name: "Glenlivet",
     region: "Speyside",
     founded: 1824,
@@ -1154,7 +1154,7 @@ export const brandCards = [
   },
   {
     id: "glenmorangie",
-    imageUrl: "/brand_logos/glenmorangie_logo.png",
+    imageUrl: "/brand_logos/glenmorangie_logo.webp",
     name: "Glenmorangie",
     region: "Highlands",
     founded: 1843,
@@ -1274,7 +1274,7 @@ export const brandCards = [
   },
   {
     id: "laphroaig",
-    imageUrl: "/brand_logos/laphroaig_logo.png",
+    imageUrl: "/brand_logos/laphroaig_logo.webp",
     name: "Laphroaig",
     region: "Islay",
     founded: 1815,
@@ -1322,7 +1322,7 @@ export const brandCards = [
   },
   {
     id: "macallan",
-    imageUrl: "/brand_logos/macallan_logo.jpeg",
+    imageUrl: "/brand_logos/macallan_logo.webp",
     name: "Macallan",
     region: "Speyside",
     founded: 1824,
@@ -1378,7 +1378,7 @@ export const brandCards = [
   },
   {
     id: "talisker",
-    imageUrl: "/brand_logos/talisker_logo.png",
+    imageUrl: "/brand_logos/talisker_logo.webp",
     name: "Talisker",
     region: "Islands",
     founded: 1830,

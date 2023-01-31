@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import styles from "../styles/CardPage.module.css";
 import { theme } from "../styles/theme";
+import Image from "next/image";
 
 function Card(props) {
   // state
@@ -34,7 +35,12 @@ function Card(props) {
           onClick={() => props.setActiveCard(props.id)}
           className={styles.wrapper}
         >
-          <img src={props.imageUrl} className={styles.image} />
+          <Image
+            src={props.imageUrl}
+            alt={props.alt}
+            height={250}
+            width={250}
+          />
         </Paper>
       </motion.div>
     </Grid>
@@ -73,6 +79,7 @@ export default function CardPage(props) {
               handleClick={handleClick}
               handleClose={handleClose}
               key={card.id}
+              alt={`${card.name} brand logo`}
             />
           ))}
         </Grid>

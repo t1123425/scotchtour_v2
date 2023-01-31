@@ -32,7 +32,7 @@ export default function MapPage(props) {
     <>
       <Box className={styles.wrapper}>
         <img
-          src="/scotch-regions.png"
+          src="/scotch-regions.webp"
           alt="Scotch regions"
           className={styles.image}
           loading="eager"
