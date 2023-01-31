@@ -18,7 +18,7 @@ export default function FullPage(props) {
             alt={props.alt}
             className={styles.image}
             fill
-            priority
+            priority="true"
             // height={props.imgHeight}
             // width={props.imgWidth}
           />
