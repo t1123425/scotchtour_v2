@@ -3,18 +3,18 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "../styles/theme";
 import { StyledEngineProvider } from "@mui/material";
 // tested from MUI/next.js tutorial
-// import PropTypes from "prop-types";
-// import Head from "next/head";
-// import { CacheProvider } from "@emotion/react";
-// import createEmotionCache from "../styles/createEmotionCache";
+import PropTypes from "prop-types";
+import Head from "next/head";
+import { CacheProvider } from "@emotion/react";
+import createEmotionCache from "../styles/createEmotionCache";
 
 // tested from MUI/next.js tutorial
-// const clientSideEmotionCache = createEmotionCache();
+const clientSideEmotionCache = createEmotionCache();
 
 function MyApp({
   Component,
   pageProps,
-  // emotionCache = clientSideEmotionCache,
+  emotionCache = clientSideEmotionCache,
 }) {
   return (
     // <CacheProvider value={emotionCache}>
