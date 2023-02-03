@@ -334,7 +334,7 @@ export const whatIsContent = [
       </p>,
       <ul key="comparison-2">
         <li>
-          <strong>Whiskey/Whiskey</strong>, a broad category of distilled liquor
+          <strong>Whisky/Whiskey</strong>, a broad category of distilled liquor
           made from fermented grain mash.
         </li>
         <li>
