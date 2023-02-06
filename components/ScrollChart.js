@@ -112,7 +112,7 @@ export default function ScrollChart(props) {
             </strong>{" "}
             Every second, 44 bottles of scotch are shipped from Scotland across
             the globe - helping to support tens of thousands of jobs in Scotland
-            and ensuring that millions of consumers can enjoy a dram. It's a
+            and ensuring that millions of consumers can enjoy a dram. It{`'`}s a
             global industry, 500 years in the making!
           </Box>
         </motion.div>
