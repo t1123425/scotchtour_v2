@@ -494,7 +494,7 @@ export const historyContent = [
     description: [
       <p key="19th-1">
         With an ever growing demand for whisky from outside the Scottish
-        borders, unauthorised distillation was ubiquitous by the 1820s. Nearly
+        borders, unauthorized distillation was ubiquitous by the 1820s. Nearly
         half the whisky drunk in Scotland came from illicit stills, with no
         payment of duty, even though Excise Gaugers seized up to 14,000 illicit
         stills every year.
@@ -573,7 +573,7 @@ export const processContent = [
         .
       </p>,
       <p key="process-2">
-        Although traditional Scotch whisky is made from exlusively 100% malted
+        Although traditional Scotch whisky is made from exclusively 100% malted
         barley, the repeal of the{" "}
         <strong>
           <em>British Corn Laws</em>
@@ -615,7 +615,7 @@ export const processContent = [
       <p key="malting-2">
         At the appropriate moment germination is stopped by drying the malted
         barley or green malt in the malt kiln. More usually nowadays malting is
-        carried out in Saladin boxes or in drum maltings. in both of which the
+        carried out in Saladin boxes or in drum maltings, in both of which the
         process is controlled mechanically. Instead of germinating on the
         distillery floor, the grain is contained in large rectangular boxes
         (Saladin) or in large cylindrical drums. Temperature is controlled by
