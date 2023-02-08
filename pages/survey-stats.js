@@ -1,6 +1,6 @@
 import React from "react";
-import { navItems } from "../constants/siteContent";
-import DrawerAppBar from "../components/DrawerAppBar";
+// import { navItems } from "../constants/siteContent";
+// import DrawerAppBar from "../components/DrawerAppBar";
 import SurveyCharts from "../components/SurveyCharts";
 import whiskyDbService from "../services/whiskyDbService";
 import surveyService from "../services/surveyService";
@@ -57,7 +57,7 @@ export default function SurveyStats({ whiskies, surveyResults }) {
 
   return (
     <>
-      <DrawerAppBar title={navItems[8].title} />
+      {/* <DrawerAppBar title={navItems[8].title} /> */}
       <SurveyCharts
         totalcount={totalcount}
         recognizeddata={recognizeddata}

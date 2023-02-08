@@ -15,11 +15,24 @@ import Link from "next/link";
 import { navItems } from "../constants/siteContent";
 import styles from "../styles/DrawerAppBar.module.css";
 import Head from "next/head";
+import {useEffect} from 'react'
+import { useRouter } from 'next/router'
 
 export default function DrawerAppBar(props) {
-  const icon = "/whisky-still.webp";
   const { window } = props;
   const [open, setOpen] = React.useState(false);
+  const [headTitle, setHeadTitle] = React.useState('Home');
+  const icon = '/whisky-still.webp'
+  const router = useRouter()
+  const handleRouter = (url) => {
+      const currentUrl = navItems.filter(e => e.href === url);
+      console.log('currentUrl',currentUrl);
+      setHeadTitle(currentUrl[0].title)
+    }
+    useEffect(()=>{
+      //  console.log(router);
+       handleRouter(router.pathname)
+    },[router])
 
   const handleDrawerToggle = () => {
     setOpen(!open);
@@ -45,14 +58,13 @@ export default function DrawerAppBar(props) {
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
-
   return (
     <>
       <Head>
-        <title>{props.title}</title>
+        <title>{headTitle}</title>
         <link rel="icon" href={icon} />
       </Head>
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: "flex" }} component="header">
         <AppBar component="nav" position="fixed" className={styles.navBar}>
           <Toolbar>
             <IconButton
@@ -68,7 +80,7 @@ export default function DrawerAppBar(props) {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant={"h6"}>{props.title}</Typography>
+            <Typography variant={"h6"}>{headTitle}</Typography>
           </Toolbar>
         </AppBar>
         <Box component="nav">

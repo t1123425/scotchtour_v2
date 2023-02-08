@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MapPage from "../components/MapPage";
-import { navItems } from "../constants/siteContent";
-import DrawerAppBar from "../components/DrawerAppBar";
+// import { navItems } from "../constants/siteContent";
 import { regionButtons, regionContent } from "../constants/siteContent";
 import PopoverChart from "../components/PopoverChart";
 import { RegionChartData } from "../components/ChartData";
@@ -19,7 +18,6 @@ export default function Regions(pageProps) {
 
   return (
     <>
-      <DrawerAppBar title={navItems[4].title} />
       <PopoverChart
         chartPopperStyle={chartPopperStyle}
         data={totalregiondata}
