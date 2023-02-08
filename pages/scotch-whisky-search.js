@@ -1,6 +1,4 @@
 import React, { useReducer, useState } from "react";
-// import { navItems } from "../constants/siteContent";
-// import DrawerAppBar from "../components/DrawerAppBar";
 import ResultsTable from "../components/ResultsTable";
 import { Chip, TableBody, TableCell, TableRow } from "@mui/material";
 import whiskyDbService from "../services/whiskyDbService";
@@ -140,7 +138,6 @@ export default function ScotchDb({ whiskies }) {
 
   return (
     <>
-      {/* <DrawerAppBar title={navItems[6].title} /> */}
       <SearchDrawer
         handleChangeValue={handleSearch}
         searchValue={filterInput}

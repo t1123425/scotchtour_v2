@@ -1,7 +1,5 @@
 import React, { useReducer } from "react";
 import Survey from "../components/Survey";
-// import { navItems } from "../constants/siteContent";
-// import DrawerAppBar from "../components/DrawerAppBar";
 import {
   ratingLabels,
   interestLabels,
@@ -55,9 +53,7 @@ export default function VisitorSurvey({ whiskies }) {
   };
 
   return (
-    <>
-      {/* <DrawerAppBar title={navItems[7].title} /> */}
-      <Survey
+    <Survey
         ratingLabels={ratingLabels}
         interestLabels={interestLabels}
         surveyValues={surveyInput}
@@ -69,6 +65,5 @@ export default function VisitorSurvey({ whiskies }) {
         brandList={brandData.map((obj) => obj.name)}
         whiskyList={whiskies.map((obj) => obj.whisky)}
       />
-    </>
   );
 }

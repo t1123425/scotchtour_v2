@@ -26,11 +26,9 @@ export default function DrawerAppBar(props) {
   const router = useRouter()
   const handleRouter = (url) => {
       const currentUrl = navItems.filter(e => e.href === url);
-      console.log('currentUrl',currentUrl);
       setHeadTitle(currentUrl[0].title)
     }
     useEffect(()=>{
-      //  console.log(router);
        handleRouter(router.pathname)
     },[router])
 

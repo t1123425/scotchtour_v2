@@ -9,9 +9,6 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {/* PWA primary color */}
-          <meta name="viewport" content="initial-scale=1, width=device-width" />
-          <meta name="theme-color" content={theme.palette.primary.main} />
-          <meta name="emotion-insertion-point" content="" />
           {this.props.emotionStyleTags}
         </Head>
         <body>
@@ -32,7 +29,6 @@ MyDocument.getInitialProps = async (context) => {
     originalRenderPage({
       enhanceApp: (App) =>
         function EnhanceApp(props) {
-          console.log('p',props);
           return <App emotionCache={cache} {...props} />;
         },
     });

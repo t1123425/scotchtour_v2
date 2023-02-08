@@ -1,10 +1,9 @@
-'use client';
 import React from "react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "../styles/theme";
 // tested from MUI/next.js tutorial
 import PropTypes from "prop-types";
-// import Head from "next/head";
+import Head from "next/head";
 // import { CacheProvider } from "@emotion/react";
 import createEmotionCache from "../styles/createEmotionCache";
 import { StyledEngineProvider } from "@mui/material";
@@ -21,9 +20,11 @@ function MyApp({
     // <CacheProvider value={emotionCache}>
     <StyledEngineProvider injectFirst>
       {/* cacheprovider and head tested from MUI/next.js tutorial */}
-      {/* <Head>
+      <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
-      </Head> */}
+        <meta name="theme-color" content={theme.palette.primary.main} />
+        <meta name="emotion-insertion-point" content="" />
+      </Head>
       <ThemeProvider theme={theme}>
         <DrawerAppBar />
         <CssBaseline />
