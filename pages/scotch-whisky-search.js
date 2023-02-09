@@ -1,12 +1,12 @@
 import React, { useReducer, useState } from "react";
 import ResultsTable from "../components/ResultsTable";
 import { Chip, TableBody, TableCell, TableRow } from "@mui/material";
-import whiskyDbService from "../services/whiskyDbService";
+// import whiskyDbService from "../services/whiskyDbService";
 import { headers } from "../constants/siteContent";
 import SearchDrawer from "../components/SearchDrawer";
 // added to create serverless functions
 // import connectDb from "../services/connectDb";
-import axios from "axios";
+// import axios from "axios";
 import clientPromise from "../mongodb";
 
 export async function getStaticProps() {

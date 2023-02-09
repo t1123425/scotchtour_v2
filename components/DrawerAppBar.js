@@ -29,7 +29,8 @@ export default function DrawerAppBar(props) {
       setHeadTitle(currentUrl[0].title)
     }
     useEffect(()=>{
-       handleRouter(router.pathname)
+      //  console.log('query',router);
+       handleRouter(router.asPath)
     },[router])
 
   const handleDrawerToggle = () => {

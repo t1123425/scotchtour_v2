@@ -7,7 +7,8 @@ export const navItems = [
   {
     id: 1,
     title: "What is Scotch Whisky?",
-    href: "/what-is-scotch-whisky",
+    href: "/knowledge/whatIs",
+    oldHref:'/what-is-scotch-whisky'
   },
   {
     id: 2,
@@ -17,7 +18,8 @@ export const navItems = [
   {
     id: 3,
     title: "How Scotch is Made",
-    href: "/how-scotch-is-made",
+    href: "/knowledge/process",
+    oldHref:'/how-scotch-is-made'
   },
   {
     id: 4,
@@ -796,9 +798,9 @@ export const processContent = [
         </strong>
         " signifies that single malt whisky from different distilleries are
         blended in the bottle. The Cardhu distillery also began using the term "
-        <stong>
+        <strong>
           <em>pure malt</em>
-        </stong>
+        </strong>
         " for the same purpose, causing a controversy in the process over
         clarity in labelling – the Glenfiddich distillery was using the term to
         describe some single malt bottlings. As a result, the Scotch Whisky
